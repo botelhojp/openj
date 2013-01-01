@@ -1,0 +1,43 @@
+; Tue Jan 01 15:22:48 BRT 2013
+; 
+;+ (version "3.2.1")
+;+ (build "Build 365")
+
+([ASCLMessage] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([Certificate] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([Encipher] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([EncryptedMessage] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([FindCertificate] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([PKCS7Message] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([project+annotation] of  %3APROJECT-ANNOTATION
+
+	(%3ALOCATION "/home/vanderson/devvander/puc/workspace/open-jade/src/main/java/")
+	(%3AONTOLOGYNAME "OpenJade")
+	(%3APACKAGE "openjade.ontology")
+	(%3ASUPPORT "j2se"))
+
+([SendCertificate] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([Sign] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))

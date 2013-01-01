@@ -1,0 +1,17 @@
+package openjade.cert.extension;
+
+public enum DefaultExtensionType {
+	
+	BEFORE_DATE,
+	AFTER_DATE,
+	CERTIFICATION_AUTHORITY,
+	CRL_URL,
+	SERIAL_NUMBER,	
+	ISSUER_DN,
+	SUBJECT_DN,
+	KEY_USAGE,
+	PATH_LENGTH,
+	AUTHORITY_KEY_IDENTIFIER,
+	SUBJECT_KEY_IDENTIFIER;	
+
+}

@@ -1,0 +1,13 @@
+package openjade.cert.extension;
+
+public enum ICPBRExtensionType {
+	PERSON_ID,
+	PERSON_NAME,
+	PERSON_EMAIL,
+	
+	CORPORATION_ID,
+	CORPORATION_NAME,
+	
+	CERTIFICATE_TYPE,
+	CERTIFICATE_LEVEL;
+}

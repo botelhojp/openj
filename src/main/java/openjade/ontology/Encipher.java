@@ -8,20 +8,9 @@ import jade.core.*;
 /**
 * Protege name: Encipher
 * @author ontology bean generator
-* @version 2013/01/1, 16:23:45
+* @version 2013/01/2, 10:37:57
 */
 public class Encipher implements AgentAction {
-
-   /**
-* Protege name: algorithm
-   */
-   private String algorithm;
-   public void setAlgorithm(String value) { 
-    this.algorithm=value;
-   }
-   public String getAlgorithm() {
-     return this.algorithm;
-   }
 
    /**
 * Protege name: signMode
@@ -35,14 +24,14 @@ public class Encipher implements AgentAction {
    }
 
    /**
-* Protege name: message
+* Protege name: algorithm
    */
-   private EncryptedMessage message;
-   public void setMessage(EncryptedMessage value) { 
-    this.message=value;
+   private String algorithm;
+   public void setAlgorithm(String value) { 
+    this.algorithm=value;
    }
-   public EncryptedMessage getMessage() {
-     return this.message;
+   public String getAlgorithm() {
+     return this.algorithm;
    }
 
    /**
@@ -54,6 +43,17 @@ public class Encipher implements AgentAction {
    }
    public String getProvider() {
      return this.provider;
+   }
+
+   /**
+* Protege name: message
+   */
+   private EncryptedMessage message;
+   public void setMessage(EncryptedMessage value) { 
+    this.message=value;
+   }
+   public EncryptedMessage getMessage() {
+     return this.message;
    }
 
 }

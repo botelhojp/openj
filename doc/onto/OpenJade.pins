@@ -1,4 +1,4 @@
-; Tue Jan 01 15:22:48 BRT 2013
+; Wed Jan 02 11:10:04 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -33,6 +33,10 @@
 	(%3AONTOLOGYNAME "OpenJade")
 	(%3APACKAGE "openjade.ontology")
 	(%3ASUPPORT "j2se"))
+
+([Rating] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
 
 ([SendCertificate] of  %3AJADE-CLASS
 

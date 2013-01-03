@@ -1,11 +1,11 @@
 package openjade.trust;
 
-public class CertificateModel implements TrustModel {
+public class NothingModel implements TrustModel {
 
 	private static final long serialVersionUID = 1L;
 
 	public String getName() {
-		return "CertificateModel";
+		return "NothingModel";
 	}
 
 }

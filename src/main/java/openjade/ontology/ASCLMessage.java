@@ -8,7 +8,7 @@ import jade.core.*;
 /**
 * Protege name: ASCLMessage
 * @author ontology bean generator
-* @version 2013/01/1, 16:23:45
+* @version 2013/01/2, 10:37:57
 */
 public class ASCLMessage implements Concept {
 

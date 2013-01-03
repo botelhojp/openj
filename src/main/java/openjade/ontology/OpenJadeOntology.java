@@ -9,7 +9,7 @@ import jade.core.CaseInsensitiveString;
 
 /** file: OpenJadeOntology.java
  * @author ontology bean generator
- * @version 2013/01/1, 16:23:45
+ * @version 2013/01/2, 10:37:57
  */
 public class OpenJadeOntology extends jade.content.onto.Ontology  {
   //NAME
@@ -23,27 +23,33 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
 
    // VOCABULARY
-    public static final String ENCIPHER_PROVIDER="provider";
+    public static final String FINDCERTIFICATE_AID="aid";
+    public static final String FINDCERTIFICATE="FindCertificate";
+    public static final String SENDCERTIFICATE_AID="aid";
+    public static final String SENDCERTIFICATE_CERTIFICATE="certificate";
+    public static final String SENDCERTIFICATE="SendCertificate";
     public static final String ENCIPHER_MESSAGE="message";
-    public static final String ENCIPHER_SIGNMODE="signMode";
+    public static final String ENCIPHER_PROVIDER="provider";
     public static final String ENCIPHER_ALGORITHM="algorithm";
+    public static final String ENCIPHER_SIGNMODE="signMode";
     public static final String ENCIPHER="Encipher";
     public static final String SIGN_PKCS7="pkcs7";
     public static final String SIGN="Sign";
-    public static final String SENDCERTIFICATE_CERTIFICATE="certificate";
-    public static final String SENDCERTIFICATE_AID="aid";
-    public static final String SENDCERTIFICATE="SendCertificate";
-    public static final String FINDCERTIFICATE_AID="aid";
-    public static final String FINDCERTIFICATE="FindCertificate";
+    public static final String ENCRYPTEDMESSAGE_KEYALGORITHM="keyAlgorithm";
+    public static final String ENCRYPTEDMESSAGE_KEY="key";
+    public static final String ENCRYPTEDMESSAGE_LISTCONTENT="listContent";
+    public static final String ENCRYPTEDMESSAGE="EncryptedMessage";
+    public static final String ASCLMESSAGE="ASCLMessage";
     public static final String PKCS7MESSAGE_CONTENT="content";
     public static final String PKCS7MESSAGE="PKCS7Message";
-    public static final String ASCLMESSAGE="ASCLMessage";
-    public static final String ENCRYPTEDMESSAGE_LISTCONTENT="listContent";
-    public static final String ENCRYPTEDMESSAGE_KEY="key";
-    public static final String ENCRYPTEDMESSAGE_KEYALGORITHM="keyAlgorithm";
-    public static final String ENCRYPTEDMESSAGE="EncryptedMessage";
-    public static final String CERTIFICATE_ALGORITHM="algorithm";
+    public static final String RATING_CLIENT="client";
+    public static final String RATING_SERVER="server";
+    public static final String RATING_ITERATION="iteration";
+    public static final String RATING_VALUE="value";
+    public static final String RATING_TERM="term";
+    public static final String RATING="Rating";
     public static final String CERTIFICATE_CONTENT="content";
+    public static final String CERTIFICATE_ALGORITHM="algorithm";
     public static final String CERTIFICATE="Certificate";
 
   /**
@@ -56,22 +62,24 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     // adding Concept(s)
     ConceptSchema certificateSchema = new ConceptSchema(CERTIFICATE);
     add(certificateSchema, openjade.ontology.Certificate.class);
-    ConceptSchema encryptedMessageSchema = new ConceptSchema(ENCRYPTEDMESSAGE);
-    add(encryptedMessageSchema, openjade.ontology.EncryptedMessage.class);
-    ConceptSchema asclMessageSchema = new ConceptSchema(ASCLMESSAGE);
-    add(asclMessageSchema, openjade.ontology.ASCLMessage.class);
+    ConceptSchema ratingSchema = new ConceptSchema(RATING);
+    add(ratingSchema, openjade.ontology.Rating.class);
     ConceptSchema pkcS7MessageSchema = new ConceptSchema(PKCS7MESSAGE);
     add(pkcS7MessageSchema, openjade.ontology.PKCS7Message.class);
+    ConceptSchema asclMessageSchema = new ConceptSchema(ASCLMESSAGE);
+    add(asclMessageSchema, openjade.ontology.ASCLMessage.class);
+    ConceptSchema encryptedMessageSchema = new ConceptSchema(ENCRYPTEDMESSAGE);
+    add(encryptedMessageSchema, openjade.ontology.EncryptedMessage.class);
 
     // adding AgentAction(s)
-    AgentActionSchema findCertificateSchema = new AgentActionSchema(FINDCERTIFICATE);
-    add(findCertificateSchema, openjade.ontology.FindCertificate.class);
-    AgentActionSchema sendCertificateSchema = new AgentActionSchema(SENDCERTIFICATE);
-    add(sendCertificateSchema, openjade.ontology.SendCertificate.class);
     AgentActionSchema signSchema = new AgentActionSchema(SIGN);
     add(signSchema, openjade.ontology.Sign.class);
     AgentActionSchema encipherSchema = new AgentActionSchema(ENCIPHER);
     add(encipherSchema, openjade.ontology.Encipher.class);
+    AgentActionSchema sendCertificateSchema = new AgentActionSchema(SENDCERTIFICATE);
+    add(sendCertificateSchema, openjade.ontology.SendCertificate.class);
+    AgentActionSchema findCertificateSchema = new AgentActionSchema(FINDCERTIFICATE);
+    add(findCertificateSchema, openjade.ontology.FindCertificate.class);
 
     // adding AID(s)
 
@@ -79,27 +87,32 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
 
     // adding fields
-    certificateSchema.add(CERTIFICATE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
     certificateSchema.add(CERTIFICATE_ALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEYALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.OPTIONAL);
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), 0, ObjectSchema.UNLIMITED);
+    certificateSchema.add(CERTIFICATE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
+    ratingSchema.add(RATING_TERM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
+    ratingSchema.add(RATING_VALUE, (TermSchema)getSchema(BasicOntology.FLOAT), ObjectSchema.OPTIONAL);
+    ratingSchema.add(RATING_ITERATION, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.OPTIONAL);
+    ratingSchema.add(RATING_SERVER, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.OPTIONAL);
+    ratingSchema.add(RATING_CLIENT, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.OPTIONAL);
     pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
-    findCertificateSchema.add(FINDCERTIFICATE_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
-    sendCertificateSchema.add(SENDCERTIFICATE_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
-    sendCertificateSchema.add(SENDCERTIFICATE_CERTIFICATE, certificateSchema, ObjectSchema.MANDATORY);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), 0, ObjectSchema.UNLIMITED);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.OPTIONAL);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEYALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     signSchema.add(SIGN_PKCS7, pkcS7MessageSchema, ObjectSchema.OPTIONAL);
-    encipherSchema.add(ENCIPHER_ALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     encipherSchema.add(ENCIPHER_SIGNMODE, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.OPTIONAL);
-    encipherSchema.add(ENCIPHER_MESSAGE, encryptedMessageSchema, ObjectSchema.OPTIONAL);
+    encipherSchema.add(ENCIPHER_ALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     encipherSchema.add(ENCIPHER_PROVIDER, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
+    encipherSchema.add(ENCIPHER_MESSAGE, encryptedMessageSchema, ObjectSchema.OPTIONAL);
+    sendCertificateSchema.add(SENDCERTIFICATE_CERTIFICATE, certificateSchema, ObjectSchema.MANDATORY);
+    sendCertificateSchema.add(SENDCERTIFICATE_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
+    findCertificateSchema.add(FINDCERTIFICATE_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
 
     // adding name mappings
 
     // adding inheritance
     certificateSchema.addSuperSchema(asclMessageSchema);
-    encryptedMessageSchema.addSuperSchema(asclMessageSchema);
     pkcS7MessageSchema.addSuperSchema(asclMessageSchema);
+    encryptedMessageSchema.addSuperSchema(asclMessageSchema);
 
    }catch (java.lang.Exception e) {e.printStackTrace();}
   }

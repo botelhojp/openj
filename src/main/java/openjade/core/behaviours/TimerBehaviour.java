@@ -29,7 +29,6 @@ public abstract class TimerBehaviour extends Behaviour {
 			run();
 		}
 		currentTime = GregorianCalendar.getInstance().getTimeInMillis();
-		block(getTimer());
 	}
 
 	public long getTimer() {

@@ -13,6 +13,10 @@ public abstract class CyclicTimerBehaviour extends TimerBehaviour {
 	public CyclicTimerBehaviour(Agent agent, long _timer) {
 		super(agent, _timer);
 	}
+	
+	public CyclicTimerBehaviour(Agent agent, long _timer, long _block) {
+		super(agent, _timer, _block);
+	}
 
 	@Override
 	public abstract void run();

@@ -16,10 +16,16 @@ public abstract class TimerBehaviour extends Behaviour {
 	private long lastTime = GregorianCalendar.getInstance().getTimeInMillis();
 	private long currentTime = GregorianCalendar.getInstance().getTimeInMillis();
 	private long timer;
+	private long block;
 
 	public TimerBehaviour(Agent agent, long _timer) {
+		this(agent, _timer, 0);
+	}
+
+	public TimerBehaviour(Agent agent, long _timer, long _block) {
 		super(agent);
 		this.timer = _timer;
+		this.block = _block;
 	}
 
 	@Override
@@ -29,6 +35,9 @@ public abstract class TimerBehaviour extends Behaviour {
 			run();
 		}
 		currentTime = GregorianCalendar.getInstance().getTimeInMillis();
+		if (block > 0) {
+			block(block);
+		}
 	}
 
 	public long getTimer() {

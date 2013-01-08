@@ -37,7 +37,7 @@ public class RatingCacheTest {
 	public void testAddInvalid2() {
 		try {
 			RatingCache mc = new RatingCache(10, 2);
-			mc.setCurrentTime(10);
+			mc.setIteration(10);
 			mc.add(newRating(8, "a", 2.0F));
 			fail("exception don't throwed");
 		} catch (Exception e) {
@@ -49,7 +49,7 @@ public class RatingCacheTest {
 	public void testSize_1() {
 		try {
 			RatingCache mc = new RatingCache(1, 1);
-			mc.setCurrentTime(1);
+			mc.setIteration(1);
 
 			mc.add(newRating(1, "a", 2.0F));
 			mc.add(newRating(1, "a", 2.0F));
@@ -65,13 +65,13 @@ public class RatingCacheTest {
 	public void testSize_2() {
 		try {
 			RatingCache mc = new RatingCache(1, 2);
-			mc.setCurrentTime(1);
+			mc.setIteration(1);
 
 			mc.add(newRating(1, "a", 2.0F));
 			mc.add(newRating(1, "a", 2.0F));
 			mc.add(newRating(1, "a", 2.0F));
 
-			mc.setCurrentTime(2);
+			mc.setIteration(2);
 
 			mc.add(newRating(1, "a", 2.0F));
 			mc.add(newRating(2, "a", 2.0F));
@@ -99,11 +99,11 @@ public class RatingCacheTest {
 
 			assertEquals(6, mc.size());
 
-			mc.setCurrentTime(6);
+			mc.setIteration(6);
 			assertEquals(4, mc.size());
-			mc.setCurrentTime(7);
+			mc.setIteration(7);
 			assertEquals(2, mc.size());
-			mc.setCurrentTime(8);
+			mc.setIteration(8);
 			assertEquals(0, mc.size());
 
 		} catch (Exception e) {
@@ -176,15 +176,15 @@ public class RatingCacheTest {
 		mc.add(newRating(1, "a", 10.0F));
 		assertFalse(mc.isCompleted());
 
-		mc.setCurrentTime(2);
+		mc.setIteration(2);
 		mc.add(newRating(2, "a", 10.0F));
 		assertFalse(mc.isCompleted());
 
-		mc.setCurrentTime(3);
+		mc.setIteration(3);
 		mc.add(newRating(3, "a", 10.0F));
 		assertFalse(mc.isCompleted());
 
-		mc.setCurrentTime(4);
+		mc.setIteration(4);
 		mc.add(newRating(4, "a", 10.0F));
 		assertTrue(mc.isCompleted());
 	}

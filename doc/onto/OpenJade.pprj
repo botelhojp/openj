@@ -1,11 +1,11 @@
-; Wed Jan 02 11:10:04 BRT 2013
+; Tue Jan 08 14:06:39 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
 
 ([BROWSER_SLOT_NAMES] of  Property_List
 
-	(properties [OpenJade_ProjectKB_Instance_10148]))
+	(properties [OpenJade_ProjectKB_Instance_155]))
 
 ([CLSES_TAB] of  Widget
 
@@ -740,30 +740,6 @@
 	(name "instances_file_name")
 	(string_value "OpenJade.pins"))
 
-([OpenJade_ProjectKB_Instance_10143] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([OpenJade_ProjectKB_Instance_10144] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([OpenJade_ProjectKB_Instance_10145] of  Property_List
-)
-
-([OpenJade_ProjectKB_Instance_10146] of  Property_List
-)
-
-([OpenJade_ProjectKB_Instance_10147] of  Property_List
-)
-
-([OpenJade_ProjectKB_Instance_10148] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
 ([OpenJade_ProjectKB_Instance_133] of  Boolean
 
 	(boolean_value FALSE)
@@ -797,6 +773,30 @@
 
 ([OpenJade_ProjectKB_Instance_142] of  Property_List
 )
+
+([OpenJade_ProjectKB_Instance_143] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-View References to Value"))
+
+([OpenJade_ProjectKB_Instance_144] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Instance"))
+
+([OpenJade_ProjectKB_Instance_145] of  Property_List
+)
+
+([OpenJade_ProjectKB_Instance_146] of  Property_List
+)
+
+([OpenJade_ProjectKB_Instance_147] of  Property_List
+)
+
+([OpenJade_ProjectKB_Instance_155] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
 
 ([OpenJade_ProjectKB_Instance_176] of  Property_List
 

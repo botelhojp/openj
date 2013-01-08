@@ -14,51 +14,51 @@ public class RatingCache implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int cacheTime;
-	private int minTime;
+	private int cacheIteration;
+	private int minIteration;
 	private int iteration;
 
 	private Hashtable<Integer, List<Rating>> cache = new Hashtable<Integer, List<Rating>>();
 
-	public RatingCache(int _currentTime, int _timeCache) {
-		setTimeCache(_timeCache);
-		setCurrentTime(_currentTime);
-		minTime = (_currentTime - _timeCache);
-		minTime = (minTime <= 1) ? 1 : minTime;
+	public RatingCache(int _initialIteration, int _sizeCache) {
+		setSizeCache(_sizeCache);
+		setIteration(_initialIteration);
+		minIteration = (_initialIteration - _sizeCache);
+		minIteration = (minIteration <= 1) ? 1 : minIteration;
 	}
 
-	public void add(Rating sa) {
-		if (sa.getIteration() > (this.iteration)) {
-			throw new RuntimeCryptoException("Invalid iteration [" + sa.getIteration() + "]. Must be less than or equal to [" + this.iteration + "]");
+	public void add(Rating rating) {
+		if (rating.getIteration() > (this.iteration)) {
+			throw new RuntimeCryptoException("Invalid iteration [" + rating.getIteration() + "]. Must be less than or equal to [" + this.iteration + "]");
 		}
-		if (sa.getIteration() <= (this.iteration - this.cacheTime)) {
-			throw new RuntimeCryptoException("Invalid iteration [" + sa.getIteration() + "].Must be greater than [" + (this.iteration - this.cacheTime) + "]");
+		if (rating.getIteration() <= (this.iteration - this.cacheIteration)) {
+			throw new RuntimeCryptoException("Invalid iteration [" + rating.getIteration() + "].Must be greater than [" + (this.iteration - this.cacheIteration) + "]");
 		}
-		List<Rating> list = cache.get(sa.getIteration());
-		if (list == null) {
-			list = new ArrayList<Rating>();
-			cache.put(sa.getIteration(), list);
+		List<Rating> ratings = cache.get(rating.getIteration());
+		if (ratings == null) {
+			ratings = new ArrayList<Rating>();
+			cache.put(rating.getIteration(), ratings);
 		}
-		list.add(sa);
+		ratings.add(rating);
 	}
 
-	public void setCurrentTime(int _currentTime) {
-		iteration = _currentTime;
+	public void setIteration(int _iteration) {
+		iteration = _iteration;
 		clean();
 	}
 
 	private void clean() {
-		while (minTime <= (iteration - cacheTime)) {
-			cache.remove(minTime);
-			minTime++;
+		while (minIteration <= (iteration - cacheIteration)) {
+			cache.remove(minIteration);
+			minIteration++;
 		}
 	}
 
-	private void setTimeCache(int _timeCache) {
+	private void setSizeCache(int _timeCache) {
 		if (_timeCache <= 0) {
 			throw new RuntimeCryptoException("Invalid iteration");
 		}
-		this.cacheTime = _timeCache;
+		this.cacheIteration = _timeCache;
 	}
 
 	public int size() {
@@ -109,10 +109,10 @@ public class RatingCache implements Serializable {
 	}
 
 	public boolean isCompleted() {
-		return (iteration - minTime) >= (cacheTime - 1);
+		return (iteration - minIteration) >= (cacheIteration - 1);
 	}
 
 	public int getMin() {
-		return this.minTime;
+		return this.minIteration;
 	}
 }

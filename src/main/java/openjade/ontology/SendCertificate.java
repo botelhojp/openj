@@ -8,20 +8,9 @@ import jade.core.*;
 /**
 * Protege name: SendCertificate
 * @author ontology bean generator
-* @version 2013/01/2, 10:37:57
+* @version 2013/01/8, 14:06:37
 */
 public class SendCertificate implements AgentAction {
-
-   /**
-* Protege name: certificate
-   */
-   private Certificate certificate;
-   public void setCertificate(Certificate value) { 
-    this.certificate=value;
-   }
-   public Certificate getCertificate() {
-     return this.certificate;
-   }
 
    /**
 * Protege name: aid
@@ -32,6 +21,17 @@ public class SendCertificate implements AgentAction {
    }
    public AID getAid() {
      return this.aid;
+   }
+
+   /**
+* Protege name: certificate
+   */
+   private Certificate certificate;
+   public void setCertificate(Certificate value) { 
+    this.certificate=value;
+   }
+   public Certificate getCertificate() {
+     return this.certificate;
    }
 
 }

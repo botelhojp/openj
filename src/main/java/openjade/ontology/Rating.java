@@ -8,19 +8,30 @@ import jade.core.*;
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2013/01/2, 10:37:57
+* @version 2013/01/8, 14:06:37
 */
 public class Rating implements Concept {
 
    /**
-* Protege name: term
+* Protege name: iteration
    */
-   private String term;
-   public void setTerm(String value) { 
-    this.term=value;
+   private int iteration;
+   public void setIteration(int value) { 
+    this.iteration=value;
    }
-   public String getTerm() {
-     return this.term;
+   public int getIteration() {
+     return this.iteration;
+   }
+
+   /**
+* Protege name: client
+   */
+   private AID client;
+   public void setClient(AID value) { 
+    this.client=value;
+   }
+   public AID getClient() {
+     return this.client;
    }
 
    /**
@@ -36,17 +47,6 @@ public class Rating implements Concept {
    }
 
    /**
-* Protege name: iteration
-   */
-   private int iteration;
-   public void setIteration(int value) { 
-    this.iteration=value;
-   }
-   public int getIteration() {
-     return this.iteration;
-   }
-
-   /**
 * Protege name: server
    */
    private AID server;
@@ -58,14 +58,14 @@ public class Rating implements Concept {
    }
 
    /**
-* Protege name: client
+* Protege name: term
    */
-   private AID client;
-   public void setClient(AID value) { 
-    this.client=value;
+   private String term;
+   public void setTerm(String value) { 
+    this.term=value;
    }
-   public AID getClient() {
-     return this.client;
+   public String getTerm() {
+     return this.term;
    }
 
 }

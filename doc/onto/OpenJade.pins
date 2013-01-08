@@ -1,4 +1,4 @@
-; Wed Jan 02 11:10:04 BRT 2013
+; Tue Jan 08 14:06:39 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -39,6 +39,14 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([SendCertificate] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([SendIteration] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([SendRating] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 

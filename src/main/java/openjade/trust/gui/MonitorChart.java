@@ -31,7 +31,7 @@ public class MonitorChart {
 		series = new Hashtable<String, XYSeries>();
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		xyDataset = new XYSeriesCollection();
-		chart = ChartFactory.createXYLineChart(" ", "Time", "Utility (UG)", xyDataset, PlotOrientation.VERTICAL, true, true, false);
+		chart = ChartFactory.createXYLineChart(" ", "Iteration", "Utility (%)", xyDataset, PlotOrientation.VERTICAL, true, true, false);
 		chartFrame = new ChartFrame("", chart);
 		chartFrame.setBounds(0, 0, (int) dimension.getWidth() / 2, (int) dimension.getHeight() / 2);
 		chartFrame.setVisible(true);

@@ -49,13 +49,8 @@
 
 		<!-- Certificate -->
 
-<!-- Versão utilizada pelo security-cert 
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk15</artifactId>
-			<version>1.45</version>
-		</dependency>
- -->		 
+		<!-- Versão utilizada pelo security-cert <dependency> <groupId>org.bouncycastle</groupId> 
+			<artifactId>bcprov-jdk15</artifactId> <version>1.45</version> </dependency> -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
@@ -80,6 +75,14 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.14</version>
 		</dependency>
+
+		<!-- Gui -->
+		<dependency>
+			<groupId>jfreechart</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 
 		<!-- Tests -->
 		<dependency>

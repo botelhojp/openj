@@ -35,7 +35,7 @@ public class CMS extends OpenAgent {
 		keystore = "/certs/cms.pfx";
 		keystorePassword = "cms123456";
 		keys = new Hashtable<AID, Key>();
-		super.moveContainer("Main-Container");
+		super.moveContainer(OpenAgent.MAIN_CONTAINER);
 		log.debug("setup: " + getAID().getLocalName());
 		addBehaviour(new ReceiveCertificate(this));
 	}

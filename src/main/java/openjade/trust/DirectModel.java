@@ -1,6 +1,5 @@
 package openjade.trust;
 
-import openjade.core.RatingCache;
 import openjade.ontology.Rating;
 
 public class DirectModel implements TrustModel {

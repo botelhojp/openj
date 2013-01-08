@@ -77,6 +77,9 @@ public abstract class OpenAgent extends Agent {
 	private static final String DEFAULT_ALGORITHM = "RSA/ECB/PKCS1Padding";
 	private static final String DEFAULT_PROVIDER = "com.sun.crypto.provider.SunJCE";
 
+	public static final String MAIN_CONTAINER = "Main-Container";
+	public static final String SERVICE_TRUST_MONITOR = "openjade.trust.monitor";
+
 	protected KeyStore store;
 	public X509Certificate certificate;
 	protected CertificateBean certificateBean;
@@ -117,7 +120,7 @@ public abstract class OpenAgent extends Agent {
 			signer = new PKCS7Signer(store, password);
 		}
 	}
-	
+
 	@Override
 	public void addBehaviour(Behaviour b) {
 		super.addBehaviour(b);
@@ -313,7 +316,7 @@ public abstract class OpenAgent extends Agent {
 	}
 
 	public ContentElement extractContent(ACLMessage _message, Codec _codec, Ontology _ontology) {
-		try {			
+		try {
 			getContentManager().registerLanguage(_codec);
 			getContentManager().registerOntology(_ontology);
 			return getContentManager().extractContent(_message);
@@ -413,7 +416,6 @@ public abstract class OpenAgent extends Agent {
 	public void setCms(AID cms) {
 		this.cms = cms;
 	}
-
 
 	public java.util.List<AID> getAIDByService(String service) {
 		try {

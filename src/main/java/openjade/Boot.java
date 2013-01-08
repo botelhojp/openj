@@ -7,8 +7,13 @@ public class Boot {
 		if (isMainContainer(args)) {
 			String host = getHost(args);
 			if (host != null) {
-				String[] cont = { "-host", host, "-container", "cms:openjade.agent.CMS" };
-				jade.Boot.main(cont);
+				String[][] mains = { 
+						{"-host", host, "-container", "cms:openjade.agent.CMS"},
+						{"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"}
+					};
+				for (String[] main : mains) {
+					jade.Boot.main(main);	
+				}				
 			}
 		}
 	}

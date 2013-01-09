@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Hashtable;
 
+import openjade.setting.Configuration;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -24,15 +26,17 @@ public class MonitorChart {
 	private static JFreeChart chart;
 	private static Hashtable<String, XYSeries> series;
 	private static XYSeriesCollection xyDataset;
+	private static Configuration config;
 
 	private static MonitorChart gui = new MonitorChart();
 
 	private MonitorChart() {
+		config = Configuration.getInstance();
 		series = new Hashtable<String, XYSeries>();
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		xyDataset = new XYSeriesCollection();
-		chart = ChartFactory.createXYLineChart(" ", "Iteration", "Utility (%)", xyDataset, PlotOrientation.VERTICAL, true, true, false);
-		chartFrame = new ChartFrame("", chart);
+		chart = ChartFactory.createXYLineChart(" ", config.getMonitorLegendX(), config.getMonitorLegendY(), xyDataset, PlotOrientation.VERTICAL, true, true, false);
+		chartFrame = new ChartFrame(config.getMonitorTitle(), chart);
 		chartFrame.setBounds(0, 0, (int) dimension.getWidth() / 2, (int) dimension.getHeight() / 2);
 		chartFrame.setVisible(true);
 		plotLabels(100.0, 365.0);
@@ -41,17 +45,15 @@ public class MonitorChart {
 	public static MonitorChart getInstance() {
 		return gui;
 	}
-	
-	public static MonitorChart getInstance(String string, double max, double clicks) {
-		MonitorChart.setTitle(string);
+
+	public static MonitorChart getInstance(double max, double clicks) {
 		MonitorChart.plotLabels(max, clicks);
 		return gui;
 	}
 
-
 	private void addSerie(String _serie) {
 		XYSeries serie = new XYSeries(_serie);
-		series.put(_serie, serie );
+		series.put(_serie, serie);
 		xyDataset.addSeries(serie);
 	}
 
@@ -64,24 +66,20 @@ public class MonitorChart {
 		}
 	}
 
-	public static void setTitle(String title) {
-		chartFrame.setTitle(title);
-	}
-	
 	public static void plotLabels(double maxRange, double maxDomain) {
 		XYPlot xyPlot = chart.getXYPlot();
 		XYItemRenderer renderer = xyPlot.getRenderer();
 		renderer.setBaseItemLabelsVisible(true);
-		
+
 		XYItemRenderer xyitemrenderer = xyPlot.getRenderer();
 
 		xyitemrenderer.setSeriesPaint(0, Color.blue);
 		xyitemrenderer.setBaseItemLabelsVisible(true);
 		xyitemrenderer.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.CENTER, TextAnchor.CENTER));
-		
+
 		NumberAxis numberaxis1 = (NumberAxis) xyPlot.getRangeAxis();
 		numberaxis1.setRange(0.0D, maxRange);
-		
+
 		NumberAxis numberaxis = (NumberAxis) xyPlot.getDomainAxis();
 		numberaxis.setRange(0.0D, maxDomain);
 	}

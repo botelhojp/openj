@@ -75,6 +75,6 @@ public class MonitorAgent extends OpenAgent {
 	}
 	
 	private MonitorChart getMonitorChart() {
-		return MonitorChart.getInstance("Open Jade Monitor", 100D, 180D);
+		return MonitorChart.getInstance(100D, 180D);
 	}
 }

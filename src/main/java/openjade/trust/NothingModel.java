@@ -13,4 +13,5 @@ public class NothingModel implements TrustModel {
 	@Override
 	public void addRating(Rating rating) {
 	}
+
 }

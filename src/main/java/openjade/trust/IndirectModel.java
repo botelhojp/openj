@@ -14,5 +14,4 @@ public class IndirectModel implements TrustModel {
 	public void addRating(Rating rating) {
 		// TODO Auto-generated method stub
 	}
-
 }

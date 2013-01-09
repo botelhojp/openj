@@ -10,8 +10,12 @@ public class IndirectModel implements TrustModel {
 		return "IndirectModel";
 	}
 
-	@Override
 	public void addRating(Rating rating) {
 		// TODO Auto-generated method stub
+	}
+
+	public void setIteration(int iteration) {
+		// TODO Auto-generated method stub
+		
 	}
 }

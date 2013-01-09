@@ -35,8 +35,8 @@ public class MonitorChart {
 		series = new Hashtable<String, XYSeries>();
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		xyDataset = new XYSeriesCollection();
-		chart = ChartFactory.createXYLineChart(" ", config.getMonitorLegendX(), config.getMonitorLegendY(), xyDataset, PlotOrientation.VERTICAL, true, true, false);
-		chartFrame = new ChartFrame(config.getMonitorTitle(), chart);
+		chart = ChartFactory.createXYLineChart(" ", config.getMonitor_LegendX(), config.getMonitor_LegendY(), xyDataset, PlotOrientation.VERTICAL, true, true, false);
+		chartFrame = new ChartFrame(config.getMonitor_Title(), chart);
 		chartFrame.setBounds(0, 0, (int) dimension.getWidth() / 2, (int) dimension.getHeight() / 2);
 		chartFrame.setVisible(true);
 		plotLabels(100.0, 365.0);

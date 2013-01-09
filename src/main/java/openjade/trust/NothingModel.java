@@ -14,4 +14,10 @@ public class NothingModel implements TrustModel {
 	public void addRating(Rating rating) {
 	}
 
+	@Override
+	public void setIteration(int iteration) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -48,6 +48,7 @@ import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
+import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
@@ -56,9 +57,11 @@ import openjade.ontology.Encipher;
 import openjade.ontology.EncryptedMessage;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.PKCS7Message;
+import openjade.ontology.SendIteration;
 import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
 import openjade.signer.PKCS7Signer;
+import openjade.trust.TrustModel;
 
 import org.apache.log4j.Logger;
 
@@ -92,6 +95,8 @@ public abstract class OpenAgent extends Agent {
 	protected MessageTemplate openJadeMT;
 	protected Provider provider;
 	protected AID cms;
+	protected int iteration;
+	protected TrustModel trustModel;
 
 	public OpenAgent() {
 		super();
@@ -105,6 +110,13 @@ public abstract class OpenAgent extends Agent {
 	protected abstract InputStream getKeystore();
 
 	protected abstract String getKeystorePassword();
+	
+	@ReceiveMatchMessage(action = SendIteration.class, ontology = OpenJadeOntology.class)
+	public void receiveTimeAction(ACLMessage message, ContentElement ce) {
+		iteration = ((SendIteration) ce).getIteration();
+		this.trustModel.setIteration(iteration);
+	}
+
 
 	public void loadKeystore() {
 		if (store == null) {

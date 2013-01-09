@@ -29,7 +29,7 @@ public class RatingCache implements Serializable {
 
 	public void add(Rating rating) {
 		if (rating.getIteration() > (this.iteration)) {
-			throw new RuntimeCryptoException("Invalid iteration [" + rating.getIteration() + "]. Must be less than or equal to [" + this.iteration + "]");
+			throw new OpenJadeException("Invalid iteration [" + rating.getIteration() + "]. Must be less than or equal to [" + this.iteration + "]");
 		}
 		if (rating.getIteration() <= (this.iteration - this.cacheIteration)) {
 			throw new RuntimeCryptoException("Invalid iteration [" + rating.getIteration() + "].Must be greater than [" + (this.iteration - this.cacheIteration) + "]");

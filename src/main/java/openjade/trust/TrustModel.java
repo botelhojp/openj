@@ -10,4 +10,6 @@ public interface TrustModel extends Serializable {
 
 	public void addRating(Rating rating);
 
+	public void setIteration(int iteration);
+
 }

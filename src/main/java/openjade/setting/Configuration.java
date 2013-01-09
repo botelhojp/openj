@@ -63,16 +63,27 @@ public class Configuration {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
 	}
+	
+	//Core
+	public int getCore_InitialIteration() {
+		return Integer.parseInt(prop.getProperty("core.initial.iteration"));
+	}
 
-	public String getMonitorTitle() {
+	// Monitor
+	public String getMonitor_Title() {
 		return prop.getProperty("trust.gui.monitor.title");
 	}
 
-	public String getMonitorLegendX() {
+	public String getMonitor_LegendX() {
 		return prop.getProperty("trust.gui.monitor.legend.x");
 	}
 
-	public String getMonitorLegendY() {
+	public String getMonitor_LegendY() {
 		return prop.getProperty("trust.gui.monitor.legend.y");
+	}
+
+	//Trust
+	public int getTrust_DirectCacheSize() {
+		return Integer.parseInt(prop.getProperty("trust.direct.cache.size"));
 	}
 }

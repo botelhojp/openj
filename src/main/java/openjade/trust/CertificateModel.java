@@ -1,6 +1,9 @@
 package openjade.trust;
 
+import java.util.List;
+
 import openjade.ontology.Rating;
+import openjade.trust.model.Pair;
 
 public class CertificateModel implements TrustModel {
 
@@ -17,6 +20,16 @@ public class CertificateModel implements TrustModel {
 	public void setIteration(int iteration) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public List<Pair> getPairs(String term) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Pair> getPairs(String[] terms) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

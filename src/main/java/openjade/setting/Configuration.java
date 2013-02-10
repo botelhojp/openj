@@ -1,14 +1,17 @@
 package openjade.setting;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Properties;
 
 import openjade.core.OpenJadeException;
 
-public class Configuration {
+public class Configuration implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	private static Configuration config;
 	private Properties prop;
 

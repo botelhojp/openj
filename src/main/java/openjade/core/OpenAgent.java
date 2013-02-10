@@ -48,7 +48,6 @@ import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
-import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
@@ -57,7 +56,6 @@ import openjade.ontology.Encipher;
 import openjade.ontology.EncryptedMessage;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.PKCS7Message;
-import openjade.ontology.SendIteration;
 import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
 import openjade.signer.PKCS7Signer;
@@ -81,6 +79,8 @@ public abstract class OpenAgent extends Agent {
 	private static final String DEFAULT_PROVIDER = "com.sun.crypto.provider.SunJCE";
 
 	public static final String MAIN_CONTAINER = "Main-Container";
+	
+	public static final String LISTENER_TIMER = "openjade.service.listener.timer";	
 	public static final String SERVICE_TRUST_MONITOR = "openjade.trust.monitor";
 
 	protected KeyStore store;
@@ -111,13 +111,6 @@ public abstract class OpenAgent extends Agent {
 
 	protected abstract String getKeystorePassword();
 	
-	@ReceiveMatchMessage(action = SendIteration.class, ontology = OpenJadeOntology.class)
-	public void receiveTimeAction(ACLMessage message, ContentElement ce) {
-		iteration = ((SendIteration) ce).getIteration();
-		this.trustModel.setIteration(iteration);
-	}
-
-
 	public void loadKeystore() {
 		if (store == null) {
 			InputStream keystore = getKeystore();
@@ -427,6 +420,10 @@ public abstract class OpenAgent extends Agent {
 
 	public void setCms(AID cms) {
 		this.cms = cms;
+	}
+	
+	public TrustModel getTrustModel() {
+		return trustModel;
 	}
 
 	public java.util.List<AID> getAIDByService(String service) {

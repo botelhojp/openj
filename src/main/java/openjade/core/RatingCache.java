@@ -90,20 +90,20 @@ public class RatingCache implements Serializable {
 		return null;
 	}
 
-	public Float getValue(int time, String model) {
-		List<Rating> list = cache.get(time);
+	public Float getValue(int iteration, String term) {
+		List<Rating> list = cache.get(iteration);
 		if (list == null)
 			return null;
 		float count = 0.0F;
 		float sum = 0.0F;
 		for (Rating satisfactionAction : list) {
-			if (satisfactionAction.getTerm().equals(model)) {
+			if (satisfactionAction.getTerm().equals(term)) {
 				count++;
 				sum += satisfactionAction.getValue();
 			}
 		}
 		if (count == 0.0F) {
-			throw new RuntimeException("Term [" + model + "] not find for iteration [" + time + "]");
+			throw new RuntimeException("Term [" + term + "] not find for iteration [" + iteration + "]");
 		}
 		return (sum == 0.0F) ? 0.0F : sum / count;
 	}

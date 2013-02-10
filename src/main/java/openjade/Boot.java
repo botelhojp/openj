@@ -4,7 +4,7 @@ public class Boot {
 
 	public static void main(String[] args) {
 		jade.Boot.main(args);
-		if (isMainContainer(args)) {
+		if (!ifArgsContains("-container", args)) {
 			String host = getHost(args);
 			if (host != null) {
 				String[][] mains = { 
@@ -15,14 +15,18 @@ public class Boot {
 					jade.Boot.main(main);	
 				}				
 			}
+//			if (ifArgsContains("-agent.timer", args)){
+//				String[] main = {"-host", host, "-container", "openjade.agent.TimerAgent"};
+//				jade.Boot.main(main);
+//			}
 		}
 	}
 
-	private static boolean isMainContainer(String[] args) {
+	private static boolean ifArgsContains(String find,String[] args) {
 		for (String arg : args)
-			if (arg.equals("-container"))
-				return false;
-		return true;
+			if (arg.equals(find))
+				return true;
+		return false;
 	}
 
 	private static String getHost(String[] args) {

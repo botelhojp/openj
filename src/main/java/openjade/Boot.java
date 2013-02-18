@@ -9,7 +9,8 @@ public class Boot {
 			if (host != null) {
 				String[][] mains = { 
 						{"-host", host, "-container", "cms:openjade.agent.CMS"},
-						{"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"}
+						{"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"},
+						{"-host", host, "-container", "agent_timer_001:openjade.agent.TimerAgent"}
 					};
 				for (String[] main : mains) {
 					jade.Boot.main(main);	

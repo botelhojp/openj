@@ -1,5 +1,7 @@
 package openjade;
 
+import openjade.setting.Settings;
+
 public class Boot {
 
 	public static void main(String[] args) {
@@ -9,17 +11,16 @@ public class Boot {
 			if (host != null) {
 				String[][] mains = { 
 						{"-host", host, "-container", "cms:openjade.agent.CMS"},
-						{"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"},
-						{"-host", host, "-container", "agent_timer_001:openjade.agent.TimerAgent"}
+						{"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"}						
 					};
 				for (String[] main : mains) {
 					jade.Boot.main(main);	
 				}				
 			}
-//			if (ifArgsContains("-agent.timer", args)){
-//				String[] main = {"-host", host, "-container", "openjade.agent.TimerAgent"};
-//				jade.Boot.main(main);
-//			}
+			if (Settings.getInstance().isTimerEnabled()){
+				String[] main = {"-host", host, "-container", "agent_timer_001:openjade.agent.TimerAgent"};
+				jade.Boot.main(main);
+			}
 		}
 	}
 

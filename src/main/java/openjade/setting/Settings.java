@@ -8,20 +8,20 @@ import java.util.Properties;
 
 import openjade.core.OpenJadeException;
 
-public class Configuration implements Serializable {
+public class Settings implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static Configuration config;
+	private static Settings config;
 	private Properties prop;
 
-	private Configuration() {
+	private Settings() {
 		load();
 	}
 
-	public static synchronized Configuration getInstance() {
+	public static synchronized Settings getInstance() {
 		if (config == null) {
-			config = new Configuration();
+			config = new Settings();
 		}
 		return config;
 	}
@@ -89,4 +89,11 @@ public class Configuration implements Serializable {
 	public int getTrust_DirectCacheSize() {
 		return Integer.parseInt(prop.getProperty("trust.direct.cache.size"));
 	}
+	
+	//Timer
+	public boolean isTimerEnabled() {
+		return Boolean.parseBoolean(prop.getProperty("openjade.agent.timeragent"));
+	}
+	
+	
 }

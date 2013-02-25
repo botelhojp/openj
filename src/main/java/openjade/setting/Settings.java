@@ -74,15 +74,23 @@ public class Settings implements Serializable {
 
 	// Monitor
 	public String getMonitor_Title() {
-		return prop.getProperty("trust.gui.monitor.title");
+		return prop.getProperty("openjade.trust.gui.monitor.title");
 	}
 
 	public String getMonitor_LegendX() {
-		return prop.getProperty("trust.gui.monitor.legend.x");
+		return prop.getProperty("openjade.trust.gui.monitor.legend.x");
 	}
 
 	public String getMonitor_LegendY() {
-		return prop.getProperty("trust.gui.monitor.legend.y");
+		return prop.getProperty("openjade.trust.gui.monitor.legend.y");
+	}
+	
+	public double getMonitorMaxValue() {
+		return Double.parseDouble(prop.getProperty("openjade.trust.gui.monitor.maxvalue"));
+	}
+
+	public double getMonitorIterations() {
+		return Double.parseDouble(prop.getProperty("openjade.trust.gui.monitor.iterations"));
 	}
 
 	//Trust
@@ -91,8 +99,12 @@ public class Settings implements Serializable {
 	}
 	
 	//Timer
-	public boolean isTimerEnabled() {
-		return Boolean.parseBoolean(prop.getProperty("openjade.agent.timeragent"));
+	public boolean getIterationEnabled() {
+		return Boolean.parseBoolean(prop.getProperty("openjade.iteration.enabled"));
+	}
+
+	public long getIterationTimer() {
+		return Long.parseLong(prop.getProperty("openjade.agent.iteration.timer"));
 	}
 	
 	

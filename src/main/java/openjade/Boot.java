@@ -17,7 +17,8 @@ public class Boot {
 					jade.Boot.main(main);	
 				}				
 			}
-			if (Settings.getInstance().isTimerEnabled()){
+
+			if (Settings.getInstance().getIterationEnabled()){
 				String[] main = {"-host", host, "-container", "agent_timer_001:openjade.agent.TimerAgent"};
 				jade.Boot.main(main);
 			}

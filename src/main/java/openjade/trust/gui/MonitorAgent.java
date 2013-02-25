@@ -15,6 +15,7 @@ import openjade.core.behaviours.RegisterServiceBehaviour;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.SendIteration;
 import openjade.ontology.SendRating;
+import openjade.setting.Settings;
 
 import org.apache.log4j.Logger;
 
@@ -75,6 +76,6 @@ public class MonitorAgent extends OpenAgent {
 	}
 	
 	private MonitorChart getMonitorChart() {
-		return MonitorChart.getInstance(100D, 180D);
+		return MonitorChart.getInstance(Settings.getInstance().getMonitorMaxValue(), Settings.getInstance().getMonitorIterations());
 	}
 }

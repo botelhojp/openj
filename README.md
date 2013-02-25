@@ -1,4 +1,0 @@
-open-jade
-=========
-
-Open Jade

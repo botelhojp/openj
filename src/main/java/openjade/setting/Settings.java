@@ -8,20 +8,20 @@ import java.util.Properties;
 
 import openjade.core.OpenJadeException;
 
-public class Configuration implements Serializable {
+public class Settings implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static Configuration config;
+	private static Settings config;
 	private Properties prop;
 
-	private Configuration() {
+	private Settings() {
 		load();
 	}
 
-	public static synchronized Configuration getInstance() {
+	public static synchronized Settings getInstance() {
 		if (config == null) {
-			config = new Configuration();
+			config = new Settings();
 		}
 		return config;
 	}
@@ -74,19 +74,38 @@ public class Configuration implements Serializable {
 
 	// Monitor
 	public String getMonitor_Title() {
-		return prop.getProperty("trust.gui.monitor.title");
+		return prop.getProperty("openjade.trust.gui.monitor.title");
 	}
 
 	public String getMonitor_LegendX() {
-		return prop.getProperty("trust.gui.monitor.legend.x");
+		return prop.getProperty("openjade.trust.gui.monitor.legend.x");
 	}
 
 	public String getMonitor_LegendY() {
-		return prop.getProperty("trust.gui.monitor.legend.y");
+		return prop.getProperty("openjade.trust.gui.monitor.legend.y");
+	}
+	
+	public double getMonitorMaxValue() {
+		return Double.parseDouble(prop.getProperty("openjade.trust.gui.monitor.maxvalue"));
+	}
+
+	public double getMonitorIterations() {
+		return Double.parseDouble(prop.getProperty("openjade.trust.gui.monitor.iterations"));
 	}
 
 	//Trust
 	public int getTrust_DirectCacheSize() {
 		return Integer.parseInt(prop.getProperty("trust.direct.cache.size"));
 	}
+	
+	//Timer
+	public boolean getIterationEnabled() {
+		return Boolean.parseBoolean(prop.getProperty("openjade.iteration.enabled"));
+	}
+
+	public long getIterationTimer() {
+		return Long.parseLong(prop.getProperty("openjade.agent.iteration.timer"));
+	}
+	
+	
 }

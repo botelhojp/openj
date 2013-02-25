@@ -10,7 +10,7 @@ import java.util.List;
 
 import openjade.core.RatingCache;
 import openjade.ontology.Rating;
-import openjade.setting.Configuration;
+import openjade.setting.Settings;
 import openjade.trust.model.Pair;
 
 import org.apache.log4j.Logger;
@@ -25,7 +25,7 @@ public class DirectModel implements TrustModel {
 
 	protected static Logger log = Logger.getLogger(DirectModel.class);
 
-	private Configuration config = Configuration.getInstance();
+	private Settings config = Settings.getInstance();
 
 	private int iteration;
 

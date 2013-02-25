@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Hashtable;
 
-import openjade.setting.Configuration;
+import openjade.setting.Settings;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -26,12 +26,12 @@ public class MonitorChart {
 	private static JFreeChart chart;
 	private static Hashtable<String, XYSeries> series;
 	private static XYSeriesCollection xyDataset;
-	private static Configuration config;
+	private static Settings config;
 
 	private static MonitorChart gui = new MonitorChart();
 
 	private MonitorChart() {
-		config = Configuration.getInstance();
+		config = Settings.getInstance();
 		series = new Hashtable<String, XYSeries>();
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 		xyDataset = new XYSeriesCollection();

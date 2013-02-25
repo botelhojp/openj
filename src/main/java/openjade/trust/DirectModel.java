@@ -34,7 +34,7 @@ public class DirectModel implements TrustModel {
 	}
 
 	public void addRating(Rating rating) {
-//		log.debug(rating.getValue() + " " + rating.getClient().getLocalName() + " " + rating.getServer().getLocalName() + " " + rating.getTerm() + " " + rating.getIteration());
+		log.debug(rating.getValue() + " " + rating.getClient().getLocalName() + " " + rating.getServer().getLocalName() + " " + rating.getTerm() + " " + rating.getIteration());
 		if (!ratingHash.containsKey(rating.getServer())) {
 			RatingCache cache = new RatingCache(iteration, config.getTrust_DirectCacheSize());
 			cache.add(rating);
@@ -73,12 +73,10 @@ public class DirectModel implements TrustModel {
 				pairs.add(new Pair(aid, sum / count));
 			}
 		}
-		log.debug("a ------");
 		for (Pair pair : pairs) {
 			log.debug(pair.getAid().getLocalName() + " " + pair.getWeight());
 		}
 		Collections.sort(pairs);
-		log.debug("d------");
 		for (Pair pair : pairs) {
 			log.debug(pair.getAid().getLocalName() + " " + pair.getWeight());
 		}

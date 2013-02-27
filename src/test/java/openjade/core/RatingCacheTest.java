@@ -164,12 +164,48 @@ public class RatingCacheTest {
 			assertEquals(mc.getValue(1, "a"), 30.0F, 0F);
 			assertEquals(mc.getValue(2, "a"), 1.0F, 0F);
 			assertEquals(mc.getValue(2, "b"), 4.0F, 0F);
+			
+			assertEquals(mc.getValue(), 16.5F, 0F);
 
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
 	}
 
+	@Test
+	public void testGetValue() {
+		try {
+			RatingCache mc = new RatingCache(1, 3);
+
+			mc.setIteration(1);
+			mc.add(newRating(1, "a", 3.0F));
+			mc.add(newRating(1, "b", 7.0F));
+			assertEquals(mc.getValue(), 5.0F, 0F);
+			
+			mc.setIteration(2);
+			mc.add(newRating(2, "a", 4.0F));
+			mc.add(newRating(2, "b", 10.0F));
+			assertEquals(mc.getValue(), 6.0F, 0F);
+
+			mc.setIteration(3);
+			mc.add(newRating(3, "a", 0F));
+			mc.add(newRating(3, "b", 0F));
+			assertEquals(mc.getValue(), 4.0F, 0F);
+
+			//sera desconsiderados a iteracao 1
+			mc.setIteration(4);
+			mc.add(newRating(4, "a", 4F));
+			mc.add(newRating(4, "b", 0F));
+			assertEquals(mc.getValue(), 3.0F, 0F);
+
+			
+
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+
+	
 	@Test
 	public void testIsFull() {
 		RatingCache mc = new RatingCache(1, 4);

@@ -34,7 +34,7 @@ public class DirectModel implements TrustModel {
 	}
 
 	public void addRating(Rating rating) {
-		log.debug(rating.getValue() + " " + rating.getClient().getLocalName() + " " + rating.getServer().getLocalName() + " " + rating.getTerm() + " " + rating.getIteration());
+		log.debug(" = " + rating.getClient().getLocalName() + " -> " + rating.getServer().getLocalName() + "[" + rating.getValue() + "] - term: " + rating.getTerm());
 		if (!ratingHash.containsKey(rating.getServer())) {
 			RatingCache cache = new RatingCache(iteration, config.getTrust_DirectCacheSize());
 			cache.add(rating);
@@ -47,7 +47,7 @@ public class DirectModel implements TrustModel {
 
 	public void setIteration(int _iteration) {
 		iteration = _iteration;
-		log.debug("setIteration [" + iteration + "]");
+		log.debug("new iteration [" + iteration + "]");
 		for (RatingCache rt : ratingList) {
 			rt.setIteration(iteration);
 		}
@@ -58,30 +58,9 @@ public class DirectModel implements TrustModel {
 		Enumeration<AID> aids = ratingHash.keys();
 		while (aids.hasMoreElements()) {
 			AID aid = (AID) aids.nextElement();
-			RatingCache l = ratingHash.get(aid);
-
-			Float sum = 0F;
-			Float count = 0F;
-			for (String term : terms) {
-				Float value = l.getValue(iteration, term);
-				if (value != null) {
-					sum += value;
-					count++;
-				}
-			}
-			if (sum > 0) {
-				pairs.add(new Pair(aid, sum / count));
-			}
-		}
-		for (Pair pair : pairs) {
-			log.debug(pair.getAid().getLocalName() + " " + pair.getWeight());
+			pairs.add(new Pair(aid, ratingHash.get(aid).getValue()));
 		}
 		Collections.sort(pairs);
-		for (Pair pair : pairs) {
-			log.debug(pair.getAid().getLocalName() + " " + pair.getWeight());
-		}
-		log.debug("------");
 		return pairs;
 	}
-
 }

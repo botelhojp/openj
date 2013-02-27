@@ -20,10 +20,10 @@ public class RatingCache implements Serializable {
 
 	private Hashtable<Integer, List<Rating>> cache = new Hashtable<Integer, List<Rating>>();
 
-	public RatingCache(int _initialIteration, int _sizeCache) {
+	public RatingCache(int _currentIteration, int _sizeCache) {
 		setSizeCache(_sizeCache);
-		setIteration(_initialIteration);
-		minIteration = (_initialIteration - _sizeCache);
+		setIteration(_currentIteration);
+		minIteration = (_currentIteration - _sizeCache);
 		minIteration = (minIteration <= 1) ? 1 : minIteration;
 	}
 
@@ -78,16 +78,15 @@ public class RatingCache implements Serializable {
 		while (keys.hasMoreElements()) {
 			Integer key = (Integer) keys.nextElement();
 			List<Rating> list = cache.get(key);
-			for (Rating satisfactionAction : list) {
+			for (Rating rating : list) {
 				count++;
-				sum += satisfactionAction.getValue();
+				sum += rating.getValue();
 			}
 			if (count == 0.0F) {
 				throw new RuntimeException("Empty Cache");
 			}
-			return (sum == 0.0F) ? 0.0F : sum / count;
 		}
-		return null;
+		return (sum == 0.0F) ? 0.0F : sum / count;
 	}
 
 	public Float getValue(int iteration, String term) {
@@ -96,10 +95,10 @@ public class RatingCache implements Serializable {
 			return null;
 		float count = 0.0F;
 		float sum = 0.0F;
-		for (Rating satisfactionAction : list) {
-			if (satisfactionAction.getTerm().equals(term)) {
+		for (Rating rating : list) {
+			if (rating.getTerm().equals(term)) {
 				count++;
-				sum += satisfactionAction.getValue();
+				sum += rating.getValue();
 			}
 		}
 		if (count == 0.0F) {

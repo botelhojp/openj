@@ -58,7 +58,9 @@ public class DirectModel implements TrustModel {
 		Enumeration<AID> aids = ratingHash.keys();
 		while (aids.hasMoreElements()) {
 			AID aid = (AID) aids.nextElement();
-			pairs.add(new Pair(aid, ratingHash.get(aid).getValue()));
+			if (ratingHash.get(aid).isCompleted()) {
+				pairs.add(new Pair(aid, ratingHash.get(aid).getValue()));
+			}
 		}
 		Collections.sort(pairs);
 		return pairs;

@@ -5,27 +5,41 @@ import openjade.setting.Settings;
 public class Boot {
 
 	public static void main(String[] args) {
+		boolean monitor = false;
+		if (ifArgsContains("-monitor", args)) {
+			args = removeArgs("-monitor", args);
+			monitor = true;
+		}			
 		jade.Boot.main(args);
 		if (!ifArgsContains("-container", args)) {
 			String host = getHost(args);
 			if (host != null) {
-				String[][] mains = { 
-						{"-host", host, "-container", "cms:openjade.agent.CMS"},
-						{"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"}						
-					};
-				for (String[] main : mains) {
-					jade.Boot.main(main);	
-				}				
-			}
-
-			if (Settings.getInstance().getIterationEnabled()){
-				String[] main = {"-host", host, "-container", "agent_timer_001:openjade.agent.TimerAgent"};
+				String[] main = {"-host", host, "-container", "cms:openjade.agent.CMS"};
 				jade.Boot.main(main);
+				if (monitor){
+					String[] mainMonitor = {"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"};
+					jade.Boot.main(mainMonitor);
+				}
+				if (Settings.getInstance().getIterationEnabled()){
+					String[] mainTimer = {"-host", host, "-container", "agent_timer_001:openjade.agent.TimerAgent"};
+					jade.Boot.main(mainTimer);
+				}
 			}
 		}
 	}
 
-	private static boolean ifArgsContains(String find,String[] args) {
+	private static String[] removeArgs(String _value, String[] _args) {
+		String[] args = new String[_args.length - 1];
+		int index = 0;
+		for (String string2 : _args) {
+			if (!_value.equals(string2)){
+				args[index++] = string2;	
+			}			
+		}
+		return args;
+	}
+
+	private static boolean ifArgsContains(String find, String[] args) {
 		for (String arg : args)
 			if (arg.equals(find))
 				return true;

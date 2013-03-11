@@ -1,17 +1,25 @@
 package openjade.setting;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Properties;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 import openjade.core.OpenJadeException;
+
+import org.xml.sax.SAXException;
 
 public class Settings implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private static Settings config;
 	private Properties prop;
 
@@ -66,8 +74,8 @@ public class Settings implements Serializable {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
 	}
-	
-	//Core
+
+	// Core
 	public int getCore_InitialIteration() {
 		return Integer.parseInt(prop.getProperty("core.initial.iteration"));
 	}
@@ -84,7 +92,7 @@ public class Settings implements Serializable {
 	public String getMonitor_LegendY() {
 		return prop.getProperty("openjade.trust.gui.monitor.legend.y");
 	}
-	
+
 	public double getMonitorMaxValue() {
 		return Double.parseDouble(prop.getProperty("openjade.trust.gui.monitor.maxvalue"));
 	}
@@ -93,12 +101,12 @@ public class Settings implements Serializable {
 		return Double.parseDouble(prop.getProperty("openjade.trust.gui.monitor.iterations"));
 	}
 
-	//Trust
+	// Trust
 	public int getTrust_DirectCacheSize() {
 		return Integer.parseInt(prop.getProperty("trust.direct.cache.size"));
 	}
-	
-	//Timer
+
+	// Timer
 	public boolean getIterationEnabled() {
 		return Boolean.parseBoolean(prop.getProperty("openjade.iteration.enabled"));
 	}
@@ -106,6 +114,29 @@ public class Settings implements Serializable {
 	public long getIterationTimer() {
 		return Long.parseLong(prop.getProperty("openjade.agent.iteration.timer"));
 	}
-	
-	
+
+	public List<String[]> getBoot() {
+		try {
+			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+			Enumeration<URL> urls = loader.getResources(prop.getProperty("openjade.boot.xml"));
+			while (urls.hasMoreElements()) {
+				URL url = (URL) urls.nextElement();
+				InputStream input = url.openStream();
+				SAXParserFactory factory = SAXParserFactory.newInstance();
+				BootHandler handler = new BootHandler();
+				SAXParser saxParser = factory.newSAXParser();
+				saxParser.parse(input, handler);
+				input.close();
+				return handler.getArgs();
+			}
+		} catch (IOException e) {
+			throw new OpenJadeException(e.getMessage(), e);
+		} catch (ParserConfigurationException e) {
+			throw new OpenJadeException(e.getMessage(), e);
+		} catch (SAXException e) {
+			throw new OpenJadeException(e.getMessage(), e);
+		}
+		return null;
+	}
+
 }

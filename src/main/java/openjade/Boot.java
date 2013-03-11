@@ -1,10 +1,12 @@
 package openjade;
 
+import java.util.List;
+
 import openjade.setting.Settings;
 
 public class Boot {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		boolean monitor = false;
 		if (ifArgsContains("-monitor", args)) {
 			args = removeArgs("-monitor", args);
@@ -53,5 +55,14 @@ public class Boot {
 			}
 		}
 		return null;
-	}
+	}	
+	
+	public static void loadXml() {
+		List<String[]> args = Settings.getInstance().getBoot();
+		if (args != null){
+			for (String[] string : args) {
+				main(string);
+			}
+		}	
+	}	
 }

@@ -50,7 +50,7 @@ public class Boot {
 
 	private static String getHost(String[] args) {
 		for (int i = 0; i < args.length; i++) {
-			if (args[i].equals("-host")) {
+			if (args[i].equals("-host") || args[i].equals("-local-host")) {
 				return args[i + 1];
 			}
 		}

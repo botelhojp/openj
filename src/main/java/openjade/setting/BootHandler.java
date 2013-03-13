@@ -9,7 +9,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 public class BootHandler extends DefaultHandler {
 
-	private static final String TAG = "boot";
+	private static final String TAG = "container";
 	private long countSubSample;
 	private boolean isAgent;
 	private List<String[]> args = null;

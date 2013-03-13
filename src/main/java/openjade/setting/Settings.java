@@ -41,24 +41,26 @@ public class Settings implements Serializable {
 	private static Properties loadOpenJadeProperties() {
 		Properties openjadeProperties = new Properties();
 		Properties localProperties = new Properties();
+		openjadeProperties = loadProperties("internal-openjade.properties");
+		localProperties = loadProperties("openjade.properties");
+		merge(openjadeProperties, localProperties);
+		return openjadeProperties;
+	}
+
+	private static Properties loadProperties(String fileName) {
 		try {
 			ClassLoader loader = Thread.currentThread().getContextClassLoader();
-			Enumeration<URL> urls = loader.getResources("openjade.properties");
+			Enumeration<URL> urls = loader.getResources(fileName);
 			while (urls.hasMoreElements()) {
 				URL url = (URL) urls.nextElement();
 				Properties localProp = new Properties();
 				localProp.load(url.openStream());
-				if (localProp.containsKey("main.file")) {
-					openjadeProperties = localProp;
-				} else {
-					localProperties = localProp;
-				}
+				return localProp;
 			}
-			merge(openjadeProperties, localProperties);
 		} catch (IOException e) {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
-		return openjadeProperties;
+		return new Properties();
 	}
 
 	private static void merge(Properties principalProp, Properties mergeProp) {

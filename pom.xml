@@ -8,18 +8,13 @@
 	<description>Open Jade</description>
 
 	<properties>
-		<internal.repo.path>file:////home/vanderson/devvander/puc/workspace/mvn/</internal.repo.path>
 		<encoding.default>UTF-8</encoding.default>
 	</properties>
 
 	<repositories>
 		<repository>
-			<id>open-jade</id>
+			<id>open-jade-repository</id>
 			<url>https://raw.github.com/botelhojp/mvn/master</url>
-		</repository>
-		<repository>
-			<id>dm</id>
-			<url>http://demoiselle.sourceforge.net/repository/release</url>
 		</repository>
 		<repository>
 			<id>ibiblio</id>
@@ -27,16 +22,6 @@
 		</repository>
 	</repositories>
 
-	<distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<url>${internal.repo.path}</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshot-repo</id>
-			<url>${internal.repo.path}</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 	<dependencies>
 		<!-- Jade -->
@@ -48,9 +33,6 @@
 		</dependency>
 
 		<!-- Certificate -->
-
-		<!-- Versão utilizada pelo security-cert <dependency> <groupId>org.bouncycastle</groupId> 
-			<artifactId>bcprov-jdk15</artifactId> <version>1.45</version> </dependency> -->
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
 			<artifactId>bcprov-jdk15on</artifactId>
@@ -82,7 +64,6 @@
 			<artifactId>jfreechart</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-
 
 		<!-- Tests -->
 		<dependency>

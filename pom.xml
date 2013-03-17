@@ -13,15 +13,18 @@
 
 	<repositories>
 		<repository>
-			<id>open-jade-repository</id>
+			<id>open-jade</id>
 			<url>https://raw.github.com/botelhojp/mvn/master</url>
+		</repository>
+		<repository>
+			<id>demoiselle</id>
+			<url>http://demoiselle.sourceforge.net/repository/release</url>
 		</repository>
 		<repository>
 			<id>ibiblio</id>
 			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
 		</repository>
 	</repositories>
-
 
 	<dependencies>
 		<!-- Jade -->

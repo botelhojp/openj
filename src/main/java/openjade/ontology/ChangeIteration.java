@@ -6,11 +6,11 @@ import jade.util.leap.*;
 import jade.core.*;
 
 /**
-* Protege name: SendIteration
+* Protege name: ChangeIteration
 * @author ontology bean generator
-* @version 2013/01/8, 14:06:37
+* @version 2013/03/28, 22:59:51
 */
-public class SendIteration implements AgentAction {
+public class ChangeIteration implements AgentAction {
 
    /**
 * Protege name: iteration

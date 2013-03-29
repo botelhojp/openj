@@ -3,7 +3,7 @@ package openjade.agent;
 import java.io.InputStream;
 
 import openjade.core.OpenAgent;
-import openjade.core.behaviours.SendIterationBehaviour;
+import openjade.core.behaviours.ChangeterationBehaviour;
 import openjade.setting.Settings;
 
 import org.apache.log4j.Logger;
@@ -23,7 +23,7 @@ public class TimerAgent extends OpenAgent {
 		keystorePassword = "123456";
 		moveContainer(OpenAgent.MAIN_CONTAINER);
 		log.debug("setup: " + getAID().getLocalName());
-		addBehaviour(new SendIterationBehaviour(this, Settings.getInstance().getIterationTimer()));
+		addBehaviour(new ChangeterationBehaviour(this, Settings.getInstance().getIterationTimer()));
 	}
 
 	@Override

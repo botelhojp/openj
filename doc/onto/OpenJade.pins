@@ -1,4 +1,4 @@
-; Tue Jan 08 14:06:39 BRT 2013
+; Thu Mar 28 23:31:30 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -11,15 +11,15 @@
 
 	(%3AJADE-IGNORE FALSE))
 
+([ChangeIteration] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
 ([Encipher] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 
 ([EncryptedMessage] of  %3AJADE-CLASS
-
-	(%3AJADE-IGNORE FALSE))
-
-([FindCertificate] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 
@@ -39,10 +39,6 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([SendCertificate] of  %3AJADE-CLASS
-
-	(%3AJADE-IGNORE FALSE))
-
-([SendIteration] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 

@@ -9,21 +9,21 @@ import jade.lang.acl.ACLMessage;
 import openjade.agent.TimerAgent;
 import openjade.core.OpenAgent;
 import openjade.ontology.OpenJadeOntology;
-import openjade.ontology.SendIteration;
+import openjade.ontology.ChangeIteration;
 
 import org.apache.log4j.Logger;
 
-public class SendIterationBehaviour extends CyclicTimerBehaviour {
+public class ChangeterationBehaviour extends CyclicTimerBehaviour {
 
 	private static final long serialVersionUID = 1L;
 
-	protected static Logger log = Logger.getLogger(SendIterationBehaviour.class);
+	protected static Logger log = Logger.getLogger(ChangeterationBehaviour.class);
 
 	private TimerAgent myAgent;
 	
 	private int iteration = 0;
 
-	public SendIterationBehaviour(Agent _agent, long sleep) {
+	public ChangeterationBehaviour(Agent _agent, long sleep) {
 		super(_agent, sleep, 0);
 		this.myAgent = (TimerAgent) _agent;
 	}
@@ -48,7 +48,7 @@ public class SendIterationBehaviour extends CyclicTimerBehaviour {
 			throw new BehaviourException(e.getMessage(), e);
 		}
 		message.setSender(myAgent.getAID());
-		SendIteration action = new SendIteration();
+		ChangeIteration action = new ChangeIteration();
 		action.setIteration(iteration);
 		myAgent.fillContent(message, action, myAgent.getCodec(), OpenJadeOntology.getInstance());
 		myAgent.signerAndSend(message);

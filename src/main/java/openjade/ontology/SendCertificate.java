@@ -8,7 +8,7 @@ import jade.core.*;
 /**
 * Protege name: SendCertificate
 * @author ontology bean generator
-* @version 2013/01/8, 14:06:37
+* @version 2013/03/28, 22:59:51
 */
 public class SendCertificate implements AgentAction {
 

@@ -8,19 +8,29 @@ import jade.core.*;
 /**
 * Protege name: SendRating
 * @author ontology bean generator
-* @version 2013/01/8, 14:06:37
+* @version 2013/03/28, 22:59:51
 */
 public class SendRating implements AgentAction {
 
    /**
 * Protege name: rating
    */
-   private Rating rating;
-   public void setRating(Rating value) { 
-    this.rating=value;
+   private List rating = new ArrayList();
+   public void addRating(Rating elem) { 
+     List oldList = this.rating;
+     rating.add(elem);
    }
-   public Rating getRating() {
-     return this.rating;
+   public boolean removeRating(Rating elem) {
+     List oldList = this.rating;
+     boolean result = rating.remove(elem);
+     return result;
    }
+   public void clearAllRating() {
+     List oldList = this.rating;
+     rating.clear();
+   }
+   public Iterator getAllRating() {return rating.iterator(); }
+   public List getRating() {return rating; }
+   public void setRating(List l) {rating = l; }
 
 }

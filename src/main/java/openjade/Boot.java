@@ -16,8 +16,6 @@ public class Boot {
 		if (!ifArgsContains("-container", args)) {
 			String host = getHost(args);
 			if (host != null) {
-				String[] main = {"-host", host, "-container", "cms:openjade.agent.CMS"};
-				jade.Boot.main(main);
 				if (monitor){
 					String[] mainMonitor = {"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"};
 					jade.Boot.main(mainMonitor);

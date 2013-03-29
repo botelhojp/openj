@@ -43,12 +43,10 @@ import java.util.ArrayList;
 
 import javax.crypto.Cipher;
 
-import openjade.agent.CMS;
 import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
-import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
 import openjade.keystore.loader.implementation.KeyStoreLoaderImpl;
@@ -370,22 +368,6 @@ public abstract class OpenAgent extends Agent {
 			}
 		} catch (Exception e) {
 			throw new OpenJadeException("moveContainer", e);
-		}
-	}
-
-	public AID findCMS() {
-		try {
-			DFAgentDescription description = new DFAgentDescription();
-			ServiceDescription service = new ServiceDescription();
-			service.setType(CMS.SERVICE_TYPE);
-			description.addServices(service);
-			DFAgentDescription[] result = DFService.search(this, description);
-			if (result != null && result.length > 0) {
-				return result[0].getName();
-			}
-			return null;
-		} catch (FIPAException e) {
-			throw new BehaviourException(e.getMessage(), e);
 		}
 	}
 

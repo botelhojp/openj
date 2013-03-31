@@ -125,6 +125,7 @@ public abstract class OpenAgent extends Agent {
 			signer = new PKCS7Signer(null, null);
 		}
 	}
+	
 
 	@Override
 	public void addBehaviour(Behaviour b) {
@@ -390,7 +391,7 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	public void registerService(String service) {
+	public void registerService(String... service) {
 		addBehaviour(new RegisterServiceBehaviour(this, service));
 	}
 

@@ -1,5 +1,7 @@
 package openjade.trust;
 
+import jade.core.AID;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,5 +20,7 @@ public interface TrustModel extends Serializable {
 	public List<Pair> getPairs(String[] terms);
 
 	public void setAgent(OpenAgent taskAgent);
+
+	public List<Rating> getRatings(AID aid);
 
 }

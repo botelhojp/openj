@@ -1,6 +1,5 @@
 package openjade.ontology;
 
-
 import jade.content.*;
 import jade.util.leap.*;
 import jade.core.*;
@@ -8,31 +7,9 @@ import jade.core.*;
 /**
 * Protege name: Encipher
 * @author ontology bean generator
-* @version 2013/03/28, 22:59:51
+* @version 2013/03/31, 15:35:29
 */
-public class Encipher implements AgentAction {
-
-   /**
-* Protege name: provider
-   */
-   private String provider;
-   public void setProvider(String value) { 
-    this.provider=value;
-   }
-   public String getProvider() {
-     return this.provider;
-   }
-
-   /**
-* Protege name: message
-   */
-   private EncryptedMessage message;
-   public void setMessage(EncryptedMessage value) { 
-    this.message=value;
-   }
-   public EncryptedMessage getMessage() {
-     return this.message;
-   }
+public class Encipher extends MessageAction{ 
 
    /**
 * Protege name: algorithm
@@ -46,6 +23,17 @@ public class Encipher implements AgentAction {
    }
 
    /**
+* Protege name: provider
+   */
+   private String provider;
+   public void setProvider(String value) { 
+    this.provider=value;
+   }
+   public String getProvider() {
+     return this.provider;
+   }
+
+   /**
 * Protege name: signMode
    */
    private int signMode;
@@ -54,6 +42,17 @@ public class Encipher implements AgentAction {
    }
    public int getSignMode() {
      return this.signMode;
+   }
+
+   /**
+* Protege name: message
+   */
+   private EncryptedMessage message;
+   public void setMessage(EncryptedMessage value) { 
+    this.message=value;
+   }
+   public EncryptedMessage getMessage() {
+     return this.message;
    }
 
 }

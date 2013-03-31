@@ -17,11 +17,11 @@ public class Boot {
 			String host = getHost(args);
 			if (host != null) {
 				if (monitor){
-					String[] mainMonitor = {"-host", host, "-container", "agent_monitor_001:openjade.trust.gui.MonitorAgent"};
+					String[] mainMonitor = {"-host", host, "-container", "mt:openjade.trust.gui.MonitorAgent"};
 					jade.Boot.main(mainMonitor);
 				}
 				if (Settings.getInstance().getIterationEnabled()){
-					String[] mainTimer = {"-host", host, "-container", "agent_timer_001:openjade.agent.TimerAgent"};
+					String[] mainTimer = {"-host", host, "-container", "tm:openjade.agent.TimerAgent"};
 					jade.Boot.main(mainTimer);
 				}
 			}

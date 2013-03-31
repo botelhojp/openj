@@ -88,6 +88,10 @@ public class RatingCache implements Serializable {
 		}
 		return (sum == 0.0F) ? 0.0F : sum / count;
 	}
+	
+	public List<Rating> getRatings(int iteration){
+		return cache.get(iteration);
+	}
 
 	public Float getValue(int iteration, String term) {
 		List<Rating> list = cache.get(iteration);

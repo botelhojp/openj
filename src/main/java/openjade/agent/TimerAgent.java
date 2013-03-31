@@ -20,8 +20,8 @@ public class TimerAgent extends OpenAgent implements SignerAgent {
 	private String keystorePassword;
 
 	protected void setup() {
-		keystore = "/certs/agent_timer_001.pfx";
-		keystorePassword = "123456";
+		keystore = "/certs/tm.pfx";
+		keystorePassword = "openjade";
 		moveContainer(OpenAgent.MAIN_CONTAINER);
 		log.debug("setup: " + getAID().getLocalName());
 		addBehaviour(new ChangeterationBehaviour(this, Settings.getInstance().getIterationTimer()));

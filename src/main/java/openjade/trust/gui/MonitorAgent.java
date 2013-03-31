@@ -46,9 +46,13 @@ public class MonitorAgent extends OpenAgent {
 			Iterator<String> it = models.iterator();
 			while (it.hasNext()) {
 				String model = it.next();
-				Float value = cache.getValue(cache.getMin(), model);
-				if (value != null) {
-					getMonitorChart().addValue(model, cache.getMin(), value);
+				try {
+					Float value = cache.getValue(cache.getMin(), model);
+					if (value != null) {
+						getMonitorChart().addValue(model, cache.getMin(), value);
+					}
+				} catch (RuntimeException e) {
+					log.debug(e);
 				}
 			}
 		}

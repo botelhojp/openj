@@ -1,4 +1,4 @@
-; Thu Mar 28 23:31:30 BRT 2013
+; Sun Mar 31 15:36:31 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -7,7 +7,47 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
+	(single-slot certificate
+		(type INSTANCE)
+;+		(allowed-classes Certificate)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot keyAlgorithm
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot pkcs7
+		(type INSTANCE)
+;+		(allowed-classes PKCS7Message)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot algorithm
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot provider
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot client
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot message
+		(type INSTANCE)
+;+		(allowed-classes EncryptedMessage)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot iteration
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot term
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot server
 		(type INSTANCE)
 ;+		(allowed-classes AID)
 ;+		(cardinality 0 1)
@@ -17,35 +57,13 @@
 ;+		(allowed-classes AID)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot provider
-		(type STRING)
+	(single-slot content
+		(type SYMBOL)
+;+		(allowed-parents)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot iteration
+	(single-slot signMode
 		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot message
-		(type INSTANCE)
-;+		(allowed-classes EncryptedMessage)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot keyAlgorithm
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot certificate
-		(type INSTANCE)
-;+		(allowed-classes Certificate)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot algorithm
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot pkcs7
-		(type INSTANCE)
-;+		(allowed-classes PKCS7Message)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot listContent
@@ -66,49 +84,48 @@
 ;+		(comment "valor da iteração")
 		(type FLOAT)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot term
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot server
+		(create-accessor read-write)))
+
+(defclass RatingAction
+	(is-a AgentAction)
+	(role concrete))
+
+(defclass RequestRating
+	(is-a RatingAction)
+	(role concrete)
+	(single-slot aid
 		(type INSTANCE)
 ;+		(allowed-classes AID)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot content
-		(type SYMBOL)
-;+		(allowed-parents)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot signMode
-		(type INTEGER)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Encipher
-	(is-a AgentAction)
+(defclass SendRating
+	(is-a RatingAction)
 	(role concrete)
-	(single-slot provider
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot message
+	(multislot rating
 		(type INSTANCE)
-;+		(allowed-classes EncryptedMessage)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot algorithm
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot signMode
-		(type INTEGER)
-;+		(cardinality 0 1)
+;+		(allowed-classes Rating)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
+
+(defclass TimerAction
+	(is-a AgentAction)
+	(role concrete))
+
+(defclass ChangeIteration
+	(is-a TimerAction)
+	(role concrete)
+	(single-slot iteration
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass MessageAction
+	(is-a AgentAction)
+	(role concrete))
 
 (defclass Sign
-	(is-a AgentAction)
+	(is-a MessageAction)
 	(role concrete)
 	(single-slot pkcs7
 		(type INSTANCE)
@@ -117,34 +134,38 @@
 		(create-accessor read-write)))
 
 (defclass SendCertificate
-	(is-a AgentAction)
+	(is-a MessageAction)
 	(role concrete)
-	(single-slot aid
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot certificate
 		(type INSTANCE)
 ;+		(allowed-classes Certificate)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass SendRating
-	(is-a AgentAction)
-	(role concrete)
-	(multislot rating
+		(create-accessor read-write))
+	(single-slot aid
 		(type INSTANCE)
-;+		(allowed-classes Rating)
-		(cardinality 1 ?VARIABLE)
+;+		(allowed-classes AID)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass ChangeIteration
-	(is-a AgentAction)
+(defclass Encipher
+	(is-a MessageAction)
 	(role concrete)
-	(single-slot iteration
-		(type INTEGER)
+	(single-slot algorithm
+		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot provider
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot signMode
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot message
+		(type INSTANCE)
+;+		(allowed-classes EncryptedMessage)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass ASCLMessage
@@ -193,6 +214,15 @@
 (defclass Rating
 	(is-a Concept)
 	(role concrete)
+	(single-slot term
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot server
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot client
 		(type INSTANCE)
 ;+		(allowed-classes AID)
@@ -205,14 +235,5 @@
 	(single-slot value
 ;+		(comment "valor da iteração")
 		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot term
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot server
-		(type INSTANCE)
-;+		(allowed-classes AID)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))

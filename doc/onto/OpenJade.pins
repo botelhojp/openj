@@ -1,4 +1,4 @@
-; Thu Mar 28 23:31:30 BRT 2013
+; Sun Mar 31 15:36:31 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -23,6 +23,10 @@
 
 	(%3AJADE-IGNORE FALSE))
 
+([MessageAction] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
 ([PKCS7Message] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
@@ -38,6 +42,14 @@
 
 	(%3AJADE-IGNORE FALSE))
 
+([RatingAction] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([RequestRating] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
 ([SendCertificate] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
@@ -47,5 +59,9 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([Sign] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([TimerAction] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))

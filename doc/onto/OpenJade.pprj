@@ -1,11 +1,11 @@
-; Thu Mar 28 23:31:30 BRT 2013
+; Sun Mar 31 15:36:31 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
 
 ([BROWSER_SLOT_NAMES] of  Property_List
 
-	(properties [OpenJade_ProjectKB_Instance_150]))
+	(properties [OpenJade_ProjectKB_Instance_143]))
 
 ([CLSES_TAB] of  Widget
 
@@ -774,26 +774,7 @@
 ([OpenJade_ProjectKB_Instance_142] of  Property_List
 )
 
-([OpenJade_ProjectKB_Instance_143] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([OpenJade_ProjectKB_Instance_144] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([OpenJade_ProjectKB_Instance_145] of  Property_List
-)
-
-([OpenJade_ProjectKB_Instance_146] of  Property_List
-)
-
-([OpenJade_ProjectKB_Instance_147] of  Property_List
-)
-
-([OpenJade_ProjectKB_Instance_150] of  String
+([OpenJade_ProjectKB_Instance_143] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))

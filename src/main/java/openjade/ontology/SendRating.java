@@ -1,6 +1,5 @@
 package openjade.ontology;
 
-
 import jade.content.*;
 import jade.util.leap.*;
 import jade.core.*;
@@ -8,9 +7,9 @@ import jade.core.*;
 /**
 * Protege name: SendRating
 * @author ontology bean generator
-* @version 2013/03/28, 22:59:51
+* @version 2013/03/31, 15:35:29
 */
-public class SendRating implements AgentAction {
+public class SendRating extends RatingAction{ 
 
    /**
 * Protege name: rating

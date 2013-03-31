@@ -5,22 +5,11 @@ import jade.util.leap.*;
 import jade.core.*;
 
 /**
-* Protege name: SendCertificate
+* Protege name: RequestRating
 * @author ontology bean generator
 * @version 2013/03/31, 15:35:29
 */
-public class SendCertificate extends MessageAction{ 
-
-   /**
-* Protege name: certificate
-   */
-   private Certificate certificate;
-   public void setCertificate(Certificate value) { 
-    this.certificate=value;
-   }
-   public Certificate getCertificate() {
-     return this.certificate;
-   }
+public class RequestRating extends RatingAction{ 
 
    /**
 * Protege name: aid

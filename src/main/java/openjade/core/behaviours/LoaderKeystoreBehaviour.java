@@ -41,7 +41,7 @@ public class LoaderKeystoreBehaviour extends Behaviour {
 				sc.setAid(myAgent.getAID());
 				sc.setCertificate(c);
 				myAgent.fillContent(message, sc, myAgent.getCodec(), myAgent.getOpenJadeOntology());
-				myAgent.signerAndSend(message);
+				myAgent.sendMessage(message);
 				done = true;
 			}
 		} catch (Exception e) {

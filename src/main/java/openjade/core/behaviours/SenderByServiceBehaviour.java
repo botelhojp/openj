@@ -44,7 +44,7 @@ public class SenderByServiceBehaviour extends Behaviour {
 				int index = (int) (Math.random() * result.length);
 				message.addReceiver(result[index].getName());
 				if (signer){
-					myAgent.signerAndSend(message);	
+					myAgent.sendMessage(message);	
 				}else{
 					myAgent.send(message);
 				}

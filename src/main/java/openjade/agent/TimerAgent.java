@@ -3,12 +3,13 @@ package openjade.agent;
 import java.io.InputStream;
 
 import openjade.core.OpenAgent;
+import openjade.core.SignerAgent;
 import openjade.core.behaviours.ChangeterationBehaviour;
 import openjade.setting.Settings;
 
 import org.apache.log4j.Logger;
 
-public class TimerAgent extends OpenAgent {
+public class TimerAgent extends OpenAgent implements SignerAgent {
 
 	protected static Logger log = Logger.getLogger(TimerAgent.class);
 
@@ -26,13 +27,11 @@ public class TimerAgent extends OpenAgent {
 		addBehaviour(new ChangeterationBehaviour(this, Settings.getInstance().getIterationTimer()));
 	}
 
-	@Override
-	protected InputStream getKeystore() {
+	public InputStream getKeystore() {
 		return TimerAgent.class.getResourceAsStream(keystore);
 	}
 
-	@Override
-	protected String getKeystorePassword() {
+	public String getKeystorePassword() {
 		return keystorePassword;
 	}
 }

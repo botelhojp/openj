@@ -3,7 +3,6 @@ package openjade.trust.gui;
 import jade.content.ContentElement;
 import jade.lang.acl.ACLMessage;
 
-import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Iterator;
 
@@ -12,8 +11,8 @@ import openjade.core.RatingCache;
 import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.behaviours.ReceiveOntologyMessageBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
-import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.ChangeIteration;
+import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.Rating;
 import openjade.ontology.SendRating;
 import openjade.setting.Settings;
@@ -22,8 +21,6 @@ import org.apache.log4j.Logger;
 
 public class MonitorAgent extends OpenAgent {
 
-	private String keystore;
-	private String keystorePassword;
 	private static final long serialVersionUID = 1L;
 	private RatingCache cache;
 	private HashSet<String> models;
@@ -32,8 +29,6 @@ public class MonitorAgent extends OpenAgent {
 
 	protected void setup() {
 		super.setup();
-		keystore = "/certs/agent_monitor_001.pfx";
-		keystorePassword = "123456";
 		super.moveContainer(OpenAgent.MAIN_CONTAINER);
 		log.debug("setup: " + getAID().getLocalName());
 		getMonitorChart();
@@ -69,16 +64,6 @@ public class MonitorAgent extends OpenAgent {
 		}
 	}
 
-	@Override
-	protected InputStream getKeystore() {
-		return MonitorAgent.class.getResourceAsStream(keystore);
-	}
-
-	@Override
-	protected String getKeystorePassword() {
-		return keystorePassword;
-	}
-	
 	private MonitorChart getMonitorChart() {
 		return MonitorChart.getInstance(Settings.getInstance().getMonitorMaxValue(), Settings.getInstance().getMonitorIterations());
 	}

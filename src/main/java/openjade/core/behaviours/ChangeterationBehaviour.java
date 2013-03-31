@@ -51,6 +51,6 @@ public class ChangeterationBehaviour extends CyclicTimerBehaviour {
 		ChangeIteration action = new ChangeIteration();
 		action.setIteration(iteration);
 		myAgent.fillContent(message, action, myAgent.getCodec(), OpenJadeOntology.getInstance());
-		myAgent.signerAndSend(message);
+		myAgent.sendMessage(message);
 	}
 }

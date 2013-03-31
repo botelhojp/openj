@@ -106,14 +106,11 @@ public abstract class OpenAgent extends Agent {
 		addBehaviour(new LoaderKeystoreBehaviour(this));
 	}
 
-	protected abstract InputStream getKeystore();
-
-	protected abstract String getKeystorePassword();
-	
+		
 	public void loadKeystore() {
-		if (store == null) {
-			InputStream keystore = getKeystore();
-			String password = getKeystorePassword();
+		if (this instanceof SignerAgent && store == null) {
+			InputStream keystore = ((SignerAgent) this).getKeystore();
+			String password = ((SignerAgent) this).getKeystorePassword();
 			if (keystore == null) {
 				throw new OpenJadeException("keystore can't is null");
 			}
@@ -122,6 +119,10 @@ public abstract class OpenAgent extends Agent {
 			}
 			loadKeyStore(keystore, password);
 			signer = new PKCS7Signer(store, password);
+		}
+		
+		if (! (this instanceof SignerAgent) && signer == null) {
+			signer = new PKCS7Signer(null, null);
 		}
 	}
 
@@ -145,6 +146,14 @@ public abstract class OpenAgent extends Agent {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void sendMessage(ACLMessage msg) {
+		if (this instanceof SignerAgent ){
+			signerAndSend(msg);		
+		}else{
+			this.send(msg);
+		}
+	}
 
 	private void validAID() {
 		if (certificateBean.getAgentID() == null) {
@@ -155,7 +164,7 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	public void signerAndSend(ACLMessage _message) {
+	private void signerAndSend(ACLMessage _message) {
 		log.debug("signing message: " + _message.toString());
 		PKCS7Message pkcs7Message = new PKCS7Message();
 		pkcs7Message.setContent(this.signer.signPkcs7(_message.toString().getBytes()));
@@ -229,7 +238,7 @@ public abstract class OpenAgent extends Agent {
 
 	private PrivateKey getPrivateKey() {
 		try {
-			return (PrivateKey) store.getKey(alias, getKeystorePassword().toCharArray());
+			return (PrivateKey) store.getKey(alias, ((SignerAgent) this).getKeystorePassword().toCharArray());
 		} catch (UnrecoverableKeyException e) {
 			throw new OpenJadeException(e.getMessage(), e);
 		} catch (KeyStoreException e) {

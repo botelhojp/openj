@@ -24,10 +24,12 @@ import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.StringACLCodec;
 import jade.util.leap.List;
+import jade.util.leap.Serializable;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.security.Key;
 import java.security.KeyFactory;
@@ -439,6 +441,17 @@ public abstract class OpenAgent extends Agent {
 		} catch (FIPAException e) {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
+	}
+	
+	public void sendMessageObject(AID to, int performative, Serializable obj){
+		try {
+			ACLMessage message = new ACLMessage(performative);
+			message.setSender(this.getAID());
+			message.addReceiver(to);		
+			message.setContentObject(obj);
+		} catch (IOException e) {
+			throw new OpenJadeException(e.getMessage(), e);
+		}	
 	}
 
 }

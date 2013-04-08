@@ -12,8 +12,8 @@ import java.lang.reflect.Method;
 
 import openjade.core.OpenAgent;
 import openjade.core.annotation.ReceiveMatchMessage;
-import openjade.core.annotation.ReceiveSimpleMessage;
 import openjade.core.annotation.ReceiveSignerMessage;
+import openjade.core.annotation.ReceiveSimpleMessage;
 
 import org.apache.log4j.Logger;
 
@@ -47,7 +47,7 @@ public class ReceiveMessageBehaviour extends CyclicBehaviour {
 						ReceiveSimpleMessage messageMatch = method.getAnnotation(ReceiveSimpleMessage.class);
 						int[] performatives = messageMatch.performative();
 						for (int performative : performatives) {
-							MessageTemplate messageTemplate = MessageTemplate.MatchPerformative(performative);
+							MessageTemplate messageTemplate = MessageTemplate.and(MessageTemplate.MatchPerformative(performative), MessageTemplate.not(MessageTemplate.MatchOntology("JADE-Agent-Management")));
 							if (messageTemplate.match(message)) {
 								method.invoke(myAgent, message);
 								return;

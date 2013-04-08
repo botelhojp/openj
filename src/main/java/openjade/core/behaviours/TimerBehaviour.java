@@ -13,8 +13,8 @@ public abstract class TimerBehaviour extends Behaviour {
 
 	protected static Logger log = Logger.getLogger(TimerBehaviour.class);
 
-	private long lastTime = GregorianCalendar.getInstance().getTimeInMillis();
-	private long currentTime = GregorianCalendar.getInstance().getTimeInMillis();
+	private long lastTime;
+	private long currentTime;
 	private long timer;
 	private long block;
 
@@ -26,6 +26,8 @@ public abstract class TimerBehaviour extends Behaviour {
 		super(agent);
 		this.timer = _timer;
 		this.block = _block;
+		lastTime = GregorianCalendar.getInstance().getTimeInMillis();
+		currentTime = GregorianCalendar.getInstance().getTimeInMillis();
 	}
 
 	@Override

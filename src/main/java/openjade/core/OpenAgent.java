@@ -48,6 +48,7 @@ import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
+import openjade.core.behaviours.ReceiveMessageBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
 import openjade.keystore.loader.implementation.KeyStoreLoaderImpl;
 import openjade.ontology.Encipher;
@@ -104,6 +105,7 @@ public abstract class OpenAgent extends Agent {
 		openJadeOntology = OpenJadeOntology.getInstance();
 		openJadeMT = MessageTemplate.and(MessageTemplate.MatchLanguage(codec.getName()), MessageTemplate.MatchOntology(openJadeOntology.getName()));
 		addBehaviour(new LoaderKeystoreBehaviour(this));
+		addBehaviour(new ReceiveMessageBehaviour(this));
 	}
 
 		

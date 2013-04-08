@@ -12,20 +12,20 @@ import java.lang.reflect.Method;
 
 import openjade.core.OpenAgent;
 import openjade.core.annotation.ReceiveMatchMessage;
+import openjade.core.annotation.ReceiveSimpleMessage;
 import openjade.core.annotation.ReceiveSignerMessage;
-import openjade.core.behaviours.BehaviourException;
 
 import org.apache.log4j.Logger;
 
-public class ReceiveOntologyMessageBehaviour extends CyclicBehaviour {
+public class ReceiveMessageBehaviour extends CyclicBehaviour {
 
 	private OpenAgent myAgent;
 
 	private static final long serialVersionUID = 1L;
 
-	protected static Logger log = Logger.getLogger(ReceiveOntologyMessageBehaviour.class);
+	protected static Logger log = Logger.getLogger(ReceiveMessageBehaviour.class);
 
-	public ReceiveOntologyMessageBehaviour(Agent _agent) {
+	public ReceiveMessageBehaviour(Agent _agent) {
 		super(_agent);
 		myAgent = (OpenAgent) _agent;
 	}
@@ -43,6 +43,17 @@ public class ReceiveOntologyMessageBehaviour extends CyclicBehaviour {
 						method.invoke(myAgent, message);
 						return;
 					}
+					if (method.isAnnotationPresent(ReceiveSimpleMessage.class)) {
+						ReceiveSimpleMessage messageMatch = method.getAnnotation(ReceiveSimpleMessage.class);
+						int[] performatives = messageMatch.performative();
+						for (int performative : performatives) {
+							MessageTemplate messageTemplate = MessageTemplate.MatchPerformative(performative);
+							if (messageTemplate.match(message)) {
+								method.invoke(myAgent, message);
+								return;
+							}
+						}						
+					}					
 					if (method.isAnnotationPresent(ReceiveMatchMessage.class)) {
 						ReceiveMatchMessage messageMatch = method.getAnnotation(ReceiveMatchMessage.class);
 						Method getInstance = messageMatch.ontology().getMethod("getInstance");

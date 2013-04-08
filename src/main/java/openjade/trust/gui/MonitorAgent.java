@@ -9,7 +9,6 @@ import java.util.Iterator;
 import openjade.core.OpenAgent;
 import openjade.core.RatingCache;
 import openjade.core.annotation.ReceiveMatchMessage;
-import openjade.core.behaviours.ReceiveOntologyMessageBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
 import openjade.ontology.ChangeIteration;
 import openjade.ontology.OpenJadeOntology;
@@ -34,7 +33,6 @@ public class MonitorAgent extends OpenAgent {
 		getMonitorChart();
 		cache = new RatingCache(1, 3);
 		models = new HashSet<String>();
-		addBehaviour(new ReceiveOntologyMessageBehaviour(this));
 		addBehaviour(new RegisterServiceBehaviour(this, OpenAgent.SERVICE_TRUST_MONITOR));
 	}
 

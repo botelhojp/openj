@@ -80,11 +80,11 @@ public abstract class OpenAgent extends Agent {
 	private static final String DEFAULT_PROVIDER = "com.sun.crypto.provider.SunJCE";
 
 	public static final String MAIN_CONTAINER = "Main-Container";
-	
-	public static final String LISTENER_TIMER = "openjade.service.listener.timer";	
+
+	public static final String LISTENER_TIMER = "openjade.service.listener.timer";
 	public static final String SERVICE_TRUST_MONITOR = "openjade.trust.monitor";
 	public static final String TIMER_LISTENER = "openjade.timer.listener";
-	
+
 	protected KeyStore store;
 	public X509Certificate certificate;
 	protected CertificateBean certificateBean;
@@ -110,7 +110,6 @@ public abstract class OpenAgent extends Agent {
 		addBehaviour(new ReceiveMessageBehaviour(this));
 	}
 
-		
 	public void loadKeystore() {
 		if (this instanceof SignerAgent && store == null) {
 			InputStream keystore = ((SignerAgent) this).getKeystore();
@@ -124,12 +123,11 @@ public abstract class OpenAgent extends Agent {
 			loadKeyStore(keystore, password);
 			signer = new PKCS7Signer(store, password);
 		}
-		
-		if (! (this instanceof SignerAgent) && signer == null) {
+
+		if (!(this instanceof SignerAgent) && signer == null) {
 			signer = new PKCS7Signer(null, null);
 		}
 	}
-	
 
 	@Override
 	public void addBehaviour(Behaviour b) {
@@ -151,11 +149,11 @@ public abstract class OpenAgent extends Agent {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public void sendMessage(ACLMessage msg) {
-		if (this instanceof SignerAgent ){
-			signerAndSend(msg);		
-		}else{
+		if (this instanceof SignerAgent) {
+			signerAndSend(msg);
+		} else {
 			this.send(msg);
 		}
 	}
@@ -418,7 +416,7 @@ public abstract class OpenAgent extends Agent {
 	public void setCms(AID cms) {
 		this.cms = cms;
 	}
-	
+
 	public TrustModel getTrustModel() {
 		return trustModel;
 	}
@@ -442,18 +440,24 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
 	}
-	
-	public void sendMessageObject(AID to, int performative, String conversationId, Serializable obj){
+
+	public void sendMessage(AID to, int performative, String conversationId) {
+		sendMessage(to, performative, conversationId, null);
+	}
+
+	public void sendMessage(AID to, int performative, String conversationId, Serializable obj) {
 		try {
 			ACLMessage message = new ACLMessage(performative);
 			message.setConversationId(conversationId);
 			message.setSender(this.getAID());
-			message.addReceiver(to);		
-			message.setContentObject(obj);
+			message.addReceiver(to);
+			if (obj != null) {
+				message.setContentObject(obj);
+			}
 			sendMessage(message);
 		} catch (IOException e) {
 			throw new OpenJadeException(e.getMessage(), e);
-		}	
+		}
 	}
 
 }

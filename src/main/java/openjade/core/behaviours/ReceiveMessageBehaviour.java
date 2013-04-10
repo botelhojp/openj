@@ -45,9 +45,10 @@ public class ReceiveMessageBehaviour extends CyclicBehaviour {
 					}
 					if (method.isAnnotationPresent(ReceiveSimpleMessage.class)) {
 						ReceiveSimpleMessage messageMatch = method.getAnnotation(ReceiveSimpleMessage.class);
+						String conversationId = messageMatch.conversationId();
 						int[] performatives = messageMatch.performative();
 						for (int performative : performatives) {
-							MessageTemplate messageTemplate = MessageTemplate.and(MessageTemplate.MatchPerformative(performative), MessageTemplate.not(MessageTemplate.MatchOntology("JADE-Agent-Management")));
+							MessageTemplate messageTemplate = MessageTemplate.and(MessageTemplate.MatchPerformative(performative), MessageTemplate.MatchConversationId(conversationId));
 							if (messageTemplate.match(message)) {
 								method.invoke(myAgent, message);
 								return;

@@ -443,12 +443,14 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 	
-	public void sendMessageObject(AID to, int performative, Serializable obj){
+	public void sendMessageObject(AID to, int performative, String conversationId, Serializable obj){
 		try {
 			ACLMessage message = new ACLMessage(performative);
+			message.setConversationId(conversationId);
 			message.setSender(this.getAID());
 			message.addReceiver(to);		
 			message.setContentObject(obj);
+			sendMessage(message);
 		} catch (IOException e) {
 			throw new OpenJadeException(e.getMessage(), e);
 		}	

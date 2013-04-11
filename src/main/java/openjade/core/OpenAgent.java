@@ -63,6 +63,7 @@ import openjade.signer.PKCS7Signer;
 import openjade.trust.TrustModel;
 
 import org.apache.log4j.Logger;
+//import openjade.core.behaviours.LoaderKeystoreBehaviour;
 
 /**
  * Representation of agents that have the ability to communicate through a
@@ -440,19 +441,37 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
 	}
+	
+	public void sendMessage(String[] listService, int performative, String conversationId, Serializable object) {
+		for(String service : listService){
+			java.util.List<AID> aids = getAIDByService(service);
+			for(AID aid : aids){
+				sendMessage(aid, performative, conversationId, object);		
+			}
+		}
+	}
+	
+	public void sendMessage(String[] listService, int performative, String conversationId) {
+		sendMessage(listService, performative, conversationId, null);
+	}
+	
+	public void sendMessage(String _service, int performative, String conversationId, Serializable object) {
+		String[] service = {_service};
+		sendMessage(service, performative, conversationId, object);
+	}
 
 	public void sendMessage(AID to, int performative, String conversationId) {
 		sendMessage(to, performative, conversationId, null);
 	}
 
-	public void sendMessage(AID to, int performative, String conversationId, Serializable obj) {
+	public void sendMessage(AID to, int performative, String conversationId, Serializable object) {
 		try {
 			ACLMessage message = new ACLMessage(performative);
 			message.setConversationId(conversationId);
 			message.setSender(this.getAID());
 			message.addReceiver(to);
-			if (obj != null) {
-				message.setContentObject(obj);
+			if (object != null) {
+				message.setContentObject(object);
 			}
 			sendMessage(message);
 		} catch (IOException e) {

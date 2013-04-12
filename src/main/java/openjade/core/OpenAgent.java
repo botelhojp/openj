@@ -451,6 +451,12 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 	
+	public void sendMessage(java.util.List<AID> agentList, int performative, String conversationId, Serializable object) {
+		for(AID aid : agentList){
+			sendMessage(aid, performative, conversationId, object);		
+		}
+	}
+	
 	public void sendMessage(String[] listService, int performative, String conversationId) {
 		sendMessage(listService, performative, conversationId, null);
 	}

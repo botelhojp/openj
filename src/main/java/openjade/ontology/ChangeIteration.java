@@ -7,7 +7,7 @@ import jade.core.*;
 /**
 * Protege name: ChangeIteration
 * @author ontology bean generator
-* @version 2013/03/31, 15:35:29
+* @version 2013/04/11, 23:44:49
 */
 public class ChangeIteration extends TimerAction{ 
 

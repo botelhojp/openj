@@ -7,20 +7,9 @@ import jade.core.*;
 /**
 * Protege name: Certificate
 * @author ontology bean generator
-* @version 2013/03/31, 15:35:29
+* @version 2013/04/11, 23:44:49
 */
 public class Certificate extends ASCLMessage{ 
-
-   /**
-* Protege name: algorithm
-   */
-   private String algorithm;
-   public void setAlgorithm(String value) { 
-    this.algorithm=value;
-   }
-   public String getAlgorithm() {
-     return this.algorithm;
-   }
 
    /**
 * Protege name: content
@@ -31,6 +20,17 @@ public class Certificate extends ASCLMessage{
    }
    public Object getContent() {
      return this.content;
+   }
+
+   /**
+* Protege name: algorithm
+   */
+   private String algorithm;
+   public void setAlgorithm(String value) { 
+    this.algorithm=value;
+   }
+   public String getAlgorithm() {
+     return this.algorithm;
    }
 
 }

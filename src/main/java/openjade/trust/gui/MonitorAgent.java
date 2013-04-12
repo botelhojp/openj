@@ -37,7 +37,7 @@ public class MonitorAgent extends OpenAgent {
 	}
 
 	@ReceiveMatchMessage(ontology = OpenJadeOntology.class, action = ChangeIteration.class)
-	public void receiveTimeAction(ACLMessage message, ContentElement ce) {
+	public void changeIteration(ACLMessage message, ContentElement ce) {
 		ChangeIteration ta = (ChangeIteration) ce;
 		cache.setIteration(ta.getIteration());
 		if (cache.isCompleted()) {

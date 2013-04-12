@@ -23,4 +23,6 @@ public interface TrustModel extends Serializable {
 
 	public List<Rating> getRatings(AID aid);
 
+	public Rating addRating(AID client, AID server, int iteration, String term, float value);
+
 }

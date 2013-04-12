@@ -31,6 +31,7 @@ import jade.wrapper.StaleProxyException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyStore;
@@ -49,21 +50,26 @@ import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
+import openjade.core.annotation.GetUtility;
+import openjade.core.annotation.ReceiveMatchMessage;
+import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
 import openjade.core.behaviours.ReceiveMessageBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
 import openjade.keystore.loader.implementation.KeyStoreLoaderImpl;
+import openjade.ontology.ChangeIteration;
 import openjade.ontology.Encipher;
 import openjade.ontology.EncryptedMessage;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.PKCS7Message;
+import openjade.ontology.Rating;
+import openjade.ontology.SendRating;
 import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
 import openjade.signer.PKCS7Signer;
 import openjade.trust.TrustModel;
 
 import org.apache.log4j.Logger;
-//import openjade.core.behaviours.LoaderKeystoreBehaviour;
 
 /**
  * Representation of agents that have the ability to communicate through a
@@ -110,7 +116,7 @@ public abstract class OpenAgent extends Agent {
 		addBehaviour(new LoaderKeystoreBehaviour(this));
 		addBehaviour(new ReceiveMessageBehaviour(this));
 	}
-
+	
 	public void loadKeystore() {
 		if (this instanceof SignerAgent && store == null) {
 			InputStream keystore = ((SignerAgent) this).getKeystore();
@@ -129,6 +135,48 @@ public abstract class OpenAgent extends Agent {
 			signer = new PKCS7Signer(null, null);
 		}
 	}
+	
+	@ReceiveMatchMessage(action = ChangeIteration.class, ontology = OpenJadeOntology.class)
+	public void changeIteration(ACLMessage message, ContentElement ce) {
+		iteration = ((ChangeIteration) ce).getIteration();
+		if (trustModel != null){
+			trustModel.setIteration(iteration);	
+			java.util.List<AID> aids = getAIDByService(OpenAgent.SERVICE_TRUST_MONITOR);
+			if (!aids.isEmpty()) {
+				SendRating sendRating = new SendRating();			
+				Float utility = getUtility(iteration);
+				if (utility != null){
+					Rating rating = trustModel.addRating(getAID(), getAID(), iteration, trustModel.getName(), utility);
+					
+					jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
+					ratingList.add(rating);
+					sendRating.setRating(ratingList);
+					
+					ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+					msg.setSender(getAID());
+					msg.addReceiver(aids.get(0));
+					fillContent(msg, sendRating, getCodec(), OpenJadeOntology.getInstance());
+					sendMessage(msg);
+				}
+			}			
+		}		
+	}	
+	
+	public Float getUtility(long iteration) {
+		try {
+			Method[] methods = getClass().getMethods();
+			for (Method method : methods) {
+				method.setAccessible(true);
+				if (method.isAnnotationPresent(GetUtility.class)) {
+					return (Float) method.invoke(this, iteration);					
+				}
+			}
+			return null;
+		} catch (Exception e) {
+			throw new BehaviourException(e.getMessage(), e);
+		}
+	}
+	
 
 	@Override
 	public void addBehaviour(Behaviour b) {

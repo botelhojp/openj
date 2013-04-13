@@ -9,7 +9,7 @@ import jade.core.CaseInsensitiveString;
 
 /** file: OpenJadeOntology.java
  * @author ontology bean generator
- * @version 2013/04/11, 23:44:49
+ * @version 2013/04/13, 16:00:58
  */
 public class OpenJadeOntology extends jade.content.onto.Ontology  {
   //NAME
@@ -48,9 +48,6 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     public static final String ASCLMESSAGE="ASCLMessage";
     public static final String PKCS7MESSAGE_CONTENT="content";
     public static final String PKCS7MESSAGE="PKCS7Message";
-    public static final String CERTIFICATE_ALGORITHM="algorithm";
-    public static final String CERTIFICATE_CONTENT="content";
-    public static final String CERTIFICATE="Certificate";
     public static final String ENCRYPTEDMESSAGE_KEYALGORITHM="keyAlgorithm";
     public static final String ENCRYPTEDMESSAGE_KEY="key";
     public static final String ENCRYPTEDMESSAGE_LISTCONTENT="listContent";
@@ -66,8 +63,6 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     // adding Concept(s)
     ConceptSchema encryptedMessageSchema = new ConceptSchema(ENCRYPTEDMESSAGE);
     add(encryptedMessageSchema, openjade.ontology.EncryptedMessage.class);
-    ConceptSchema certificateSchema = new ConceptSchema(CERTIFICATE);
-    add(certificateSchema, openjade.ontology.Certificate.class);
     ConceptSchema pkcS7MessageSchema = new ConceptSchema(PKCS7MESSAGE);
     add(pkcS7MessageSchema, openjade.ontology.PKCS7Message.class);
     ConceptSchema asclMessageSchema = new ConceptSchema(ASCLMESSAGE);
@@ -99,12 +94,10 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
 
     // adding fields
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), 0, ObjectSchema.UNLIMITED);
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.OPTIONAL);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.SET), 0, ObjectSchema.UNLIMITED);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.SET), ObjectSchema.OPTIONAL);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEYALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    certificateSchema.add(CERTIFICATE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
-    certificateSchema.add(CERTIFICATE_ALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
+    pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.SET), ObjectSchema.MANDATORY);
     ratingSchema.add(RATING_TERM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
     ratingSchema.add(RATING_ITERATION, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.MANDATORY);
     ratingSchema.add(RATING_SERVER, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.OPTIONAL);
@@ -123,8 +116,8 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
     // adding inheritance
     encryptedMessageSchema.addSuperSchema(asclMessageSchema);
-    certificateSchema.addSuperSchema(asclMessageSchema);
     pkcS7MessageSchema.addSuperSchema(asclMessageSchema);
+    ratingSchema.addSuperSchema(asclMessageSchema);
     changeIterationSchema.addSuperSchema(timerActionSchema);
     signSchema.addSuperSchema(messageActionSchema);
     encipherSchema.addSuperSchema(messageActionSchema);

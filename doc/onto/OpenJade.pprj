@@ -1,11 +1,11 @@
-; Thu Apr 11 23:48:15 BRT 2013
+; Sat Apr 13 16:00:56 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
 
 ([BROWSER_SLOT_NAMES] of  Property_List
 
-	(properties [OpenJade_ProjectKB_Instance_10148]))
+	(properties [OpenJade_ProjectKB_Instance_10151]))
 
 ([CLSES_TAB] of  Widget
 
@@ -759,7 +759,7 @@
 ([OpenJade_ProjectKB_Instance_10147] of  Property_List
 )
 
-([OpenJade_ProjectKB_Instance_10148] of  String
+([OpenJade_ProjectKB_Instance_10151] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))

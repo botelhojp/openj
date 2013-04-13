@@ -8,7 +8,7 @@ import jade.core.*;
 /**
 * Protege name: TimerAction
 * @author ontology bean generator
-* @version 2013/04/11, 23:44:49
+* @version 2013/04/13, 16:00:58
 */
 public class TimerAction implements AgentAction {
 

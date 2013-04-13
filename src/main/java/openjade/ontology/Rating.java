@@ -1,6 +1,5 @@
 package openjade.ontology;
 
-
 import jade.content.*;
 import jade.util.leap.*;
 import jade.core.*;
@@ -8,9 +7,9 @@ import jade.core.*;
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2013/04/11, 23:44:49
+* @version 2013/04/13, 16:00:58
 */
-public class Rating implements Concept {
+public class Rating extends ASCLMessage{ 
 
    /**
 * Protege name: term

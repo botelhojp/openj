@@ -1,4 +1,4 @@
-; Thu Apr 11 23:48:15 BRT 2013
+; Sat Apr 13 16:00:56 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -41,7 +41,7 @@
 		(create-accessor read-write))
 	(single-slot certificate
 		(type INSTANCE)
-;+		(allowed-classes Certificate)
+;+		(allowed-classes)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot pkcs7
@@ -184,21 +184,8 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Certificate
-	(is-a ASCLMessage)
-	(role concrete)
-	(single-slot content
-		(type SYMBOL)
-;+		(allowed-parents)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot algorithm
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
 (defclass Rating
-	(is-a Concept)
+	(is-a ASCLMessage)
 	(role concrete)
 	(single-slot term
 		(type STRING)

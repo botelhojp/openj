@@ -1,13 +1,9 @@
-; Thu Apr 11 23:48:15 BRT 2013
+; Sat Apr 13 16:00:56 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
 
 ([ASCLMessage] of  %3AJADE-CLASS
-
-	(%3AJADE-IGNORE FALSE))
-
-([Certificate] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 

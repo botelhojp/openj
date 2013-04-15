@@ -50,7 +50,8 @@ import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
-import openjade.core.annotation.GetUtility;
+import openjade.core.annotation.OnChangeIteration;
+import openjade.core.annotation.OnGetUtility;
 import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
@@ -116,7 +117,7 @@ public abstract class OpenAgent extends Agent {
 		addBehaviour(new LoaderKeystoreBehaviour(this));
 		addBehaviour(new ReceiveMessageBehaviour(this));
 	}
-	
+
 	public void loadKeystore() {
 		if (this instanceof SignerAgent && store == null) {
 			InputStream keystore = ((SignerAgent) this).getKeystore();
@@ -135,40 +136,58 @@ public abstract class OpenAgent extends Agent {
 			signer = new PKCS7Signer(null, null);
 		}
 	}
-	
+
 	@ReceiveMatchMessage(action = ChangeIteration.class, ontology = OpenJadeOntology.class)
-	public void changeIteration(ACLMessage message, ContentElement ce) {
+	public final void changeIteration(ACLMessage message, ContentElement ce) {
 		iteration = ((ChangeIteration) ce).getIteration();
-		if (trustModel != null){
-			trustModel.setIteration(iteration);	
+		callOnChangeInteration();
+		if (trustModel != null) {
+			trustModel.setIteration(iteration);			
 			java.util.List<AID> aids = getAIDByService(OpenAgent.SERVICE_TRUST_MONITOR);
 			if (!aids.isEmpty()) {
-				SendRating sendRating = new SendRating();			
-				Float utility = getUtility(iteration);
-				if (utility != null){
+				SendRating sendRating = new SendRating();
+				Float utility = callOnGetUtility(iteration);
+				if (utility != null) {
 					Rating rating = trustModel.addRating(getAID(), getAID(), iteration, trustModel.getName(), utility);
-					
 					jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
 					ratingList.add(rating);
 					sendRating.setRating(ratingList);
-					
+
 					ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 					msg.setSender(getAID());
 					msg.addReceiver(aids.get(0));
 					fillContent(msg, sendRating, getCodec(), OpenJadeOntology.getInstance());
 					sendMessage(msg);
 				}
-			}			
-		}		
-	}	
-	
-	public Float getUtility(long iteration) {
+			}
+		}
+	}
+
+	private void callOnChangeInteration() {
 		try {
 			Method[] methods = getClass().getMethods();
 			for (Method method : methods) {
 				method.setAccessible(true);
-				if (method.isAnnotationPresent(GetUtility.class)) {
-					return (Float) method.invoke(this, iteration);					
+				if (method.isAnnotationPresent(OnChangeIteration.class)) {
+					OnChangeIteration onChangeIteration = method.getAnnotation(OnChangeIteration.class);
+					if (onChangeIteration.delay() > 0){
+						Thread.sleep(onChangeIteration.delay());
+					}
+					method.invoke(this);
+				}
+			}
+		} catch (Exception e) {
+			throw new BehaviourException(e.getMessage(), e);
+		}
+	}
+
+	private Float callOnGetUtility(long iteration) {
+		try {
+			Method[] methods = getClass().getMethods();
+			for (Method method : methods) {
+				method.setAccessible(true);
+				if (method.isAnnotationPresent(OnGetUtility.class)) {
+					return (Float) method.invoke(this, iteration);
 				}
 			}
 			return null;
@@ -176,7 +195,6 @@ public abstract class OpenAgent extends Agent {
 			throw new BehaviourException(e.getMessage(), e);
 		}
 	}
-	
 
 	@Override
 	public void addBehaviour(Behaviour b) {
@@ -489,28 +507,32 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
 	}
-	
+
 	public void sendMessage(String[] listService, int performative, String conversationId, Serializable object) {
-		for(String service : listService){
+		for (String service : listService) {
 			java.util.List<AID> aids = getAIDByService(service);
-			for(AID aid : aids){
-				sendMessage(aid, performative, conversationId, object);		
+			for (AID aid : aids) {
+				sendMessage(aid, performative, conversationId, object);
 			}
 		}
 	}
-	
+
 	public void sendMessage(java.util.List<AID> agentList, int performative, String conversationId, Serializable object) {
-		for(AID aid : agentList){
-			sendMessage(aid, performative, conversationId, object);		
+		for (AID aid : agentList) {
+			sendMessage(aid, performative, conversationId, object);
 		}
 	}
-	
+
 	public void sendMessage(String[] listService, int performative, String conversationId) {
 		sendMessage(listService, performative, conversationId, null);
 	}
 	
+	public void sendMessage(String _service, int performative, String conversationId) {
+		sendMessage(_service, performative, conversationId, null);
+	}
+
 	public void sendMessage(String _service, int performative, String conversationId, Serializable object) {
-		String[] service = {_service};
+		String[] service = { _service };
 		sendMessage(service, performative, conversationId, object);
 	}
 

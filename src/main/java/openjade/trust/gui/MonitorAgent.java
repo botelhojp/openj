@@ -8,9 +8,9 @@ import java.util.Iterator;
 
 import openjade.core.OpenAgent;
 import openjade.core.RatingCache;
+import openjade.core.annotation.OnChangeIteration;
 import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.behaviours.RegisterServiceBehaviour;
-import openjade.ontology.ChangeIteration;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.Rating;
 import openjade.ontology.SendRating;
@@ -36,10 +36,9 @@ public class MonitorAgent extends OpenAgent {
 		addBehaviour(new RegisterServiceBehaviour(this, OpenAgent.SERVICE_TRUST_MONITOR));
 	}
 
-	@ReceiveMatchMessage(ontology = OpenJadeOntology.class, action = ChangeIteration.class)
-	public void changeIteration(ACLMessage message, ContentElement ce) {
-		ChangeIteration ta = (ChangeIteration) ce;
-		cache.setIteration(ta.getIteration());
+	@OnChangeIteration(delay=0)
+	public void onChangeIteration() {
+		cache.setIteration(iteration);
 		if (cache.isCompleted()) {
 			Iterator<String> it = models.iterator();
 			while (it.hasNext()) {

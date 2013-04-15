@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.METHOD })
-
-public @interface GetUtility {
+public @interface OnGetUtility {
 
 }

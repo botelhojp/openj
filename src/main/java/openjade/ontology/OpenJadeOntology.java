@@ -94,10 +94,10 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
 
     // adding fields
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.SET), 0, ObjectSchema.UNLIMITED);
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.SET), ObjectSchema.OPTIONAL);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), 0, ObjectSchema.UNLIMITED);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.OPTIONAL);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEYALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.SET), ObjectSchema.MANDATORY);
+    pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
     ratingSchema.add(RATING_TERM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.OPTIONAL);
     ratingSchema.add(RATING_ITERATION, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.MANDATORY);
     ratingSchema.add(RATING_SERVER, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.OPTIONAL);

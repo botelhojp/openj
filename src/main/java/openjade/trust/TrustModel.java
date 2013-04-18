@@ -18,6 +18,8 @@ public interface TrustModel extends Serializable {
 	public void setIteration(int iteration);
 
 	public List<Pair> getPairs(String[] terms);
+	
+	public float getValue(AID server);
 
 	public void setAgent(OpenAgent taskAgent);
 

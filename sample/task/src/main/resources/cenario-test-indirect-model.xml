@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<open-jade>
+	<containers>
+		<container>-gui -local-host 127.0.0.1 -monitor</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_001:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.IndirectModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_002:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.IndirectModel,BAD)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_003:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.IndirectModel,MODERATE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_004:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.DirectModel,GOD)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_005:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.DirectModel,EXCELLENT)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_006:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.DirectModel,BAD)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_007:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.NothingModel,MODERATE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_008:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.NothingModel,GOD)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_009:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.NothingModel,EXCELLENT)</container>
+	</containers>
+</open-jade>

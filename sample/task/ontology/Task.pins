@@ -1,0 +1,19 @@
+; Sun Mar 31 16:57:13 BRT 2013
+; 
+;+ (version "3.2.1")
+;+ (build "Build 365")
+
+([project+annotation] of  %3APROJECT-ANNOTATION
+
+	(%3ALOCATION "/home/vanderson/devvander/puc/workspace/open-jade-task/src/main/java/")
+	(%3AONTOLOGYNAME "Task")
+	(%3APACKAGE "openjade.task.agent.ontology")
+	(%3ASUPPORT "j2se"))
+
+([SendTask] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([Task] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))

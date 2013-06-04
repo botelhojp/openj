@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<open-jade>
+	<containers>
+		<container>-gui -local-host 127.0.0.1</container>
+		<container>-local-host 127.0.0.1 -container -container-name Hi-Container agent1:openjade.hi.agent.Mygent</container>
+		<container>-local-host 127.0.0.1 -container -container-name Hi-Container agent2:openjade.hi.agent.Mygent</container>
+	</containers>
+</open-jade>

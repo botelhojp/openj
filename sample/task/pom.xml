@@ -1,9 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>open-jade</groupId>
-	<artifactId>open-jade-task</artifactId>
+	<groupId>open-jade-sample</groupId>
+	<artifactId>sample-task</artifactId>
 	<version>1.0.0-RC-1</version>
+
+	<name>Open Jade - Sample: Task</name>
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
@@ -12,7 +14,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>open-jade</groupId>
-			<artifactId>open-jade</artifactId>
+			<artifactId>open-jade-framework</artifactId>
 			<version>1.0.0-RC-1</version>
 		</dependency>
 		<dependency>

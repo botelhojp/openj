@@ -6,7 +6,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
-	<name>Framework Open Jade Build</name>
+	<name>Open Jade - Build</name>
 	<description>Open Jade</description>
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
@@ -15,8 +15,8 @@
 		<module>impl/framework</module>
 		<module>impl/certbuilder</module>
 		<module>impl/trust-model</module>
-		<module>sample/dream-team-92</module>
-		<module>sample/open-jade-hi</module>
-		<module>sample/open-jade-task</module>
+		<module>sample/dream-team</module>
+		<module>sample/hi</module>
+		<module>sample/task</module>
 	</modules>
 </project>

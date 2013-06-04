@@ -4,7 +4,7 @@
 	<groupId>open-jade</groupId>
 	<artifactId>open-jade-framework</artifactId>
 	<version>1.0.0-RC-1</version>
-	<name>Framework Open Jade</name>
+	<name>Open Jade - Framework</name>
 	<description>Open Jade</description>
 
 	<properties>

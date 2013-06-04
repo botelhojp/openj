@@ -4,7 +4,7 @@
 	<groupId>open-jade</groupId>
 	<artifactId>open-jade-certbuilder</artifactId>
 	<version>1.0.0</version>
-	<name>Open Jade Certificate CertBuilder</name>
+	<name>Open Jade - Certificate CertBuilder</name>
 	<description>Open Jade Certificate Certificate Builder</description>
 
 	<properties>

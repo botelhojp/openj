@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<open-jade>
+	<containers>
+		<container>-gui -local-host 127.0.0.1 -monitor</container>
+	
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container manager:dreamteam92.agent.TaskManager()</container>
+
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-01:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,40,A)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-02:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,20,A)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-03:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,80,A)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-04:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,60,A)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-05:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,90,A)</container>
+	
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-11:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,40,B)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-12:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,20,B)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-13:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,80,B)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-14:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,60,B)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-15:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,90,B)</container>
+
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-21:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,40,C)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-22:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,20,C)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-23:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,80,C)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-24:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,60,C)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-25:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,90,C)</container>
+
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-31:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,40,D)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-32:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,20,D)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-33:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,80,D)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-34:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,60,D)</container>
+		<container>-local-host 127.0.0.1 -container -container-name DreamTime-Container task-agent-35:dreamteam92.agent.TaskAgent(openjade.trust.NothingModel,90,D)</container>
+
+	</containers>
+	
+</open-jade>

@@ -14,5 +14,8 @@
 	<modules>
 		<module>impl/framework</module>
 		<module>impl/certbuilder</module>
+		<module>sample/dream-team-92</module>
+		<module>sample/open-jade-hi</module>
+		<module>sample/open-jade-task</module>
 	</modules>
 </project>

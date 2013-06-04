@@ -13,6 +13,5 @@
 	</properties>
 	<modules>
 		<module>impl/framework</module>
-		<module>impl/certbuilder</module>
 	</modules>
 </project>

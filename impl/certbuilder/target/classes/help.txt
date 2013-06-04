@@ -1,0 +1,7 @@
+Invalid operation, check sintax:
+
+* create test certificate: 
+   java -jar open-jade-certbuilder-[version].jar -test
+   
+* create custom certificate;
+   java -jar open-jade-certbuilder-[version].jar -c agendID="agent_00002" certPassword="123456" personName="Leonard Da Vinci" personID="723.391.675-66" personEmail="leonard@openjade.org" url="http://openjade.org/lcr/acopenjade.crl"

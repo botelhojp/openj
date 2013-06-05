@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<groupId>open-jade.sample</groupId>
 	<artifactId>sample-dream-team-92</artifactId>
 	<version>1.0.0-RC-1</version>
 
@@ -15,7 +16,7 @@
 		<artifactId>parent</artifactId>
 		<version>1</version>
 	</parent>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>open-jade</groupId>
@@ -24,7 +25,7 @@
 		<dependency>
 			<groupId>open-jade</groupId>
 			<artifactId>trust-model</artifactId>
-		</dependency>		
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -36,7 +37,7 @@
 					</descriptors>
 					<archive>
 						<manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
-					</archive>					
+					</archive>
 				</configuration>
 				<executions>
 					<execution>
@@ -50,5 +51,10 @@
 			</plugin>
 		</plugins>
 	</build>
-	<groupId>open-jade.sample</groupId>
+	<repositories>
+		<repository>
+			<id>ppgia</id>
+			<url>http://www.ppgia.pucpr.br/~vanderson/repositories/internal/</url>
+		</repository>
+	</repositories>
 </project>

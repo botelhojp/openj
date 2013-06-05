@@ -5,12 +5,11 @@
 	<artifactId>open-jade-build</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	
+
 	<name>Open Jade - Build</name>
-	<description>Open Jade</description>
-	<properties>
-		<encoding.default>UTF-8</encoding.default>
-	</properties>
+	
+	<description>Open Jade Build</description>
+	
 	<modules>
 		<module>parent/open-jade</module>
 		<module>impl/framework</module>

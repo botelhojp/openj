@@ -50,4 +50,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<groupId>open-jade.sample</groupId>
 </project>

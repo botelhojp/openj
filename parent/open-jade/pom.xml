@@ -24,10 +24,6 @@
 
 	<repositories>
 		<repository>
-			<id>ppgia</id>
-			<url>https://raw.github.com/botelhojp/mvn/master</url>
-		</repository>
-		<repository>
 			<id>ibiblio</id>
 			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
 		</repository>
@@ -49,12 +45,12 @@
 		<repository>
 			<id>ppgia.internal</id>
 			<name>Repositorio Interno</name>
-			<url>file:///rede/aplic/archiva/repositories/component/internal</url>
+			<url>scp://hercules.ppgia.pucpr.br/home2/doutorado/2013/vanderson/public_html/repositories/internal</url>
 		</repository>
 		<snapshotRepository>
 			<id>ppgia.snapshots</id>
 			<name>Repositorio Interno</name>
-			<url>file:///rede/aplic/archiva/repositories/component/snapshots</url>
+			<url>scp://hercules.ppgia.pucpr.br/home2/doutorado/2013/vanderson/public_html/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 

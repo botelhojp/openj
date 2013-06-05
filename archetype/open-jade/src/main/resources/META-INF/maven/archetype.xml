@@ -1,0 +1,9 @@
+<archetype>
+	<id>open-jade-archetype</id>
+
+	<sources>
+		<source>src/main/java/MyBehaviour.java</source>
+		<source>src/main/java/Mygent.java</source>
+	</sources>
+
+</archetype>

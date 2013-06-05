@@ -11,6 +11,7 @@
 	<description>Open Jade Build</description>
 	
 	<modules>
+		<module>archetype/open-jade</module>
 		<module>parent/open-jade</module>
 		<module>impl/framework</module>
 		<module>impl/certbuilder</module>

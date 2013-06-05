@@ -12,8 +12,8 @@
 	</properties>
 
 	<parent>
-		<groupId>open-jade</groupId>
-		<artifactId>parent</artifactId>
+		<groupId>open-jade.parent</groupId>
+		<artifactId>parent-sample</artifactId>
 		<version>1</version>
 	</parent>
 

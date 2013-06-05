@@ -11,13 +11,10 @@
 	<description>Open Jade Build</description>
 	
 	<modules>
-		<module>parent</module>
+		<module>parent/open-jade</module>
 		<module>archetype/open-jade</module>		
 		<module>impl/framework</module>
 		<module>impl/certbuilder</module>
 		<module>impl/trust-model</module>
-		<module>sample/dream-team</module>
-		<module>sample/hi</module>
-		<module>sample/task</module>
 	</modules>
 </project>

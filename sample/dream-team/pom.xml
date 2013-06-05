@@ -13,7 +13,7 @@
 
 	<parent>
 		<groupId>open-jade.parent</groupId>
-		<artifactId>parent-sample</artifactId>
+		<artifactId>open-jade-parent</artifactId>
 		<version>1</version>
 	</parent>
 

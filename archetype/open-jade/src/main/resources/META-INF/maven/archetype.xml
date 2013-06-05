@@ -8,11 +8,11 @@
 	</sources>
 
 	<resources>
-		<source>src/main/resources/certs/agent1.pfx</source>
-		<source>src/main/resources/certs/agent2.pfx</source>
-		<source>src/main/resources/META-INF/MANIFEST.MF</source>
-		<source>src/main/resources/log4j.xml</source>
-		<source>src/main/resources/open-jade-boot.xml</source>
+		<resource>src/main/resources/certs/agent1.pfx</resource>
+		<resource>src/main/resources/certs/agent2.pfx</resource>
+		<resource>src/main/resources/META-INF/MANIFEST.MF</resource>
+		<resource>src/main/resources/log4j.xml</resource>
+		<resource>src/main/resources/open-jade-boot.xml</resource>
 	</resources>
 
 </archetype>

@@ -1,41 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>open-jade</groupId>
 	<artifactId>certbuilder</artifactId>
 	<version>1.0.0</version>
 	<name>Open Jade - Certificate CertBuilder</name>
 	<description>Open Jade Certificate Certificate Builder</description>
 
-	<properties>
-		<encoding.default>UTF-8</encoding.default>
-	</properties>
-
-	<repositories>
-		<repository>
-			<id>open-jade</id>
-			<url>https://raw.github.com/botelhojp/mvn/master</url>
-		</repository>
-		<repository>
-			<id>dm</id>
-			<url>http://demoiselle.sourceforge.net/repository/release</url>
-		</repository>
-		<repository>
-			<id>ibiblio</id>
-			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
-		</repository>
-	</repositories>
-
-	<distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<url>${internal.repo.path}</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshot-repo</id>
-			<url>${internal.repo.path}</url>
-		</snapshotRepository>
-	</distributionManagement>
+	<parent>
+		<groupId>open-jade</groupId>
+		<artifactId>parent</artifactId>
+		<version>1</version>
+	</parent>
 
 	<dependencies>
 		<!-- Certificate -->
@@ -45,24 +20,20 @@
 			<version>136</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.1</version>
 		</dependency>
 
 		<!-- Commons -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
 		</dependency>
 		<!-- Tests -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.5</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

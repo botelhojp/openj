@@ -12,6 +12,7 @@
 		<encoding.default>UTF-8</encoding.default>
 	</properties>
 	<modules>
+		<module>parent/open-jade</module>
 		<module>impl/framework</module>
 		<module>impl/certbuilder</module>
 		<module>impl/trust-model</module>

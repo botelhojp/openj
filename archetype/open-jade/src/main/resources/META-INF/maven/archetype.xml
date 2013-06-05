@@ -4,6 +4,15 @@
 	<sources>
 		<source>src/main/java/MyBehaviour.java</source>
 		<source>src/main/java/Mygent.java</source>
+		<source>src/main/java/Boot.java</source>
 	</sources>
+
+	<resources>
+		<source>src/main/resources/certs/agent1.pfx</source>
+		<source>src/main/resources/certs/agent2.pfx</source>
+		<source>src/main/resources/META-INF/MANIFEST.MF</source>
+		<source>src/main/resources/log4j.xml</source>
+		<source>src/main/resources/open-jade-boot.xml</source>
+	</resources>
 
 </archetype>

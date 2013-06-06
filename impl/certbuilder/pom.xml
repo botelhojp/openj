@@ -9,7 +9,7 @@
 
 	<parent>
 		<groupId>open-jade.parent</groupId>
-		<artifactId>parent-open-jade</artifactId>
+		<artifactId>open-jade-parent</artifactId>
 		<version>1</version>
 	</parent>
 

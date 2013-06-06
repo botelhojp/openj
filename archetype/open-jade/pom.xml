@@ -16,22 +16,17 @@
 		<version>1</version>
 	</parent>
 
+	<!-- <build> <resources> <resource> <directory>src/main/resources</directory> 
+		<filtering>true</filtering> <includes> <include>**/*.xml</include> <include>**/*.java</include> 
+		</includes> </resource> <resource> <directory>src/main/resources</directory> 
+		<filtering>false</filtering> <excludes> <exclude>**/*.pfx</exclude> </excludes> 
+		</resource> </resources> </build> -->
+
 	<build>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-				<includes>
-					<include>**/*.xml</include>
-					<include>**/*.java</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
 				<filtering>false</filtering>
-				<excludes>
-					<exclude>**/*.pfx</exclude>
-				</excludes>
 			</resource>
 		</resources>
 	</build>

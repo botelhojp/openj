@@ -2,17 +2,13 @@
 	<id>open-jade-archetype</id>
 
 	<sources>
-		<source>src/main/java/MyBehaviour.java</source>
 		<source>src/main/java/Mygent.java</source>
 		<source>src/main/java/Boot.java</source>
 	</sources>
 
 	<resources>
-		<resource>src/main/resources/certs/agent1.pfx</resource>
-		<resource>src/main/resources/certs/agent2.pfx</resource>
 		<resource>src/main/resources/META-INF/MANIFEST.MF</resource>
 		<resource>src/main/resources/log4j.xml</resource>
 		<resource>src/main/resources/open-jade-boot.xml</resource>
 	</resources>
-
 </archetype>

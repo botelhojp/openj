@@ -24,6 +24,10 @@
 
 	<repositories>
 		<repository>
+			<id>ppgia</id>
+			<url>http://www.ppgia.pucpr.br/~vanderson/repositories/internal/</url>
+		</repository>
+		<repository>
 			<id>ibiblio</id>
 			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
 		</repository>

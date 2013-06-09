@@ -508,39 +508,60 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	public void sendMessage(String[] listService, int performative, String conversationId, Serializable object) {
+	private void sendMessage(String[] listService, int performative, String conversationId, Serializable object, String content) {
 		for (String service : listService) {
 			java.util.List<AID> aids = getAIDByService(service);
 			for (AID aid : aids) {
-				sendMessage(aid, performative, conversationId, object);
+				sendMessage(aid, performative, conversationId, object, content);
 			}
 		}
 	}
 
-	public void sendMessage(java.util.List<AID> agentList, int performative, String conversationId, Serializable object) {
+	public void sendMessage(java.util.List<AID> agentList, int performative, String conversationId, Serializable object, String content) {
 		for (AID aid : agentList) {
-			sendMessage(aid, performative, conversationId, object);
+			sendMessage(aid, performative, conversationId, object, content);
 		}
 	}
-
+	
 	public void sendMessage(String[] listService, int performative, String conversationId) {
-		sendMessage(listService, performative, conversationId, null);
+		sendMessage(listService, performative, conversationId, null, "");
+	}
+
+	public void sendMessage(String[] listService, int performative, String conversationId, String content) {
+		sendMessage(listService, performative, conversationId, null, content);
 	}
 	
+	public void sendMessage(String[] agentList, int performative, String conversationId, Serializable object) {
+		sendMessage(agentList, performative, conversationId, object, "");
+		
+	}
+
 	public void sendMessage(String _service, int performative, String conversationId) {
-		sendMessage(_service, performative, conversationId, null);
+		sendMessage(_service, performative, conversationId, null, "");
+	}
+	
+	public void sendMessage(String _service, int performative, String conversationId, String content) {
+		sendMessage(_service, performative, conversationId, null, content);
 	}
 
-	public void sendMessage(String _service, int performative, String conversationId, Serializable object) {
+	private void sendMessage(String _service, int performative, String conversationId, Serializable object, String content) {
 		String[] service = { _service };
-		sendMessage(service, performative, conversationId, object);
+		sendMessage(service, performative, conversationId, object, content);
+	}
+	
+	public void sendMessage(String _service, int performative, String conversationId, Serializable object) {
+		sendMessage(_service, performative, conversationId, object, "");
 	}
 
-	public void sendMessage(AID to, int performative, String conversationId) {
-		sendMessage(to, performative, conversationId, null);
+	public void sendMessage(AID to, int performative, String conversationId, String content) {
+		sendMessage(to, performative, conversationId, null, content);
 	}
-
+	
 	public void sendMessage(AID to, int performative, String conversationId, Serializable object) {
+		sendMessage(to, performative, conversationId, object, null);
+	}
+	
+	private void sendMessage(AID to, int performative, String conversationId, Serializable object, String content) {
 		try {
 			ACLMessage message = new ACLMessage(performative);
 			message.setConversationId(conversationId);
@@ -548,6 +569,8 @@ public abstract class OpenAgent extends Agent {
 			message.addReceiver(to);
 			if (object != null) {
 				message.setContentObject(object);
+			}else{
+				message.setContent(content);
 			}
 			sendMessage(message);
 		} catch (IOException e) {

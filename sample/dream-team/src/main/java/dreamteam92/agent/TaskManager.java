@@ -69,6 +69,7 @@ public class TaskManager extends OpenAgent {
 	public void requestTask(ACLMessage message) {
 		sendMessage(message.getSender(), ACLMessage.INFORM, Task.GET_TASK, currentTask);
 	}
+	
 
 	@ReceiveSimpleMessage(conversationId = Task.GET_TASK)
 	public void getTask(ACLMessage message) throws UnreadableException {

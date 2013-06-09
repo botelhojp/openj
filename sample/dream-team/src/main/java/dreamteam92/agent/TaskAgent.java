@@ -54,6 +54,8 @@ public class TaskAgent extends OpenAgent {
 		}
 	}
 
+	
+
 	@ReceiveSimpleMessage(conversationId = Task.DO_TASK)
 	public void doTask(ACLMessage message) throws UnreadableException {
 		Task task = (Task) message.getContentObject();

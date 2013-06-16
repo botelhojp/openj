@@ -6,7 +6,7 @@
 	<groupId>open-jade.archetype</groupId>
 	<artifactId>open-jade-archetype</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>1.0.0-RC-2</version>
 
 	<name>Open Jade - Archetype</name>
 

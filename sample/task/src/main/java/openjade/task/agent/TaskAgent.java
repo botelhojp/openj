@@ -108,6 +108,11 @@ public class TaskAgent extends OpenAgent {
 		return cache.getValue();
 	}
 	
+	/**
+	 * Recebe o pedido para executar uma tarefa
+	 * @param message
+	 * @param ce
+	 */
 	@ReceiveMatchMessage(action = SendTask.class, performative = { ACLMessage.REQUEST }, ontology = TaskOntology.class)
 	public void receiveTaskRequest(ACLMessage message, ContentElement ce) {
 		SendTask action = (SendTask) ce;
@@ -122,6 +127,11 @@ public class TaskAgent extends OpenAgent {
 		}
 	}
 
+	/**
+	 * Recebe mensagem que a tarefa foi executada
+	 * @param message
+	 * @param ce
+	 */
 	@ReceiveMatchMessage(action = SendTask.class, performative = { ACLMessage.CONFIRM }, ontology = TaskOntology.class)
 	public void receiveTaskDone(ACLMessage message, ContentElement ce) {
 		SendTask da = (SendTask) ce;
@@ -133,6 +143,11 @@ public class TaskAgent extends OpenAgent {
 		cache.add(newRating(getAID(), message.getSender(), iteration, trustModel.getName(), satistaction));
 	}
 
+	/**
+	 * Recebe mensagem que a tarafe foi rejeitada
+	 * @param message
+	 * @param ce
+	 */
 	@ReceiveMatchMessage(action = SendTask.class, performative = { ACLMessage.REFUSE }, ontology = TaskOntology.class)
 	public void receiveTaskRefuse(ACLMessage message, ContentElement ce) {
 		log.debug("REFUSE");
@@ -148,6 +163,10 @@ public class TaskAgent extends OpenAgent {
 		sendMessage(msg);
 	}
 
+	/**
+	 * Criar tarefas que deveram ser processadas
+	 * @param count
+	 */
 	private void sendTasks(int count) {
 		for (int i = 0; i < count; i++) {
 			Task task = new Task();
@@ -173,6 +192,9 @@ public class TaskAgent extends OpenAgent {
 		return rating;
 	}
 	
+	/**
+	 * Troca a habilidade do agente
+	 */
 	private void changeAbility() {
 		log.debug("changeAbility");
 		if (ability.getAbilityConfig().equals(AbilityConfig.TERRIBLE)){
@@ -187,8 +209,14 @@ public class TaskAgent extends OpenAgent {
 			ability.setAbilityConfig(AbilityConfig.TERRIBLE);
 		}		
 	}
+	
+	//PARA O MODELO DE CONFIANÇA INDIRETO
 
-	/** FOR INDIRECT MODE **/
+	/**
+	 * Atende uma solicitação para envio das suas avaliações para um determinado AID
+	 * @param message
+	 * @param ce
+	 */
 	@ReceiveMatchMessage(action = RequestRating.class, ontology = OpenJadeOntology.class)
 	public void responseSendRation(ACLMessage message, ContentElement ce) {
 		RequestRating request = (RequestRating) ce;
@@ -207,6 +235,11 @@ public class TaskAgent extends OpenAgent {
 		}
 	}
 
+	/**
+	 * Recebe a avaliacao
+	 * @param message
+	 * @param ce
+	 */
 	@ReceiveMatchMessage(action = SendRating.class, performative={ACLMessage.INFORM}, ontology = OpenJadeOntology.class)
 	public void receptSendRation(ACLMessage message, ContentElement ce) {
 		SendRating sd = (SendRating) ce;

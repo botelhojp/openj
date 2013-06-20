@@ -102,6 +102,10 @@ public class Settings implements Serializable {
 	public double getMonitorIterations() {
 		return Double.parseDouble(prop.getProperty("openjade.trust.gui.monitor.iterations"));
 	}
+	
+	public String getMonitorFileName() {
+		return prop.getProperty("openjade.trust.gui.file.name");
+	}
 
 	// Trust
 	public int getTrust_DirectCacheSize() {

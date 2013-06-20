@@ -12,16 +12,23 @@
 		<priority value="debug"/>
 		<appender-ref ref="CONSOLE" />
 	</category>	
-
-	<category name="openjade.trust"  >
+ 
+	<category name="openjade.task.behaviour"  >
 		<priority value="debug"/>
 		<appender-ref ref="CONSOLE" />
 	</category>
-	
+<!--	
 	<category name="openjade.core.behaviours.SendIterationBehaviour"  >
 		<priority value="debug"/>
 		<appender-ref ref="CONSOLE" />
 	</category>
+ -->
+	<category name="openjade.trust.gui"  >
+		<priority value="debug"/>
+		<appender-ref ref="CONSOLE" />
+	</category>
+	
+	
 	
  
  </log4j:configuration>

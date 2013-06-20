@@ -98,8 +98,11 @@ public class TaskAgent extends OpenAgent {
 	public void onChangeIteration() {
 		cache.setIteration(iteration);
 		sendTasks(5);
-		if (iteration > 1 && iteration % 4 == 0){
-			changeAbility();
+		if (iteration > 1 && iteration % 10 == 0){
+			log.debug("----------------changeAbility----------------");
+			AbilityConfig change = ability.getAbilityConfig().change();
+			log.debug(ability.getAbilityConfig() + ">" + change);
+			ability.setAbilityConfig(change);
 		}
 	}
 	
@@ -192,23 +195,11 @@ public class TaskAgent extends OpenAgent {
 		return rating;
 	}
 	
-	/**
-	 * Troca a habilidade do agente
-	 */
-	private void changeAbility() {
-		log.debug("changeAbility");
-		if (ability.getAbilityConfig().equals(AbilityConfig.TERRIBLE)){
-			ability.setAbilityConfig(AbilityConfig.EXCELLENT);
-		}else if (ability.getAbilityConfig().equals(AbilityConfig.EXCELLENT)){
-			ability.setAbilityConfig(AbilityConfig.GOD);
-		}else if (ability.getAbilityConfig().equals(AbilityConfig.GOD)){
-			ability.setAbilityConfig(AbilityConfig.MODERATE);
-		}else if (ability.getAbilityConfig().equals(AbilityConfig.MODERATE)){
-			ability.setAbilityConfig(AbilityConfig.BAD);
-		}else if (ability.getAbilityConfig().equals(AbilityConfig.BAD)){
-			ability.setAbilityConfig(AbilityConfig.TERRIBLE);
-		}		
-	}
+//	/**
+//	 * Troca as habilidades dos agentes
+//	 */
+//	private void changeAbility() {
+//	}
 	
 	//PARA O MODELO DE CONFIANÇA INDIRETO
 

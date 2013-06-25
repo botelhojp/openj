@@ -1,4 +1,4 @@
-; Sat Apr 13 16:00:56 BRT 2013
+; Mon Jun 24 23:29:08 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -7,6 +7,39 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
+	(single-slot aid
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot iteration
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot signMode
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot server
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot certificate
+		(type INSTANCE)
+;+		(allowed-classes)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot content
+		(type SYMBOL)
+;+		(allowed-parents)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot pkcs7
+		(type INSTANCE)
+;+		(allowed-classes PKCS7Message)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot message
 		(type INSTANCE)
 ;+		(allowed-classes EncryptedMessage)
@@ -16,37 +49,9 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot iteration
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot aid
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot server
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot signMode
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot content
-		(type SYMBOL)
-;+		(allowed-parents)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot certificate
-		(type INSTANCE)
-;+		(allowed-classes)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot pkcs7
-		(type INSTANCE)
-;+		(allowed-classes PKCS7Message)
+	(single-slot value
+;+		(comment "valor da iteração")
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot keyAlgorithm
@@ -79,11 +84,6 @@
 		(type INSTANCE)
 ;+		(allowed-classes Rating)
 		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot value
-;+		(comment "valor da iteração")
-		(type FLOAT)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass RatingAction
@@ -136,11 +136,6 @@
 (defclass Encipher
 	(is-a MessageAction)
 	(role concrete)
-	(single-slot message
-		(type INSTANCE)
-;+		(allowed-classes EncryptedMessage)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot signMode
 		(type INTEGER)
 ;+		(cardinality 0 1)
@@ -152,6 +147,11 @@
 	(single-slot provider
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot message
+		(type INSTANCE)
+;+		(allowed-classes EncryptedMessage)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass ASCLMessage
@@ -170,6 +170,10 @@
 (defclass EncryptedMessage
 	(is-a ASCLMessage)
 	(role concrete)
+	(single-slot keyAlgorithm
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot listContent
 		(type SYMBOL)
 ;+		(allowed-parents)
@@ -178,17 +182,14 @@
 		(type SYMBOL)
 ;+		(allowed-parents)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot keyAlgorithm
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Rating
 	(is-a ASCLMessage)
 	(role concrete)
-	(single-slot term
-		(type STRING)
+	(single-slot value
+;+		(comment "valor da iteração")
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot iteration
@@ -200,13 +201,21 @@
 ;+		(allowed-classes AID)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot value
-;+		(comment "valor da iteração")
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot client
 		(type INSTANCE)
 ;+		(allowed-classes AID)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot term
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Feedback
+	(is-a Concept)
+	(role concrete)
+	(multislot rating
+		(type INSTANCE)
+;+		(allowed-classes Rating)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))

@@ -1,4 +1,4 @@
-; Sat Apr 13 16:00:56 BRT 2013
+; Mon Jun 24 23:29:08 BRT 2013
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -19,6 +19,10 @@
 
 	(%3AJADE-IGNORE FALSE))
 
+([Feedback] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
 ([MessageAction] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
@@ -29,7 +33,7 @@
 
 ([project+annotation] of  %3APROJECT-ANNOTATION
 
-	(%3ALOCATION "/home/vanderson/devvander/puc/workspace/open-jade/src/main/java/")
+	(%3ALOCATION "/home/vanderson/devvander/puc/workspace-open-jade/framework/sample/task/src/main/java/")
 	(%3AONTOLOGYNAME "OpenJade")
 	(%3APACKAGE "openjade.ontology")
 	(%3ASUPPORT "j2se"))

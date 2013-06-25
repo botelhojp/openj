@@ -122,11 +122,7 @@ public class TaskAgent extends OpenAgent {
 		if (ability.addTask(action.getTask())) {
 			tasks.get(TASK_TO_PROCESS).add(action.getTask());
 		} else {
-			ACLMessage msg = new ACLMessage(ACLMessage.REFUSE);
-			msg.setSender(getAID());
-			msg.addReceiver(action.getTask().getTaskSender());
-			fillContent(msg, action, getCodec(), TaskOntology.getInstance());
-			sendMessage(msg);
+			sendMessage(action.getTask().getTaskSender(), ACLMessage.REFUSE, action, TaskOntology.getInstance());
 		}
 	}
 
@@ -143,8 +139,35 @@ public class TaskAgent extends OpenAgent {
 		trustModel.addRating(newRating(getAID(), message.getSender(), iteration, "completed", da.getTask().getCompleted()));
 		trustModel.addRating(newRating(getAID(), message.getSender(), iteration, "points", da.getTask().getPoints()));
 
-		cache.add(newRating(getAID(), message.getSender(), iteration, trustModel.getName(), satistaction));
+		Rating rating = newRating(getAID(), message.getSender(), iteration, trustModel.getName(), satistaction);
+		cache.add(rating);
+		
+		//Envia o feedback para o agende servidor
+		SendRating sendRating = new SendRating();
+		jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
+		ratingList.add(rating);
+		sendRating.setRating(ratingList);
+		
+		sendMessage(message.getSender(), ACLMessage.CONFIRM, sendRating, OpenJadeOntology.getInstance());
 	}
+	
+	
+	/**
+	 * Recebe o feedback
+	 *  //TODO falta tornar o rating cifrado
+	 * @param message
+	 * @param ce
+	 */
+	@ReceiveMatchMessage(action = SendRating.class, performative = { ACLMessage.CONFIRM }, ontology = OpenJadeOntology.class)
+	public void receiveFeedBack(ACLMessage message, ContentElement ce) {
+		SendRating sr = (SendRating) ce;
+		for(int index = 0; index < sr.getRating().size() ; index ++ ){
+			Rating rt = (Rating) sr.getRating().get(index);
+			cache.add(rt);
+			log.debug("recebi feedback: " + rt.toString());
+		}				
+	}
+	
 
 	/**
 	 * Recebe mensagem que a tarafe foi rejeitada
@@ -159,11 +182,7 @@ public class TaskAgent extends OpenAgent {
 	}
 
 	public void sendConfirmTask(SendTask action) {
-		ACLMessage msg = new ACLMessage(ACLMessage.CONFIRM);
-		msg.setSender(getAID());
-		msg.addReceiver(action.getTask().getTaskSender());
-		fillContent(msg, action, getCodec(), TaskOntology.getInstance());
-		sendMessage(msg);
+		sendMessage(action.getTask().getTaskSender(), ACLMessage.CONFIRM, action, TaskOntology.getInstance());
 	}
 
 	/**
@@ -195,11 +214,6 @@ public class TaskAgent extends OpenAgent {
 		return rating;
 	}
 	
-//	/**
-//	 * Troca as habilidades dos agentes
-//	 */
-//	private void changeAbility() {
-//	}
 	
 	//PARA O MODELO DE CONFIANÇA INDIRETO
 
@@ -218,11 +232,7 @@ public class TaskAgent extends OpenAgent {
 			for (Rating r : ratings) {
 				sendRating.addRating(r);
 			}
-			ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-			msg.setSender(getAID());
-			msg.addReceiver(message.getSender());
-			fillContent(msg, sendRating, getCodec(), OpenJadeOntology.getInstance());			
-			sendMessage(msg);
+			sendMessage(message.getSender(), ACLMessage.INFORM, sendRating, OpenJadeOntology.getInstance());
 		}
 	}
 

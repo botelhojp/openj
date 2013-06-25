@@ -29,7 +29,7 @@ import org.bouncycastle.asn1.DLSequence;
 import sun.security.util.DerValue;
 import sun.security.x509.OtherName;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings("all")
 public class OIDGeneric {
 	
 	private String oid  = null;

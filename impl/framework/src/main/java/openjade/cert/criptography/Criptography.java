@@ -1,7 +1,6 @@
 package openjade.cert.criptography;
 
 import jade.util.leap.*;
-import jade.util.leap.Serializable;
 
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -15,6 +14,7 @@ import javax.crypto.NoSuchPaddingException;
 
 import com.sun.crypto.provider.SunJCE;
 
+@SuppressWarnings("all")
 public class Criptography implements Serializable {
 	
 	public static Criptography instance;

@@ -8,6 +8,7 @@ import openjade.cert.bean.CertificateBean;
 import sun.security.pkcs.PKCS7;
 import sun.security.pkcs.ParsingException;
 
+@SuppressWarnings("all")
 public class PKCS7Reader {
 	
 	private X509Certificate certificate;

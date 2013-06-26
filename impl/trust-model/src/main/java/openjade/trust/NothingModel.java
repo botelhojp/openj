@@ -10,6 +10,7 @@ import openjade.trust.model.Pair;
 
 public class NothingModel extends GenericTrustModel {
 
+	//comentario feito na 1.0.0
 	private static final long serialVersionUID = 1L;
 
 	public String getName() {

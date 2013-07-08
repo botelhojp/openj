@@ -63,11 +63,17 @@ public class TaskAgent extends OpenAgent {
 		tasks.put(TASK_TO_COMPLETED, new ArrayList<Task>());
 
 		addBehaviour(ability);
-		trustModel.setAgent(this);
+		
 		log.debug("setup: " + getAID().getLocalName());
 		cache = new RatingCache(1, 10);
+		
+		trustModel.setAgent(this);
+		
+		addService(SERVICE_WORKER);
+		addService(TIMER_LISTENER);
 
-		registerService(SERVICE_WORKER, OpenAgent.TIMER_LISTENER);
+		registerService();
+		
 
 		addBehaviour(new RequestTaskBehaviour(this));
 		addBehaviour(new ResponseTaskBehaviour(this));
@@ -134,18 +140,22 @@ public class TaskAgent extends OpenAgent {
 	@ReceiveMatchMessage(action = SendTask.class, performative = { ACLMessage.CONFIRM }, ontology = TaskOntology.class)
 	public void receiveTaskDone(ACLMessage message, ContentElement ce) {
 		SendTask da = (SendTask) ce;
-		int satistaction = (da.getTask().getCompleted() + da.getTask().getPoints()) / 2;
-
-		trustModel.addRating(newRating(getAID(), message.getSender(), iteration, "completed", da.getTask().getCompleted()));
-		trustModel.addRating(newRating(getAID(), message.getSender(), iteration, "points", da.getTask().getPoints()));
-
-		Rating rating = newRating(getAID(), message.getSender(), iteration, trustModel.getName(), satistaction);
-		cache.add(rating);
 		
-		//Envia o feedback para o agende servidor
+		Rating completed = newRating(getAID(), message.getSender(), iteration, "completed", da.getTask().getCompleted());
+		Rating points = newRating(getAID(), message.getSender(), iteration, "points", da.getTask().getCompleted());
+
+		trustModel.addRating(completed);
+		trustModel.addRating(points);
+
+		cache.add(completed);
+		cache.add(points);
+
+		int satistaction = (da.getTask().getCompleted() + da.getTask().getPoints()) / 2;
+		
+		//Envia o feedback para o agente servidor
 		SendRating sendRating = new SendRating();
 		jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
-		ratingList.add(rating);
+		ratingList.add(newRating(getAID(), message.getSender(), iteration, kdkjlsd, da.getTask().getCompleted()));
 		sendRating.setRating(ratingList);
 		
 		sendMessage(message.getSender(), ACLMessage.CONFIRM, sendRating, OpenJadeOntology.getInstance());
@@ -158,13 +168,13 @@ public class TaskAgent extends OpenAgent {
 	 * @param message
 	 * @param ce
 	 */
-	@ReceiveMatchMessage(action = SendRating.class, performative = { ACLMessage.CONFIRM }, ontology = OpenJadeOntology.class)
+	@ReceiveMatchMessage(action = SendRating.class, ontology = OpenJadeOntology.class)
 	public void receiveFeedBack(ACLMessage message, ContentElement ce) {
 		SendRating sr = (SendRating) ce;
 		for(int index = 0; index < sr.getRating().size() ; index ++ ){
 			Rating rt = (Rating) sr.getRating().get(index);
 			cache.add(rt);
-			log.debug("recebi feedback: " + rt.toString());
+			log.debug("feedback: " + showRating(rt));
 		}				
 	}
 	
@@ -214,7 +224,6 @@ public class TaskAgent extends OpenAgent {
 		return rating;
 	}
 	
-	
 	//PARA O MODELO DE CONFIANÇA INDIRETO
 
 	/**
@@ -233,20 +242,6 @@ public class TaskAgent extends OpenAgent {
 				sendRating.addRating(r);
 			}
 			sendMessage(message.getSender(), ACLMessage.INFORM, sendRating, OpenJadeOntology.getInstance());
-		}
-	}
-
-	/**
-	 * Recebe a avaliacao
-	 * @param message
-	 * @param ce
-	 */
-	@ReceiveMatchMessage(action = SendRating.class, performative={ACLMessage.INFORM}, ontology = OpenJadeOntology.class)
-	public void receptSendRation(ACLMessage message, ContentElement ce) {
-		SendRating sd = (SendRating) ce;
-		for (int i = 0; i < sd.getRating().size(); i++) {
-			Rating rt = (Rating) sd.getRating().get(i);
-			this.trustModel.addRating(rt);
 		}
 	}
 }

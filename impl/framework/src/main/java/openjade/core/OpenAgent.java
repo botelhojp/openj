@@ -92,6 +92,7 @@ public abstract class OpenAgent extends Agent {
 	public static final String LISTENER_TIMER = "openjade.service.listener.timer";
 	public static final String SERVICE_TRUST_MONITOR = "openjade.trust.monitor";
 	public static final String TIMER_LISTENER = "openjade.timer.listener";
+	public static final String TRUSTMODEL_REPUTATION_LISTENER = "openjade.trustmodel.reputation.listener";
 
 	protected KeyStore store;
 	public X509Certificate certificate;
@@ -107,9 +108,11 @@ public abstract class OpenAgent extends Agent {
 	protected AID cms;
 	protected int iteration;
 	protected TrustModel trustModel;
+	protected ArrayList<String> services;
 
 	public OpenAgent() {
 		super();
+		services = new ArrayList<String>();
 		cacheKey = new CacheKey();
 		codec = new LEAPCodec();
 		openJadeOntology = OpenJadeOntology.getInstance();
@@ -459,10 +462,28 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException("createAgent", e);
 		}
 	}
+	
+	public void addService(String service){
+		services.add(service);
+	}
 
 	public void registerService(String... service) {
 		addBehaviour(new RegisterServiceBehaviour(this, service));
 	}
+	
+	protected String showRating(Rating rt) {		
+		return rt.getIteration() + ":" + rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getTerm()+ ":" + rt.getValue();
+	}
+
+	
+	public void registerService() {
+		String[] _services = new String[services.size()];
+		for (int i = 0; i < services.size(); i++) {
+			_services[i] = services.get(i);
+		}
+		registerService(_services);
+	}
+
 
 	public X509Certificate getCertificate() {
 		return certificate;
@@ -570,6 +591,20 @@ public abstract class OpenAgent extends Agent {
 		fillContent(message, action, getCodec(), ontolory);
 		sendMessage(message);
 	}
+	
+	/**
+	 * Enviar uma mensagem composto por um Concept do tipo AgentAction
+	 * @param to Destinatário da mensagem
+	 * @param action Ação
+	 * @param ontolory Ontologia
+	 */
+	public void sendMessage(String service, int performative, AgentAction action, Ontology ontolory) {
+		java.util.List<AID> aids = getAIDByService(service);
+		for (AID aid : aids) {
+			sendMessage(aid, performative, action, ontolory);
+		}
+	}
+
 
 	public void sendMessage(AID to, int performative, String conversationId, Serializable object) {
 		sendMessage(to, performative, conversationId, object, null);

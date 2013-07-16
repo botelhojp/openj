@@ -150,12 +150,13 @@ public class TaskAgent extends OpenAgent {
 		cache.add(completed);
 		cache.add(points);
 
-		int satistaction = (da.getTask().getCompleted() + da.getTask().getPoints()) / 2;
+//		int satistaction = (da.getTask().getCompleted() + da.getTask().getPoints()) / 2;
 		
 		//Envia o feedback para o agente servidor
 		SendRating sendRating = new SendRating();
 		jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
-		ratingList.add(newRating(getAID(), message.getSender(), iteration, kdkjlsd, da.getTask().getCompleted()));
+		ratingList.add(completed);
+		ratingList.add(points);
 		sendRating.setRating(ratingList);
 		
 		sendMessage(message.getSender(), ACLMessage.CONFIRM, sendRating, OpenJadeOntology.getInstance());

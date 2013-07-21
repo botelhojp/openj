@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 /**
  * Classe inicializadora
  * @author vanderson
+ * 
  *
  */
 public class Boot {

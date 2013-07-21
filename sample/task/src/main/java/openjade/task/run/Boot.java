@@ -2,6 +2,11 @@ package openjade.task.run;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Classe inicializadora
+ * @author vanderson
+ *
+ */
 public class Boot {
 	
 	protected static Logger log = Logger.getLogger(Boot.class);

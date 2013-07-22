@@ -16,7 +16,6 @@ import openjade.core.annotation.OnGetUtility;
 import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.Rating;
-import openjade.ontology.RequestRating;
 import openjade.ontology.SendRating;
 import openjade.task.agent.ontology.SendTask;
 import openjade.task.agent.ontology.Task;
@@ -30,11 +29,11 @@ import openjade.trust.TrustModelFactory;
 import org.apache.log4j.Logger;
 
 public class TaskAgent extends OpenAgent {
-	
-	public static final String SERVICE_WORKER = "worker";	
+
+	public static final String SERVICE_WORKER = "worker";
 	public static final String TASK_TO_DELEGATE = "TASK_TODO";
 	public static final String TASK_TO_PROCESS = "TASK_TO_PROCESS";
-	public static final String TASK_TO_COMPLETED = "TASK_TO_COMPLETED";	
+	public static final String TASK_TO_COMPLETED = "TASK_TO_COMPLETED";
 	public static final String STATUS_DONE = "DONE";
 	public static final String STATUS_NEW = "NEW";
 
@@ -63,17 +62,16 @@ public class TaskAgent extends OpenAgent {
 		tasks.put(TASK_TO_COMPLETED, new ArrayList<Task>());
 
 		addBehaviour(ability);
-		
+
 		log.debug("setup: " + getAID().getLocalName());
 		cache = new RatingCache(1, 10);
-		
+
 		trustModel.setAgent(this);
-		
+
 		addService(SERVICE_WORKER);
 		addService(TIMER_LISTENER);
 
 		registerService();
-		
 
 		addBehaviour(new RequestTaskBehaviour(this));
 		addBehaviour(new ResponseTaskBehaviour(this));
@@ -99,26 +97,27 @@ public class TaskAgent extends OpenAgent {
 	 * 
 	 * @param message
 	 * @param ce
-	 */	
+	 */
 	@OnChangeIteration
 	public void onChangeIteration() {
 		cache.setIteration(iteration);
 		sendTasks(5);
-		if (iteration > 1 && iteration % 10 == 0){
+		if (iteration > 1 && iteration % 10 == 0) {
 			log.debug("----------------changeAbility----------------");
 			AbilityConfig change = ability.getAbilityConfig().change();
 			log.debug(ability.getAbilityConfig() + ">" + change);
 			ability.setAbilityConfig(change);
 		}
 	}
-	
+
 	@OnGetUtility
 	public Float getUtility(long iteration) {
 		return cache.getValue();
 	}
-	
+
 	/**
 	 * Recebe o pedido para executar uma tarefa
+	 * 
 	 * @param message
 	 * @param ce
 	 */
@@ -134,13 +133,14 @@ public class TaskAgent extends OpenAgent {
 
 	/**
 	 * Recebe mensagem que a tarefa foi executada
+	 * 
 	 * @param message
 	 * @param ce
 	 */
 	@ReceiveMatchMessage(action = SendTask.class, performative = { ACLMessage.CONFIRM }, ontology = TaskOntology.class)
 	public void receiveTaskDone(ACLMessage message, ContentElement ce) {
 		SendTask da = (SendTask) ce;
-		
+
 		Rating completed = newRating(getAID(), message.getSender(), iteration, "completed", da.getTask().getCompleted());
 		Rating points = newRating(getAID(), message.getSender(), iteration, "points", da.getTask().getCompleted());
 
@@ -150,38 +150,52 @@ public class TaskAgent extends OpenAgent {
 		cache.add(completed);
 		cache.add(points);
 
-//		int satistaction = (da.getTask().getCompleted() + da.getTask().getPoints()) / 2;
-		
-		//Envia o feedback para o agente servidor
-		SendRating sendRating = new SendRating();
-		jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
-		ratingList.add(completed);
-		ratingList.add(points);
-		sendRating.setRating(ratingList);
-		
-		sendMessage(message.getSender(), ACLMessage.CONFIRM, sendRating, OpenJadeOntology.getInstance());
+		// int satistaction = (da.getTask().getCompleted() +
+		// da.getTask().getPoints()) / 2;
+
+		// Envia o feedback para o agente servidor
+		//TODO o codoigo abaixo será usado para o modelo indireco
+//		SendRating sendRating = new SendRating();
+//		jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
+//		ratingList.add(completed);
+//		ratingList.add(points);
+//		sendRating.setRating(ratingList);
+//
+//		sendMessage(message.getSender(), ACLMessage.INFORM, sendRating, OpenJadeOntology.getInstance());
 	}
-	
-	
+
 	/**
-	 * Recebe o feedback
-	 *  //TODO falta tornar o rating cifrado
+	 * Recebe o feedback //TODO falta tornar o rating cifrado
+	 * 
 	 * @param message
 	 * @param ce
 	 */
-	@ReceiveMatchMessage(action = SendRating.class, ontology = OpenJadeOntology.class)
-	public void receiveFeedBack(ACLMessage message, ContentElement ce) {
+	//TODO este codigo será usado para o modelo indireco
+//	@ReceiveMatchMessage(action = SendRating.class, performative = { ACLMessage.INFORM }, ontology = OpenJadeOntology.class)
+//	public void receiveFeedBack(ACLMessage message, ContentElement ce) {
+//		SendRating sr = (SendRating) ce;
+//		for (int index = 0; index < sr.getRating().size(); index++) {
+//			Rating rt = (Rating) sr.getRating().get(index);
+//			cache.add(rt);
+//			this.trustModel.addRating(rt);
+//			log.debug("feedback: " + showRating(rt));
+//		}
+//	}
+	
+	@ReceiveMatchMessage(action = SendRating.class, performative = { ACLMessage.AGREE }, ontology = OpenJadeOntology.class)
+	public void getRatingByReputation(ACLMessage message, ContentElement ce) {
 		SendRating sr = (SendRating) ce;
-		for(int index = 0; index < sr.getRating().size() ; index ++ ){
+		for (int index = 0; index < sr.getRating().size(); index++) {
 			Rating rt = (Rating) sr.getRating().get(index);
 			cache.add(rt);
+			this.trustModel.addRating(rt);
 			log.debug("feedback: " + showRating(rt));
-		}				
+		}
 	}
-	
 
 	/**
 	 * Recebe mensagem que a tarafe foi rejeitada
+	 * 
 	 * @param message
 	 * @param ce
 	 */
@@ -192,12 +206,15 @@ public class TaskAgent extends OpenAgent {
 		cache.add(newRating(getAID(), message.getSender(), iteration, "Refuse", 1.0F));
 	}
 
+
+
 	public void sendConfirmTask(SendTask action) {
 		sendMessage(action.getTask().getTaskSender(), ACLMessage.CONFIRM, action, TaskOntology.getInstance());
 	}
 
 	/**
 	 * Criar tarefas que deveram ser processadas
+	 * 
 	 * @param count
 	 */
 	private void sendTasks(int count) {
@@ -224,25 +241,29 @@ public class TaskAgent extends OpenAgent {
 		rating.setValue(_value);
 		return rating;
 	}
-	
-	//PARA O MODELO DE CONFIANÇA INDIRETO
+
+	// PARA O MODELO DE CONFIANÇA INDIRETO
 
 	/**
-	 * Atende uma solicitação para envio das suas avaliações para um determinado AID
+	 * Atende uma solicitação para envio das suas avaliações para um determinado
+	 * AID
+	 * 
 	 * @param message
 	 * @param ce
 	 */
-	@ReceiveMatchMessage(action = RequestRating.class, ontology = OpenJadeOntology.class)
-	public void responseSendRation(ACLMessage message, ContentElement ce) {
-		RequestRating request = (RequestRating) ce;
-		AID aid = request.getAid();
-		List<Rating> ratings = trustModel.getRatings(aid);
-		if (ratings != null && !ratings.isEmpty()) {
-			SendRating sendRating = new SendRating();
-			for (Rating r : ratings) {
-				sendRating.addRating(r);
-			}
-			sendMessage(message.getSender(), ACLMessage.INFORM, sendRating, OpenJadeOntology.getInstance());
-		}
-	}
+	// @ReceiveMatchMessage(action = RequestRating.class, ontology =
+	// OpenJadeOntology.class)
+	// public void responseSendRation(ACLMessage message, ContentElement ce) {
+	// RequestRating request = (RequestRating) ce;
+	// AID aid = request.getAid();
+	// List<Rating> ratings = trustModel.getRatings(aid);
+	// if (ratings != null && !ratings.isEmpty()) {
+	// SendRating sendRating = new SendRating();
+	// for (Rating r : ratings) {
+	// sendRating.addRating(r);
+	// }
+	// sendMessage(message.getSender(), ACLMessage.INFORM, sendRating,
+	// OpenJadeOntology.getInstance());
+	// }
+	// }
 }

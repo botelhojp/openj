@@ -471,7 +471,7 @@ public abstract class OpenAgent extends Agent {
 		addBehaviour(new RegisterServiceBehaviour(this, service));
 	}
 	
-	protected String showRating(Rating rt) {		
+	public String showRating(Rating rt) {		
 		return rt.getIteration() + ":" + rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getTerm()+ ":" + rt.getValue();
 	}
 
@@ -592,6 +592,15 @@ public abstract class OpenAgent extends Agent {
 		sendMessage(message);
 	}
 	
+	public void sendMessage(AID to, int performative, String conversationId, AgentAction action, Ontology ontolory) {
+		ACLMessage message = new ACLMessage(performative);
+		message.setSender(this.getAID());
+		message.addReceiver(to);
+		message.setConversationId(conversationId);
+		fillContent(message, action, getCodec(), ontolory);
+		sendMessage(message);
+	}
+	
 	/**
 	 * Enviar uma mensagem composto por um Concept do tipo AgentAction
 	 * @param to Destinatário da mensagem
@@ -602,6 +611,14 @@ public abstract class OpenAgent extends Agent {
 		java.util.List<AID> aids = getAIDByService(service);
 		for (AID aid : aids) {
 			sendMessage(aid, performative, action, ontolory);
+		}
+	}
+	
+	
+	public void sendMessage(String service, int performative, String conversationId, AgentAction action, Ontology ontolory) {
+		java.util.List<AID> aids = getAIDByService(service);
+		for (AID aid : aids) {
+			sendMessage(aid, performative, conversationId, action, ontolory);
 		}
 	}
 

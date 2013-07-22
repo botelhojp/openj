@@ -1,6 +1,7 @@
 package openjade.trust;
 
 import jade.core.AID;
+import jade.lang.acl.ACLMessage;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +11,9 @@ import java.util.List;
 
 import openjade.core.OpenAgent;
 import openjade.core.RatingCache;
+import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.Rating;
+import openjade.ontology.SendRating;
 import openjade.setting.Settings;
 import openjade.trust.model.Pair;
 
@@ -43,6 +46,16 @@ public abstract class GenericTrustModel implements TrustModel {
 			ratingHash.put(rating.getServer(), cache);
 		} else {
 			ratingHash.get(rating.getServer()).add(rating);
+		}
+		
+//		super.addRating(rating);
+		if (rating.getClient().equals(myAgent.getAID())){
+			//Envia sua avaliacao ao grupo de listener
+			SendRating sendRating = new SendRating();
+			jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
+			ratingList.add(rating);
+			sendRating.setRating(ratingList);
+			myAgent.sendMessage(OpenAgent.TRUSTMODEL_REPUTATION_LISTENER, ACLMessage.AGREE, sendRating, OpenJadeOntology.getInstance());
 		}
 	}
 

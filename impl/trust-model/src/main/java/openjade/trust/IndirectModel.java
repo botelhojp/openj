@@ -1,10 +1,7 @@
 package openjade.trust;
 
-import jade.lang.acl.ACLMessage;
 import openjade.core.OpenAgent;
-import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.Rating;
-import openjade.ontology.SendRating;
 
 public class IndirectModel extends GenericTrustModel {
 

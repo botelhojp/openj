@@ -145,4 +145,8 @@ public class Settings implements Serializable {
 		return null;
 	}
 
+	public float getRatingSpeed() {
+		return Float.parseFloat(prop.getProperty("openjade.rating.speed"));
+	}
+
 }

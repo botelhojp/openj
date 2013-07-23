@@ -7,12 +7,15 @@ import java.util.Hashtable;
 import java.util.List;
 
 import openjade.ontology.Rating;
+import openjade.setting.Settings;
 
 import org.bouncycastle.crypto.RuntimeCryptoException;
 
 public class RatingCache implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	private static float speed = Settings.getInstance().getRatingSpeed();
 
 	private int cacheIteration;
 	private int minIteration;
@@ -80,12 +83,16 @@ public class RatingCache implements Serializable {
 			List<Rating> list = cache.get(key);
 			for (Rating rating : list) {
 				count++;
-				sum += rating.getValue();
+				//Uso da funcao exponencial 
+				float delta = (this.iteration - rating.getIteration()) * speed;
+				sum += (float) (rating.getValue() / Math.exp(delta));
 			}
 			if (count == 0.0F) {
 				throw new RuntimeException("Empty Cache");
 			}
 		}
+		
+					
 		return (sum == 0.0F) ? 0.0F : sum / count;
 	}
 	

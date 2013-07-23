@@ -93,7 +93,7 @@ public abstract class OpenAgent extends Agent {
 	public static final String SERVICE_TRUST_MONITOR = "openjade.trust.monitor";
 	public static final String TIMER_LISTENER = "openjade.timer.listener";
 	public static final String TRUSTMODEL_REPUTATION_LISTENER = "openjade.trustmodel.reputation.listener";
-
+	
 	protected KeyStore store;
 	public X509Certificate certificate;
 	protected CertificateBean certificateBean;
@@ -165,7 +165,8 @@ public abstract class OpenAgent extends Agent {
 			}
 		}
 	}
-
+	
+	
 	private void callOnChangeInteration() {
 		try {
 			Method[] methods = getClass().getMethods();

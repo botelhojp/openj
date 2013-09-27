@@ -165,7 +165,9 @@ public class RatingCacheTest {
 			assertEquals(mc.getValue(2, "a"), 1.0F, 0F);
 			assertEquals(mc.getValue(2, "b"), 4.0F, 0F);
 			
-			assertEquals(mc.getValue(), 16.5F, 0F);
+			
+			
+			assertEquals(15.07256031036377, mc.getValue(), 0F);
 
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -185,18 +187,18 @@ public class RatingCacheTest {
 			mc.setIteration(2);
 			mc.add(newRating(2, "a", 4.0F));
 			mc.add(newRating(2, "b", 10.0F));
-			assertEquals(mc.getValue(), 6.0F, 0F);
+			assertEquals(5.762093544006348, mc.getValue(), 0F);
 
 			mc.setIteration(3);
 			mc.add(newRating(3, "a", 0F));
 			mc.add(newRating(3, "b", 0F));
-			assertEquals(mc.getValue(), 4.0F, 0F);
+			assertEquals(3.4758384227752686F, mc.getValue(), 0F);
 
 			//sera desconsiderados a iteracao 1
 			mc.setIteration(4);
 			mc.add(newRating(4, "a", 4F));
 			mc.add(newRating(4, "b", 0F));
-			assertEquals(mc.getValue(), 3.0F, 0F);
+			assertEquals(2.577038526535034F, mc.getValue(), 0F);
 
 			
 

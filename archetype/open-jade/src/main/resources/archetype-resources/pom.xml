@@ -10,11 +10,16 @@
 	<name>${artifactId}</name>
 	<description>Descrição do ${artifactId}</description>
 
+	<parent>
+		<groupId>open-jade.parent</groupId>
+		<artifactId>open-jade-parent</artifactId>
+		<version>#{parent.version}</version>
+	</parent>
+
 	<dependencies>
 		<dependency>
 			<groupId>open-jade</groupId>
 			<artifactId>open-jade</artifactId>
-			<version>1.0.0-RC-2</version>
 		</dependency>
 	</dependencies>
 	<build>

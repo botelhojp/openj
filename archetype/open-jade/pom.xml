@@ -6,21 +6,14 @@
 	<groupId>open-jade.archetype</groupId>
 	<artifactId>open-jade-archetype</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-RC-2</version>
 
-	<name>Open Jade - Archetype</name>
+	<name>Open Jade - Archetype</name> 
 
 	<parent>
 		<groupId>open-jade.parent</groupId>
 		<artifactId>open-jade-parent</artifactId>
-		<version>1</version>
+		<version>1.0.0</version>
 	</parent>
-
-	<!-- <build> <resources> <resource> <directory>src/main/resources</directory> 
-		<filtering>true</filtering> <includes> <include>**/*.xml</include> <include>**/*.java</include> 
-		</includes> </resource> <resource> <directory>src/main/resources</directory> 
-		<filtering>false</filtering> <excludes> <exclude>**/*.pfx</exclude> </excludes> 
-		</resource> </resources> </build> -->
 
 	<build>
 		<resources>
@@ -29,5 +22,17 @@
 				<filtering>false</filtering>
 			</resource>
 		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<delimiters>
+						<delimiter>#{*}</delimiter>
+					</delimiters>
+					<useDefaultDelimiters>false</useDefaultDelimiters>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

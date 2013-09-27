@@ -5,7 +5,6 @@
 
 	<groupId>open-jade.parent</groupId>
 	<artifactId>parent-agregator</artifactId>
-	<version>1</version>
 	<packaging>pom</packaging>
 
 	<name>Open Jade - Parent Agregator</name>

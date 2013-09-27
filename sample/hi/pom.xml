@@ -3,14 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open-jade.sample</groupId>
 	<artifactId>sample-hi</artifactId>
-	<version>1.0.0</version>
 
 	<name>Open Jade - Sample: Hi</name>
 
 	<parent>
 		<groupId>open-jade.parent</groupId>
 		<artifactId>open-jade-parent</artifactId>
-		<version>1</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<dependencies>

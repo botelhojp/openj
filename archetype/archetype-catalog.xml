@@ -7,7 +7,7 @@
 		<archetype>
 			<groupId>open-jade.archetype</groupId>
 			<artifactId>open-jade-archetype</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1-SNAPSHOT</version>
 			<repository>http://www.ppgia.pucpr.br/~vanderson/repositories/internal/</repository>
 		</archetype>
 	</archetypes>

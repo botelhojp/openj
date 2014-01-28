@@ -3,8 +3,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>open-jade.parent</groupId>
-	<artifactId>open-jade-parent</artifactId>
+	<groupId>openj.parent</groupId>
+	<artifactId>openj-parent</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -13,7 +13,7 @@
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
-		<openjade.release.version>1.0.0</openjade.release.version>
+		<openjade.release.version>${project.version}</openjade.release.version>
 	</properties>
 
 	<licenses>
@@ -69,13 +69,13 @@
 
 			<!-- Open Jade -->
 			<dependency>
-				<groupId>open-jade</groupId>
-				<artifactId>open-jade</artifactId>
+				<groupId>openj</groupId>
+				<artifactId>openj-framework</artifactId>
 				<version>${openjade.release.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>open-jade</groupId>
-				<artifactId>trust-model</artifactId>
+				<groupId>openj</groupId>
+				<artifactId>openj-trust-model</artifactId>
 				<version>${openjade.release.version}</version>
 			</dependency>
 

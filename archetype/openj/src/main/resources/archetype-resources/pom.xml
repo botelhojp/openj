@@ -11,15 +11,15 @@
 	<description>Descrição do ${artifactId}</description>
 
 	<parent>
-		<groupId>open-jade.parent</groupId>
-		<artifactId>open-jade-parent</artifactId>
+		<groupId>openj.parent</groupId>
+		<artifactId>openj-parent</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>open-jade</groupId>
-			<artifactId>open-jade</artifactId>
+			<groupId>openj</groupId>
+			<artifactId>openj</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

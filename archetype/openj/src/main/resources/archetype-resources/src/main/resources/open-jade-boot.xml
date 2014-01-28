@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<open-jade>
+<openj>
 	<containers>
 		<container>-gui -local-host 127.0.0.1</container>
 		<container>-local-host 127.0.0.1 -container -container-name Hi-Container agent1:${packageName}.Mygent</container>
 		<container>-local-host 127.0.0.1 -container -container-name Hi-Container agent2:${packageName}.Mygent</container>
 	</containers>
-</open-jade>
+</openj>

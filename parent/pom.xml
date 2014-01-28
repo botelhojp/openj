@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>open-jade.parent</groupId>
+	<groupId>openj.parent</groupId>
 	<artifactId>parent-agregator</artifactId>
 	<packaging>pom</packaging>
 
@@ -11,7 +11,7 @@
 
 	<modules>
 		<module>base</module>
-		<module>open-jade</module>
+		<module>openj</module>
 		<module>sample</module>
 	</modules>
 

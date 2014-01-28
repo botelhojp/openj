@@ -5,8 +5,8 @@
 	xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-catalog/1.0.0 http://maven.apache.org/xsd/archetype-catalog-1.0.0.xsd">
 	<archetypes>
 		<archetype>
-			<groupId>open-jade.archetype</groupId>
-			<artifactId>open-jade-archetype</artifactId>
+			<groupId>openj.archetype</groupId>
+			<artifactId>openj-archetype</artifactId>
 			<version>1.0.1-SNAPSHOT</version>
 			<repository>http://www.ppgia.pucpr.br/~vanderson/repositories/internal/</repository>
 		</archetype>

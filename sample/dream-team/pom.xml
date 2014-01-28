@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>open-jade.sample</groupId>
+	<groupId>openj.sample</groupId>
 	<artifactId>sample-dream-team-92</artifactId>
 
 	<name>Open Jade - Sample: Dream Team</name>
@@ -11,19 +11,20 @@
 	</properties>
 
 	<parent>
-		<groupId>open-jade.parent</groupId>
-		<artifactId>open-jade-parent</artifactId>
+		<groupId>openj.parent</groupId>
+		<artifactId>openj-parent</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>open-jade</groupId>
-			<artifactId>open-jade</artifactId>
+			<groupId>openj</groupId>
+			<artifactId>openj-framework</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>open-jade</groupId>
-			<artifactId>trust-model</artifactId>
+			<groupId>openj</groupId>
+			<artifactId>openj-trust-model</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>

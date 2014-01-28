@@ -3,15 +3,15 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>open-jade.archetype</groupId>
-	<artifactId>open-jade-archetype</artifactId>
+	<groupId>openj.archetype</groupId>
+	<artifactId>openj-archetype</artifactId>
 	<packaging>jar</packaging>
 
 	<name>Open Jade - Archetype</name>
 
 	<parent>
-		<groupId>open-jade.parent</groupId>
-		<artifactId>open-jade-parent</artifactId>
+		<groupId>openj.parent</groupId>
+		<artifactId>openj-parent</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 

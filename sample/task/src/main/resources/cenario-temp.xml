@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<open-jade>
+<openj>
 	<containers>
 		<container>-gui -local-host 127.0.0.1 -monitor</container>
 		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_007:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.DirectModel,TERRIBLE)</container>
@@ -7,4 +7,4 @@
 		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_009:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.IndirectModel,TERRIBLE)</container>
 		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_010:openjade.task.agent.TaskAgent(Agents-Container,openjade.trust.IndirectModel,TERRIBLE)</container>
 	</containers>
-</open-jade>
+</openj>

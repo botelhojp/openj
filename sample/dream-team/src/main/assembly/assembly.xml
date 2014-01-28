@@ -13,12 +13,6 @@
 			<useProjectArtifact>true</useProjectArtifact>
 			<useProjectAttachments>true</useProjectAttachments>
 			<unpack>true</unpack>
-			<excludes>
-				<exclude>junit:junit</exclude>
-			</excludes>
-			<includes>
-				<include>**</include>
-			</includes>
 		</dependencySet>
 	</dependencySets>
 	<files>

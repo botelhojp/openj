@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<open-jade>
+<openj>
 	<containers>
 		<container>-gui -local-host 127.0.0.1 -monitor</container>
 		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_001:openjade.task.agent.SignerTaskAgent(/certs/agent_001.pfx,123456,Agents-Container,openjade.trust.DirectModel,TERRIBLE)</container>
@@ -13,4 +13,4 @@
 		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_009:openjade.task.agent.SignerTaskAgent(/certs/agent_009.pfx,123456,Agents-Container,openjade.trust.NothingModel,GOD)</container>
 		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_010:openjade.task.agent.SignerTaskAgent(/certs/agent_010.pfx,123456,Agents-Container,openjade.trust.IndirectModel,TERRIBLE)</container>
 	</containers>
-</open-jade>
+</openj>

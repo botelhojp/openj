@@ -9,11 +9,11 @@
 	<packaging>pom</packaging>
 
 	<name>Open Jade - Parent Base</name>
-	<url>https://github.com/botelhojp/framework</url>
+	<url>https://github.com/botelhojp/openj</url>
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
-		<openjade.release.version>${project.version}</openjade.release.version>
+		<openjade.release.version>1.0.1-SNAPSHOT</openjade.release.version>
 	</properties>
 
 	<licenses>

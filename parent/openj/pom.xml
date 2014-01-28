@@ -1,11 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>openj.parent</groupId>
 	<artifactId>openj-parent</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 
 	<name>Open Jade - Parent Base</name>
@@ -13,7 +12,7 @@
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
-		<openjade.release.version>1.0.1-SNAPSHOT</openjade.release.version>
+		<openjade.release.version>1.0.1</openjade.release.version>
 	</properties>
 
 	<licenses>

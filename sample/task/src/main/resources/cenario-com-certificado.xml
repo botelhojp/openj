@@ -2,15 +2,15 @@
 <openj>
 	<containers>
 		<container>-gui -local-host 127.0.0.1 -monitor</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_001:openjade.task.agent.SignerTaskAgent(/certs/agent_001.pfx,123456,Agents-Container,openjade.trust.DirectModel,TERRIBLE)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_002:openjade.task.agent.SignerTaskAgent(/certs/agent_002.pfx,123456,Agents-Container,openjade.trust.DirectModel,GOD)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_003:openjade.task.agent.SignerTaskAgent(/certs/agent_003.pfx,123456,Agents-Container,openjade.trust.DirectModel,TERRIBLE)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_004:openjade.task.agent.SignerTaskAgent(/certs/agent_004.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_005:openjade.task.agent.SignerTaskAgent(/certs/agent_005.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_006:openjade.task.agent.SignerTaskAgent(/certs/agent_006.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_007:openjade.task.agent.SignerTaskAgent(/certs/agent_007.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_008:openjade.task.agent.SignerTaskAgent(/certs/agent_008.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_009:openjade.task.agent.SignerTaskAgent(/certs/agent_009.pfx,123456,Agents-Container,openjade.trust.NothingModel,GOD)</container>
-		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_010:openjade.task.agent.SignerTaskAgent(/certs/agent_010.pfx,123456,Agents-Container,openjade.trust.IndirectModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_001:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_001.pfx,123456,Agents-Container,openjade.trust.DirectModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_002:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_002.pfx,123456,Agents-Container,openjade.trust.DirectModel,GOD)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_003:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_003.pfx,123456,Agents-Container,openjade.trust.DirectModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_004:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_004.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_005:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_005.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_006:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_006.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_007:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_007.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_008:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_008.pfx,123456,Agents-Container,openjade.trust.NothingModel,TERRIBLE)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_009:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_009.pfx,123456,Agents-Container,openjade.trust.NothingModel,GOD)</container>
+		<container>-local-host 127.0.0.1 -container -container-name Agents-Container agent_010:lesma.model.direct.agent.SignerTaskAgent(/certs/agent_010.pfx,123456,Agents-Container,openjade.trust.IndirectModel,TERRIBLE)</container>
 	</containers>
 </openj>

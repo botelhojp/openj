@@ -15,6 +15,5 @@
 		<module>archetype/openj</module>		
 		<module>impl/framework</module>
 		<module>impl/certbuilder</module>
-		<module>impl/trust-model</module>
 	</modules>
 </project>

@@ -12,7 +12,8 @@
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
-		<openjade.release.version>1.0.1</openjade.release.version>
+		<openj.release.version>1.0.3-SNAPSHOT</openj.release.version>
+		<release.goals>deploy wagon:upload</release.goals>
 	</properties>
 
 	<licenses>
@@ -69,12 +70,12 @@
 			<dependency>
 				<groupId>openj</groupId>
 				<artifactId>openj-framework</artifactId>
-				<version>${openjade.release.version}</version>
+				<version>${openj.release.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>openj</groupId>
 				<artifactId>openj-trust-model</artifactId>
-				<version>${openjade.release.version}</version>
+				<version>${openj.release.version}</version>
 			</dependency>
 
 			<!-- Certificate -->

@@ -12,7 +12,7 @@
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
-		<openj.release.version>1.1.0</openj.release.version>
+		<openj.release.version>1.1.1-SNAPSHOT</openj.release.version>
 		<release.goals>deploy wagon:upload</release.goals>
 	</properties>
 
@@ -72,12 +72,6 @@
 				<artifactId>openj-framework</artifactId>
 				<version>${openj.release.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>openj</groupId>
-				<artifactId>openj-trust-model</artifactId>
-				<version>${openj.release.version}</version>
-			</dependency>
-
 			<!-- Certificate -->
 			<dependency>
 				<groupId>org.bouncycastle</groupId>

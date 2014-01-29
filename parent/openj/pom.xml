@@ -4,7 +4,7 @@
 
 	<groupId>openj.parent</groupId>
 	<artifactId>openj-parent</artifactId>
-	<version>1.0.5-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<packaging>pom</packaging>
 
 	<name>Open Jade - Parent Base</name>
@@ -12,7 +12,7 @@
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
-		<openj.release.version>1.0.5-SNAPSHOT</openj.release.version>
+		<openj.release.version>1.1.0</openj.release.version>
 		<release.goals>deploy wagon:upload</release.goals>
 	</properties>
 

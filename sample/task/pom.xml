@@ -9,17 +9,13 @@
 	<parent>
 		<groupId>openj.parent</groupId>
 		<artifactId>openj-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>1.0.5-SNAPSHOT</version>
 	</parent>
 
 	<dependencies>
 		<dependency>
 			<groupId>openj</groupId>
 			<artifactId>openj-framework</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>openj</groupId>
-			<artifactId>openj-trust-model</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

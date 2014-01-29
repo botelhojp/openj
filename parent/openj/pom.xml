@@ -12,7 +12,7 @@
 
 	<properties>
 		<encoding.default>UTF-8</encoding.default>
-		<openj.release.version>#{project.version}</openj.release.version>
+		<openj.release.version>1.0.5-SNAPSHOT</openj.release.version>
 		<release.goals>deploy wagon:upload</release.goals>
 	</properties>
 
@@ -134,16 +134,6 @@
 	</distributionManagement>
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<configuration>
-					<delimiters>
-						<delimiter>#{*}</delimiter>
-					</delimiters>
-					<useDefaultDelimiters>false</useDefaultDelimiters>
-				</configuration>
-			</plugin>		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>

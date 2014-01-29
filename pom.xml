@@ -20,6 +20,18 @@
 		<url>scm:git:git@github.com:botelhojp/openj.git</url>
 		<developerConnection>scm:git:git@github.com:botelhojp/openj.git</developerConnection>
 	</scm>
+	<distributionManagement>
+		<repository>
+			<id>ppgia.internal</id>
+			<name>Repositorio Interno</name>
+			<url>scp://hercules.ppgia.pucpr.br/home2/doutorado/2013/vanderson/public_html/repositories/internal</url>
+		</repository>
+		<snapshotRepository>
+			<id>ppgia.snapshots</id>
+			<name>Repositorio Interno</name>
+			<url>scp://hercules.ppgia.pucpr.br/home2/doutorado/2013/vanderson/public_html/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>

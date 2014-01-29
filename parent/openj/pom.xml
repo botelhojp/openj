@@ -21,13 +21,6 @@
 			<url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
 		</license>
 	</licenses>
-
-	<scm>
-		<connection>scm:git:git@github.com:botelhojp/openj.git</connection>
-		<url>scm:git:git@github.com:botelhojp/openj.git</url>
-		<developerConnection>scm:git:git@github.com:botelhojp/openj.git</developerConnection>
-	</scm>
-
 	<repositories>
 		<repository>
 			<id>ppgia</id>
@@ -126,7 +119,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<distributionManagement>
 		<repository>
 			<id>ppgia.internal</id>
@@ -139,7 +131,6 @@
 			<url>scp://hercules.ppgia.pucpr.br/home2/doutorado/2013/vanderson/public_html/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-
 	<build>
 		<plugins>
 			<plugin>

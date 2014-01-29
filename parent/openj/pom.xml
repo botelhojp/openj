@@ -4,7 +4,7 @@
 
 	<groupId>openj.parent</groupId>
 	<artifactId>openj-parent</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<packaging>pom</packaging>
 
 	<name>Open Jade - Parent Base</name>

@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>openj.parent</groupId>
 		<artifactId>openj-parent</artifactId>
-		<version>1.0.4-SNAPSHOT</version>
+		<version>1.0.4</version>
 	</parent>
 
 	<dependencies>

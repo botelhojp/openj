@@ -5,11 +5,8 @@
 	<artifactId>open-jade-build</artifactId>
 	<version>1.0.0</version>
 	<packaging>pom</packaging>
-
 	<name>Open Jade - Build</name>
-	
 	<description>Open Jade Build</description>
-	
 	<modules>
 		<module>parent/open-jade</module>
 		<module>archetype/open-jade</module>		

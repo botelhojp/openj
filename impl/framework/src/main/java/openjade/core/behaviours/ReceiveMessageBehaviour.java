@@ -80,5 +80,6 @@ public class ReceiveMessageBehaviour extends CyclicBehaviour {
 				throw new BehaviourException(e.getMessage(), e);
 			}
 		}
+		block();
 	}
 }

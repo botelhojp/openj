@@ -8,6 +8,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import openjade.ontology.OpenJadeOntology;
+
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = { ElementType.METHOD })
@@ -16,7 +18,7 @@ public @interface ReceiveMatchMessage {
 
 	Class action();
 
-	Class ontology();
+	Class ontology() default OpenJadeOntology.class;
 
 	Class codec() default LEAPCodec.class;
 

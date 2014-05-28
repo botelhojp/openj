@@ -61,16 +61,16 @@ public class ReceiveMessageBehaviour extends CyclicBehaviour {
 						getInstance.setAccessible(true);
 						Ontology ontology = (Ontology) getInstance.invoke(null);
 						Codec codec = (Codec) messageMatch.codec().newInstance();
-						MessageTemplate messageTemplate = MessageTemplate.and(MessageTemplate.MatchLanguage(codec.getName()), MessageTemplate.MatchOntology(ontology.getName()));
-						if (messageTemplate.match(message)) {
-							ContentElement ce = myAgent.extractContent(message, codec, ontology);
-							if (messageMatch.action().isInstance(ce)) {
-								int[] performatives = messageMatch.performative();
-								for (int performative : performatives) {
-									if (message.getPerformative() == performative) {
-										method.invoke(myAgent, message, ce);
-										return;
-									}
+						String[] conversationsId = messageMatch.conversationId();
+						int[] performatives = messageMatch.performative();
+						for (String conversationId : conversationsId) {
+							for (int performative : performatives) {								
+								MessageTemplate mt1 = MessageTemplate.and(MessageTemplate.MatchLanguage(codec.getName()), MessageTemplate.MatchOntology(ontology.getName()));
+								MessageTemplate mt2 = MessageTemplate.and(MessageTemplate.MatchPerformative(performative), MessageTemplate.MatchConversationId(conversationId));
+								if (MessageTemplate.and(mt1, mt2).match(message)) {
+									ContentElement ce = myAgent.extractContent(message, codec, ontology);
+									method.invoke(myAgent, message, ce);
+									return;
 								}
 							}
 						}

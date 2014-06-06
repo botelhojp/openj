@@ -19,7 +19,7 @@ import openjade.trust.model.Pair;
 
 import org.apache.log4j.Logger;
 
-public abstract class GenericTrustModel implements TrustModel {
+public abstract class GenericTrustModel implements ITrustModel {
 
 	private static final long serialVersionUID = 1L;
 

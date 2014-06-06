@@ -9,9 +9,7 @@ import openjade.core.OpenAgent;
 import openjade.ontology.Rating;
 import openjade.trust.model.Pair;
 
-public interface TrustModel extends Serializable {
-
-	public String getName();
+public interface ITrustModel extends Serializable {
 
 	public void addRating(Rating rating);
 
@@ -26,5 +24,7 @@ public interface TrustModel extends Serializable {
 	public List<Rating> getRatings(AID aid);
 
 	public Rating addRating(AID client, AID server, int iteration, String term, float value);
+
+	public boolean isReliable(AID agent);
 
 }

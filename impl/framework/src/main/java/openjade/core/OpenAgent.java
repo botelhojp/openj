@@ -68,7 +68,7 @@ import openjade.ontology.SendRating;
 import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
 import openjade.signer.PKCS7Signer;
-import openjade.trust.TrustModel;
+import openjade.trust.ITrustModel;
 
 import org.apache.log4j.Logger;
 
@@ -107,7 +107,7 @@ public abstract class OpenAgent extends Agent {
 	protected Provider provider;
 	protected AID cms;
 	protected int iteration;
-	protected TrustModel trustModel;
+	protected ITrustModel trustModel;
 	protected ArrayList<String> services;
 
 	public OpenAgent() {
@@ -119,6 +119,17 @@ public abstract class OpenAgent extends Agent {
 		openJadeMT = MessageTemplate.and(MessageTemplate.MatchLanguage(codec.getName()), MessageTemplate.MatchOntology(openJadeOntology.getName()));
 		addBehaviour(new LoaderKeystoreBehaviour(this));
 		addBehaviour(new ReceiveMessageBehaviour(this));
+	}
+	
+	protected void loadTrustModel(Class<ITrustModel> clazz){
+		try {
+			trustModel = clazz.newInstance();
+			trustModel.setAgent(this);
+		} catch (InstantiationException e) {
+			throw new OpenJadeException("not load trust model", e);
+		} catch (IllegalAccessException e) {
+			throw new OpenJadeException("not load trust model", e);
+		}		
 	}
 
 	public void loadKeystore() {
@@ -151,7 +162,7 @@ public abstract class OpenAgent extends Agent {
 				SendRating sendRating = new SendRating();
 				Float utility = callOnGetUtility(iteration);
 				if (utility != null) {
-					Rating rating = trustModel.addRating(getAID(), getAID(), iteration, trustModel.getName(), utility);
+					Rating rating = trustModel.addRating(getAID(), getAID(), iteration, trustModel.getClass().getName(), utility);
 					jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
 					ratingList.add(rating);
 					sendRating.setRating(ratingList);
@@ -506,7 +517,7 @@ public abstract class OpenAgent extends Agent {
 		this.cms = cms;
 	}
 
-	public TrustModel getTrustModel() {
+	public ITrustModel getTrustModel() {
 		return trustModel;
 	}
 

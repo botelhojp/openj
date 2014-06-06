@@ -5,10 +5,10 @@ import openjade.core.OpenJadeException;
 public class TrustModelFactory {
 
 	@SuppressWarnings("rawtypes")
-	public static TrustModel create(String clazz) {
+	public static ITrustModel create(String clazz) {
 		try {
 			Class c = Class.forName(clazz);
-			return (TrustModel) c.newInstance();
+			return (ITrustModel) c.newInstance();
 		} catch (ClassNotFoundException e) {
 			throw new OpenJadeException(e.getMessage(), e);
 		} catch (InstantiationException e) {

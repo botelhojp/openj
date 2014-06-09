@@ -13,7 +13,7 @@ public interface ITrustModel extends Serializable {
 
 	public void addRating(Rating rating);
 
-	public void setIteration(int iteration);
+	public void currentIteration(int iteration);
 
 	public List<Pair> getPairs(String[] terms);
 	
@@ -25,6 +25,6 @@ public interface ITrustModel extends Serializable {
 
 	public Rating addRating(AID client, AID server, int iteration, String term, float value);
 
-	public boolean isReliable(AID agent);
+	public Reliable isReliable(AID agent);
 
 }

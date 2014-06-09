@@ -156,7 +156,7 @@ public abstract class OpenAgent extends Agent {
 		iteration = ((ChangeIteration) ce).getIteration();
 		callOnChangeInteration();
 		if (trustModel != null) {
-			trustModel.setIteration(iteration);
+			trustModel.currentIteration(iteration);
 			java.util.List<AID> aids = getAIDByService(OpenAgent.SERVICE_TRUST_MONITOR);
 			if (!aids.isEmpty()) {
 				SendRating sendRating = new SendRating();

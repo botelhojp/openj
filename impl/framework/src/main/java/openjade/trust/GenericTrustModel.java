@@ -86,7 +86,7 @@ public abstract class GenericTrustModel implements ITrustModel {
 		return result;
 	}
 
-	public void setIteration(int _iteration) {
+	public void currentIteration(int _iteration) {
 		iteration = _iteration;
 		log.debug("new iteration [" + iteration + "]");
 		for (RatingCache rt : ratingList) {

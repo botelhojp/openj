@@ -5,11 +5,11 @@ import jade.util.leap.*;
 import jade.core.*;
 
 /**
-* Protege name: SendRating
+* Protege name: WitnessResponse
 * @author ontology bean generator
 * @version 2014/06/16, 21:59:42
 */
-public class SendRating extends RatingAction{ 
+public class WitnessResponse extends Witness{ 
 
    /**
 * Protege name: rating

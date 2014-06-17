@@ -121,6 +121,10 @@ public abstract class OpenAgent extends Agent {
 		addBehaviour(new ReceiveMessageBehaviour(this));
 	}
 	
+	public void searchWitnesses(AID server){
+		log.debug("searchWitnesses not implemented");
+	}
+	
 	protected void loadTrustModel(Class<ITrustModel> clazz){
 		try {
 			trustModel = clazz.newInstance();
@@ -655,5 +659,4 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
 	}
-
 }

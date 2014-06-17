@@ -1,15 +1,16 @@
 package openjade.ontology;
 
+
 import jade.content.*;
 import jade.util.leap.*;
 import jade.core.*;
 
 /**
-* Protege name: SendRating
+* Protege name: Feedback
 * @author ontology bean generator
 * @version 2014/06/16, 21:59:42
 */
-public class SendRating extends RatingAction{ 
+public class Feedback implements Concept {
 
    /**
 * Protege name: rating

@@ -1,0 +1,400 @@
+; Mon Jul 03 14:09:56 PDT 2006
+; 
+;+ (version "3.1.1")
+;+ (build "Build 216")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot ownership
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot ontology
+		(type STRING)
+		(create-accessor read-write))
+	(multislot language
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot property-value
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot type
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot transport-profile
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot argument2
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot state
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot properties
+		(type INSTANCE)
+;+		(allowed-classes Property)
+		(create-accessor read-write))
+	(single-slot dynamic
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot MTPFIPAName
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot protocol
+		(type STRING)
+		(create-accessor read-write))
+	(multislot services
+		(type INSTANCE)
+;+		(allowed-classes ServiceDescription)
+		(create-accessor read-write))
+	(single-slot max-results
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot availableMTPs
+		(type INSTANCE)
+;+		(allowed-classes APTransportDescription)
+		(create-accessor read-write))
+	(single-slot MTPProfileName
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot searchConstraints
+		(type INSTANCE)
+;+		(allowed-classes SearchConstraints)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot property-name
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot MTPAddresses
+		(type STRING)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot max-depth
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot agentDescription
+		(type INSTANCE)
+;+		(allowed-classes DFAgentDescription AMSAgentDescription)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot agent-name
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot service-name
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot mobility
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Register
+	(is-a AgentAction)
+	(role concrete)
+	(single-slot agentDescription
+		(type INSTANCE)
+;+		(allowed-classes DFAgentDescription AMSAgentDescription)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass GetDescription
+	(is-a AgentAction)
+	(role concrete))
+
+(defclass Deregister
+	(is-a AgentAction)
+	(role concrete))
+
+(defclass Modify
+	(is-a AgentAction)
+	(role concrete)
+	(single-slot agentDescription
+		(type INSTANCE)
+;+		(allowed-classes DFAgentDescription AMSAgentDescription)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Search
+	(is-a AgentAction)
+	(role concrete)
+	(multislot searchConstraints
+		(type INSTANCE)
+;+		(allowed-classes SearchConstraints)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot agentDescription
+		(type INSTANCE)
+;+		(allowed-classes DFAgentDescription AMSAgentDescription)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass DFAgentDescription
+	(is-a Concept)
+	(role concrete)
+	(single-slot agent-name
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot services
+		(type INSTANCE)
+;+		(allowed-classes ServiceDescription)
+		(create-accessor read-write)))
+
+(defclass ServiceDescription
+	(is-a Concept)
+	(role concrete)
+	(multislot protocol
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot ownership
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot ontology
+		(type STRING)
+		(create-accessor read-write))
+	(multislot language
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot service-name
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot properties
+		(type INSTANCE)
+;+		(allowed-classes Property)
+		(create-accessor read-write))
+	(single-slot type
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Property
+	(is-a Concept)
+	(role concrete)
+	(single-slot property-name
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot property-value
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass SearchConstraints
+	(is-a Concept)
+	(role concrete)
+	(single-slot max-results
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot max-depth
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass AMSAgentDescription
+	(is-a Concept)
+	(role concrete)
+	(single-slot agent-name
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot ownership
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot state
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass APDescription
+	(is-a Concept)
+	(role concrete)
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot mobility
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dynamic
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot transport-profile
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass APTransportDescription
+	(is-a Concept)
+	(role concrete)
+	(single-slot MTPProfileName
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot MTPFIPAName
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot MTPAddresses
+		(type STRING)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
+(defclass TransportProfile
+	(is-a Concept)
+	(role concrete)
+	(multislot availableMTPs
+		(type INSTANCE)
+;+		(allowed-classes APTransportDescription)
+		(create-accessor read-write)))
+
+(defclass UnsupportedAct
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass UnexpectedAct
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass UnsupportedValue
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Unauthorised
+	(is-a Predicate)
+	(role concrete))
+
+(defclass UnrecognisedValue "	"
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass UnsupportedFunction
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass MissingArgument
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass UnexpectedArgument
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass UnexpectedArgumentCount
+	(is-a Predicate)
+	(role concrete))
+
+(defclass MissingParameter
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot argument2
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass UnexpectedParameter
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot argument2
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass UnrecognisedParameterValue
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot argument2
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass AlreadyRegistered
+	(is-a Predicate)
+	(role concrete))
+
+(defclass NotRegistered
+	(is-a Predicate)
+	(role concrete))
+
+(defclass InternalError
+	(is-a Predicate)
+	(role concrete)
+	(single-slot argument
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass NotUnderstoodException
+	(is-a Predicate)
+	(role concrete))

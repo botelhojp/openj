@@ -1,11 +1,11 @@
-; Mon Jun 24 23:29:08 BRT 2013
+; Mon Jun 16 21:58:32 BRT 2014
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
 
 ([BROWSER_SLOT_NAMES] of  Property_List
 
-	(properties [OpenJade_ProjectKB_Instance_150]))
+	(properties [OpenJade_ProjectKB_Instance_151]))
 
 ([CLSES_TAB] of  Widget
 
@@ -793,7 +793,7 @@
 ([OpenJade_ProjectKB_Instance_147] of  Property_List
 )
 
-([OpenJade_ProjectKB_Instance_150] of  String
+([OpenJade_ProjectKB_Instance_151] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
@@ -895,16 +895,16 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
-		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
-		[INSTANCE_ANNOTATION_FORM_WIDGET]
+		[PAL_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
+		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
 	(default_slot_metaclass ":STANDARD-SLOT")
-	(included_projects "file:/home/vanderson/programs/Protege_3.2.1/plugins/nl.uva.psy.swi.beangenerator/projects/SimpleJADEAbstractOntology.pprj")
+	(included_projects "./include/SimpleJADEAbstractOntology.pprj")
 	(journaling_enabled FALSE)
 	(next_frame_number 0)
 	(options [KB_697660_Instance_1])

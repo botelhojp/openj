@@ -1,0 +1,1642 @@
+; Mon Jul 03 14:09:56 PDT 2006
+; 
+;+ (version "3.1.1")
+;+ (build "Build 216")
+
+([BROWSER_SLOT_NAMES] of  Property_List
+
+	(properties [FIPAAgentManagement_ProjectKB_Instance_10265]))
+
+([CLSES_TAB] of  Widget
+
+	(is_hidden FALSE)
+	(label "Classes")
+	(property_list [ProjectKB_4471_00007])
+	(widget_class_name "edu.stanford.smi.protege.widget.ClsesTab"))
+
+([Demo_ProjectKB_00002] of  Widget
+
+	(is_hidden FALSE)
+	(name ":STANDARD-FACET")
+	(property_list [KB_118638_Instance_29])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Demo_ProjectKB_00007] of  Widget
+
+	(is_hidden FALSE)
+	(name ":INSTANCE-ANNOTATION")
+	(property_list [KB_118638_Instance_33])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Demo_ProjectKB_00044] of  Integer
+
+	(integer_value 264)
+	(name "ClsesTab.left_right"))
+
+([Demo_ProjectKB_00045] of  Integer
+
+	(integer_value 515)
+	(name "ClsesTab.left.top_bottom"))
+
+([Demo_ProjectKB_00046] of  Integer
+
+	(integer_value 250)
+	(name "SlotsTab.left_right"))
+
+([Demo_ProjectKB_00047] of  Integer
+
+	(integer_value 400)
+	(name "SlotTab.left.top_bottom"))
+
+([Demo_ProjectKB_00048] of  Integer
+
+	(integer_value 250)
+	(name "FormsTab.left_right"))
+
+([Demo_ProjectKB_00049] of  Integer
+
+	(integer_value 250)
+	(name "InstancesTab.left_right"))
+
+([Demo_ProjectKB_00050] of  Integer
+
+	(integer_value 198)
+	(name "InstancesTab.right.left_right"))
+
+([Demo_ProjectKB_00051] of  String
+
+	(name "SearchTab_Query")
+	(string_value "Query Name: jamie\nMatch All:true\nLength: 1\n 	:DIRECT-TEMPLATE-SLOTS	contains	Instance: | 	1	\n\n"))
+
+([Demo_ProjectKB_00054] of  Map
+)
+
+([FIPAAgentManagement_ProjectKB_00024] of  Widget
+
+	(height 578)
+	(is_hidden FALSE)
+	(name ":JADE-SLOT")
+	(property_list [FIPAAgentManagement_ProjectKB_00025])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
+	(width 714)
+	(x 0)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00025] of  Property_List
+
+	(name "slot widget properties")
+	(properties
+		[FIPAAgentManagement_ProjectKB_00026]
+		[FIPAAgentManagement_ProjectKB_00027]
+		[FIPAAgentManagement_ProjectKB_00028]
+		[FIPAAgentManagement_ProjectKB_00029]
+		[FIPAAgentManagement_ProjectKB_00030]
+		[FIPAAgentManagement_ProjectKB_00036]
+		[FIPAAgentManagement_ProjectKB_00037]
+		[FIPAAgentManagement_ProjectKB_00139]
+		[FIPAAgentManagement_ProjectKB_00244]
+		[FIPAAgentManagement_ProjectKB_00245]
+		[FIPAAgentManagement_ProjectKB_00246]
+		[FIPAAgentManagement_ProjectKB_00247]
+		[FIPAAgentManagement_ProjectKB_00248]
+		[FIPAAgentManagement_ProjectKB_00249]
+		[FIPAAgentManagement_ProjectKB_00250]
+		[FIPAAgentManagement_ProjectKB_00251]
+		[FIPAAgentManagement_ProjectKB_00252]
+		[FIPAAgentManagement_ProjectKB_00254]
+		[FIPAAgentManagement_ProjectKB_Instance_208]))
+
+([FIPAAgentManagement_ProjectKB_00026] of  Widget
+
+	(height 60)
+	(label "Cardinality")
+	(name ":SLOT-MINIMUM-CARDINALITY")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10257])
+	(widget_class_name "edu.stanford.smi.protege.widget.MinimumCardinalityWidget")
+	(width 200)
+	(x 200)
+	(y 120))
+
+([FIPAAgentManagement_ProjectKB_00027] of  Widget
+
+	(height 35)
+	(name ":SLOT-MAXIMUM-CARDINALITY")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10258])
+	(widget_class_name "edu.stanford.smi.protege.widget.MaximumCardinalityWidget")
+	(width 200)
+	(x 200)
+	(y 175))
+
+([FIPAAgentManagement_ProjectKB_00028] of  Widget
+
+	(name ":SLOT-CONSTRAINTS"))
+
+([FIPAAgentManagement_ProjectKB_00029] of  Widget
+
+	(name ":DIRECT-TYPE"))
+
+([FIPAAgentManagement_ProjectKB_00030] of  Widget
+
+	(height 120)
+	(label "Values")
+	(name ":SLOT-VALUES")
+	(property_list [FIPAAgentManagement_ProjectKB_00031])
+	(widget_class_name "edu.stanford.smi.protege.widget.SlotValuesWidget")
+	(width 200)
+	(x 400)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00031] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_00032]
+		[FIPAAgentManagement_ProjectKB_00033]
+		[FIPAAgentManagement_ProjectKB_00034]
+		[FIPAAgentManagement_ProjectKB_00035]))
+
+([FIPAAgentManagement_ProjectKB_00032] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-View the selected value"))
+
+([FIPAAgentManagement_ProjectKB_00033] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Add"))
+
+([FIPAAgentManagement_ProjectKB_00034] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Create a new value"))
+
+([FIPAAgentManagement_ProjectKB_00035] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Remove"))
+
+([FIPAAgentManagement_ProjectKB_00036] of  Widget
+
+	(name ":DIRECT-SUPERSLOTS"))
+
+([FIPAAgentManagement_ProjectKB_00037] of  Widget
+
+	(name ":DIRECT-SUBSLOTS"))
+
+([FIPAAgentManagement_ProjectKB_00139] of  Widget
+
+	(height 150)
+	(label "Default")
+	(name ":SLOT-DEFAULTS")
+	(property_list [FIPAAgentManagement_ProjectKB_00239])
+	(widget_class_name "edu.stanford.smi.protege.widget.DefaultValuesWidget")
+	(width 200)
+	(x 400)
+	(y 120))
+
+([FIPAAgentManagement_ProjectKB_00239] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_00240]
+		[FIPAAgentManagement_ProjectKB_00241]
+		[FIPAAgentManagement_ProjectKB_00242]
+		[FIPAAgentManagement_ProjectKB_00243]))
+
+([FIPAAgentManagement_ProjectKB_00240] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-View the selected value"))
+
+([FIPAAgentManagement_ProjectKB_00241] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Add"))
+
+([FIPAAgentManagement_ProjectKB_00242] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Create a new value"))
+
+([FIPAAgentManagement_ProjectKB_00243] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Remove"))
+
+([FIPAAgentManagement_ProjectKB_00244] of  Widget
+
+	(height 120)
+	(label "Documentation")
+	(name ":DOCUMENTATION")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10259])
+	(widget_class_name "edu.stanford.smi.protege.widget.DocumentationWidget")
+	(width 200)
+	(x 200)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00245] of  Widget
+
+	(height 60)
+	(label "Maximum")
+	(name ":SLOT-NUMERIC-MAXIMUM")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10260])
+	(widget_class_name "edu.stanford.smi.protege.widget.NumericMaximumWidget")
+	(width 100)
+	(x 100)
+	(y 210))
+
+([FIPAAgentManagement_ProjectKB_00246] of  Widget
+
+	(height 60)
+	(label "Minimum")
+	(name ":SLOT-NUMERIC-MINIMUM")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10261])
+	(widget_class_name "edu.stanford.smi.protege.widget.NumericMinimumWidget")
+	(width 100)
+	(x 0)
+	(y 210))
+
+([FIPAAgentManagement_ProjectKB_00247] of  Widget
+
+	(name ":ASSOCIATED-FACET"))
+
+([FIPAAgentManagement_ProjectKB_00248] of  Widget
+
+	(height 60)
+	(label "Name")
+	(name ":NAME")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10262])
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceNameWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00249] of  Widget
+
+	(height 60)
+	(label "Inverse Slot")
+	(name ":SLOT-INVERSE")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10263])
+	(widget_class_name "edu.stanford.smi.protege.widget.InverseSlotWidget")
+	(width 200)
+	(x 200)
+	(y 210))
+
+([FIPAAgentManagement_ProjectKB_00250] of  Widget
+
+	(height 150)
+	(label "Value Type")
+	(name ":SLOT-VALUE-TYPE")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10264])
+	(widget_class_name "edu.stanford.smi.protege.widget.ValueTypeWidget")
+	(width 200)
+	(x 0)
+	(y 60))
+
+([FIPAAgentManagement_ProjectKB_00251] of  Property_List
+
+	(name "layout properties"))
+
+([FIPAAgentManagement_ProjectKB_00252] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(label "JADE Name")
+	(name ":JADE-NAME")
+	(property_list [FIPAAgentManagement_ProjectKB_00253])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 250)
+	(x 0)
+	(y 270))
+
+([FIPAAgentManagement_ProjectKB_00253] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_00254] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(label "Anonymous")
+	(name ":JADE-UNNAMED-SLOT")
+	(property_list [FIPAAgentManagement_ProjectKB_00255])
+	(widget_class_name "edu.stanford.smi.protege.widget.CheckBoxWidget")
+	(width 125)
+	(x 260)
+	(y 280))
+
+([FIPAAgentManagement_ProjectKB_00255] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_00562] of  Integer
+
+	(integer_value 250)
+	(name "ClsesAndInstancesTab.left_right"))
+
+([FIPAAgentManagement_ProjectKB_00563] of  Integer
+
+	(integer_value 400)
+	(name "ClsesAndInstancesTab.left, top_bottom"))
+
+([FIPAAgentManagement_ProjectKB_00564] of  Integer
+
+	(integer_value 200)
+	(name "ClsesAndInstancesTab.right.left_right"))
+
+([FIPAAgentManagement_ProjectKB_00810] of  Widget
+
+	(height 600)
+	(is_hidden FALSE)
+	(name ":JADE-CLASS")
+	(property_list [FIPAAgentManagement_ProjectKB_00811])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
+	(width 699)
+	(x 0)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00811] of  Property_List
+
+	(name "class widget properties")
+	(properties
+		[FIPAAgentManagement_ProjectKB_00812]
+		[FIPAAgentManagement_ProjectKB_00820]
+		[FIPAAgentManagement_ProjectKB_00821]
+		[FIPAAgentManagement_ProjectKB_00822]
+		[FIPAAgentManagement_ProjectKB_00823]
+		[FIPAAgentManagement_ProjectKB_00824]
+		[FIPAAgentManagement_ProjectKB_00825]
+		[FIPAAgentManagement_ProjectKB_00826]
+		[FIPAAgentManagement_ProjectKB_00827]
+		[FIPAAgentManagement_ProjectKB_00845]
+		[FIPAAgentManagement_ProjectKB_00847]
+		[FIPAAgentManagement_ProjectKB_00849]
+		[FIPAAgentManagement_ProjectKB_00851]
+		[FIPAAgentManagement_ProjectKB_00853]))
+
+([FIPAAgentManagement_ProjectKB_00812] of  Widget
+
+	(height 120)
+	(label "Constraints")
+	(name ":SLOT-CONSTRAINTS")
+	(property_list [FIPAAgentManagement_ProjectKB_00813])
+	(widget_class_name "edu.stanford.smi.protege.widget.ConstraintsWidget")
+	(width 200)
+	(x 400)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00813] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_00814]
+		[FIPAAgentManagement_ProjectKB_00815]
+		[FIPAAgentManagement_ProjectKB_00816]
+		[FIPAAgentManagement_ProjectKB_00817]
+		[FIPAAgentManagement_ProjectKB_00818]
+		[FIPAAgentManagement_ProjectKB_00819]))
+
+([FIPAAgentManagement_ProjectKB_00814] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-View Selected Instances"))
+
+([FIPAAgentManagement_ProjectKB_00815] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Create Instance"))
+
+([FIPAAgentManagement_ProjectKB_00816] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-References"))
+
+([FIPAAgentManagement_ProjectKB_00817] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Add"))
+
+([FIPAAgentManagement_ProjectKB_00818] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Remove"))
+
+([FIPAAgentManagement_ProjectKB_00819] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Selected Instances"))
+
+([FIPAAgentManagement_ProjectKB_00820] of  Widget
+
+	(name ":DIRECT-INSTANCES"))
+
+([FIPAAgentManagement_ProjectKB_00821] of  Widget
+
+	(name ":DIRECT-SUBCLASSES"))
+
+([FIPAAgentManagement_ProjectKB_00822] of  Widget
+
+	(name ":DIRECT-SUPERCLASSES"))
+
+([FIPAAgentManagement_ProjectKB_00823] of  Widget
+
+	(height 120)
+	(label "Documentation")
+	(name ":DOCUMENTATION")
+	(widget_class_name "edu.stanford.smi.protege.widget.DocumentationWidget")
+	(width 200)
+	(x 200)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00824] of  Widget
+
+	(height 60)
+	(label "Name")
+	(name ":NAME")
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceNameWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([FIPAAgentManagement_ProjectKB_00825] of  Widget
+
+	(height 60)
+	(label "Role")
+	(name ":ROLE")
+	(widget_class_name "edu.stanford.smi.protege.widget.RoleWidget")
+	(width 200)
+	(x 0)
+	(y 60))
+
+([FIPAAgentManagement_ProjectKB_00826] of  Widget
+
+	(name ":DIRECT-TYPE"))
+
+([FIPAAgentManagement_ProjectKB_00827] of  Widget
+
+	(height 300)
+	(label "Template Slots")
+	(name ":DIRECT-TEMPLATE-SLOTS")
+	(property_list [FIPAAgentManagement_ProjectKB_00828])
+	(widget_class_name "edu.stanford.smi.protege.widget.TemplateSlotsWidget")
+	(width 600)
+	(x 0)
+	(y 120))
+
+([FIPAAgentManagement_ProjectKB_00828] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_00829]
+		[FIPAAgentManagement_ProjectKB_00830]
+		[FIPAAgentManagement_ProjectKB_00831]
+		[FIPAAgentManagement_ProjectKB_00832]
+		[FIPAAgentManagement_ProjectKB_00833]
+		[FIPAAgentManagement_ProjectKB_00834]
+		[FIPAAgentManagement_ProjectKB_00835]
+		[FIPAAgentManagement_ProjectKB_00836]
+		[FIPAAgentManagement_ProjectKB_00837]
+		[FIPAAgentManagement_ProjectKB_00838]
+		[FIPAAgentManagement_ProjectKB_00839]
+		[FIPAAgentManagement_ProjectKB_00840]
+		[FIPAAgentManagement_ProjectKB_00841]
+		[FIPAAgentManagement_ProjectKB_00842]
+		[FIPAAgentManagement_ProjectKB_00843]
+		[FIPAAgentManagement_ProjectKB_00844]))
+
+([FIPAAgentManagement_ProjectKB_00829] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-View selected slots"))
+
+([FIPAAgentManagement_ProjectKB_00830] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-View selected slots at class"))
+
+([FIPAAgentManagement_ProjectKB_00831] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Create slot and attach to class"))
+
+([FIPAAgentManagement_ProjectKB_00832] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Remove overrides from selected slots"))
+
+([FIPAAgentManagement_ProjectKB_00833] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Add"))
+
+([FIPAAgentManagement_ProjectKB_00834] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Remove"))
+
+([FIPAAgentManagement_ProjectKB_00835] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Move up"))
+
+([FIPAAgentManagement_ProjectKB_00836] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Move down"))
+
+([FIPAAgentManagement_ProjectKB_00837] of  String
+
+	(name "ButtonDescription-View selected slots")
+	(string_value "View selected slots"))
+
+([FIPAAgentManagement_ProjectKB_00838] of  String
+
+	(name "ButtonDescription-View selected slots at class")
+	(string_value "View selected slots at class"))
+
+([FIPAAgentManagement_ProjectKB_00839] of  String
+
+	(name "ButtonDescription-Create slot and attach to class")
+	(string_value "Create slot and attach to class"))
+
+([FIPAAgentManagement_ProjectKB_00840] of  String
+
+	(name "ButtonDescription-Remove overrides from selected slots")
+	(string_value "Remove overrides from selected slots"))
+
+([FIPAAgentManagement_ProjectKB_00841] of  String
+
+	(name "ButtonDescription-Add")
+	(string_value "Attach slots to class"))
+
+([FIPAAgentManagement_ProjectKB_00842] of  String
+
+	(name "ButtonDescription-Remove")
+	(string_value "Remove selected slots from class"))
+
+([FIPAAgentManagement_ProjectKB_00843] of  String
+
+	(name "ButtonDescription-Move up")
+	(string_value "Move selected slot up"))
+
+([FIPAAgentManagement_ProjectKB_00844] of  String
+
+	(name "ButtonDescription-Move down")
+	(string_value "Move selected slot down"))
+
+([FIPAAgentManagement_ProjectKB_00845] of  Property_List
+
+	(name "layout properties")
+	(properties [FIPAAgentManagement_ProjectKB_00846]))
+
+([FIPAAgentManagement_ProjectKB_00846] of  String
+
+	(name "vertical_stretcher")
+	(string_value ":DIRECT-TEMPLATE-SLOTS"))
+
+([FIPAAgentManagement_ProjectKB_00847] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(label "Java super-class")
+	(name ":JADE-JAVA-BASE-CLASS")
+	(property_list [FIPAAgentManagement_ProjectKB_00848])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 250)
+	(x 350)
+	(y 420))
+
+([FIPAAgentManagement_ProjectKB_00848] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_00849] of  Widget
+
+	(height 120)
+	(is_hidden FALSE)
+	(label "Additional Java Code")
+	(name ":JADE-JAVA-CODE")
+	(property_list [FIPAAgentManagement_ProjectKB_00850])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextAreaWidget")
+	(width 600)
+	(x 0)
+	(y 480))
+
+([FIPAAgentManagement_ProjectKB_00850] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_00851] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(label "JADE Name")
+	(name ":JADE-NAME")
+	(property_list [FIPAAgentManagement_ProjectKB_00852])
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 250)
+	(x 80)
+	(y 420))
+
+([FIPAAgentManagement_ProjectKB_00852] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_00853] of  Widget
+
+	(height 40)
+	(is_hidden FALSE)
+	(label "ignore")
+	(name ":JADE-IGNORE")
+	(property_list [FIPAAgentManagement_ProjectKB_00854])
+	(widget_class_name "edu.stanford.smi.protege.widget.CheckBoxWidget")
+	(width 70)
+	(x 0)
+	(y 440))
+
+([FIPAAgentManagement_ProjectKB_00854] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10208] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10209])
+	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10209] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10210] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10211])
+	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10211] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10212] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10213])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.properties.OWLPropertiesTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10213] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10214] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10215])
+	(widget_class_name "tabview.TabView"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10215] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10216] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10217])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10217] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10218] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10219])
+	(widget_class_name "DataGenieTab.DataGenieTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10219] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10220] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10221])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10221] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10222] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10223])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10223] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10224] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10225])
+	(widget_class_name "com.dcx.ricek.protege.ontoquery.OntoQueryTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10225] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10226] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10227])
+	(widget_class_name "ca.uvic.csr.shrimp.protegeTab.JambalayaTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10227] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10228] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10229])
+	(widget_class_name "com.sri.owlseditor.Owlstab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10229] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10230] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10231])
+	(widget_class_name "com.dcx.ricek.protege.modelica.instantiation.ModelicaInstanceTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10231] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10232] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10233])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.individuals.OWLIndividualsTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10233] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10234] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10235])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.cls.OWLClassesTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10235] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10236] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10237])
+	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10237] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10238] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10239])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10239] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10240] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10241])
+	(widget_class_name "com.dcx.reiik.engviz.EngVizTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10241] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10242] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10243])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10243] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10244] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10245])
+	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10245] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10246] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_Instance_10247]
+		[FIPAAgentManagement_ProjectKB_Instance_10248]))
+
+([FIPAAgentManagement_ProjectKB_Instance_10247] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-View References to Value  "))
+
+([FIPAAgentManagement_ProjectKB_Instance_10248] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Instance"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10249] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_Instance_10250]
+		[FIPAAgentManagement_ProjectKB_Instance_10251]))
+
+([FIPAAgentManagement_ProjectKB_Instance_10250] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Move up"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10251] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Move down"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10252] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10253] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10254] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10255] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-View References to Value  "))
+
+([FIPAAgentManagement_ProjectKB_Instance_10256] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Instance"))
+
+([FIPAAgentManagement_ProjectKB_Instance_10257] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10258] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10259] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10260] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10261] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10262] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10263] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10264] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_10265] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([FIPAAgentManagement_ProjectKB_Instance_176] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_177])
+	(widget_class_name "TGViztab.TGVizTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_177] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_178] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_179])
+	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_179] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_180] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_181])
+	(widget_class_name "JessTab.JessTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_181] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_182] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_183])
+	(widget_class_name "script.ProtegeScriptTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_183] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_184] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_185])
+	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+
+([FIPAAgentManagement_ProjectKB_Instance_185] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_186] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_187])
+	(widget_class_name "com.dcx.ricek.protege.modelica.export.ModelicaExportTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_187] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_188] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_189])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_189] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_190] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_191])
+	(widget_class_name "com.dcx.mixer.ui.MappedMixerTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_191] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_192] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_193])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadatatab.OWLMetadataTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_193] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_194] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_195])
+	(widget_class_name "edu.stanford.smi.protegex.psm.PSMTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_195] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_196] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_197])
+	(widget_class_name "instancesTab2.InstancesTab2"))
+
+([FIPAAgentManagement_ProjectKB_Instance_197] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_198] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_199])
+	(widget_class_name "ezOWLTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_199] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_200] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_201])
+	(widget_class_name "ezpal.EZPalTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_201] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_202] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_203])
+	(widget_class_name "com.dcx.ricek.protege.modelica.xmlimport.ModelicaImportTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_203] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_204] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_205])
+	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.tab.SWRLTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_205] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_206] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_207])
+	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+
+([FIPAAgentManagement_ProjectKB_Instance_207] of  Property_List
+)
+
+([FIPAAgentManagement_ProjectKB_Instance_208] of  Widget
+
+	(height 120)
+	(is_hidden FALSE)
+	(name ":DIRECT-DOMAIN")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_209])
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
+	(width 250)
+	(x 0)
+	(y 340))
+
+([FIPAAgentManagement_ProjectKB_Instance_209] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_Instance_210]
+		[FIPAAgentManagement_ProjectKB_Instance_211]
+		[FIPAAgentManagement_ProjectKB_Instance_212]
+		[FIPAAgentManagement_ProjectKB_Instance_213]
+		[FIPAAgentManagement_ProjectKB_Instance_214]
+		[FIPAAgentManagement_ProjectKB_Instance_215]
+		[FIPAAgentManagement_ProjectKB_Instance_10255]
+		[FIPAAgentManagement_ProjectKB_Instance_10256]))
+
+([FIPAAgentManagement_ProjectKB_Instance_210] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-View Selected Instances"))
+
+([FIPAAgentManagement_ProjectKB_Instance_211] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Create Instance"))
+
+([FIPAAgentManagement_ProjectKB_Instance_212] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-References"))
+
+([FIPAAgentManagement_ProjectKB_Instance_213] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Add"))
+
+([FIPAAgentManagement_ProjectKB_Instance_214] of  Boolean
+
+	(boolean_value TRUE)
+	(name "ButtonDisplayed-Remove"))
+
+([FIPAAgentManagement_ProjectKB_Instance_215] of  Boolean
+
+	(boolean_value FALSE)
+	(name "ButtonDisplayed-Delete Selected Instances"))
+
+([FORMS_TAB] of  Widget
+
+	(is_hidden FALSE)
+	(label "Forms")
+	(property_list [ProjectKB_4471_00037])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormsTab"))
+
+([INSTANCES_TAB] of  Widget
+
+	(is_hidden FALSE)
+	(label "Instances")
+	(property_list [ProjectKB_4471_00040])
+	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
+
+([KB_118638_Instance_0] of  Property_List
+
+	(name "class widget properties")
+	(properties
+		[KB_118638_Instance_1]
+		[KB_118638_Instance_2]
+		[KB_118638_Instance_3]
+		[KB_118638_Instance_4]
+		[KB_118638_Instance_5]
+		[KB_118638_Instance_6]
+		[KB_118638_Instance_7]
+		[KB_118638_Instance_8]
+		[KB_118638_Instance_9]
+		[KB_118638_Instance_10]))
+
+([KB_118638_Instance_1] of  Widget
+
+	(height 120)
+	(label "Constraints")
+	(name ":SLOT-CONSTRAINTS")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10246])
+	(widget_class_name "edu.stanford.smi.protege.widget.ConstraintsWidget")
+	(width 200)
+	(x 400)
+	(y 0))
+
+([KB_118638_Instance_10] of  Property_List
+
+	(name "layout properties")
+	(properties [KB_118638_Instance_11]))
+
+([KB_118638_Instance_11] of  String
+
+	(name "vertical_stretcher")
+	(string_value ":DIRECT-TEMPLATE-SLOTS"))
+
+([KB_118638_Instance_12] of  Property_List
+
+	(name "slot widget properties")
+	(properties
+		[KB_118638_Instance_13]
+		[KB_118638_Instance_14]
+		[KB_118638_Instance_15]
+		[KB_118638_Instance_16]
+		[KB_118638_Instance_17]
+		[KB_118638_Instance_18]
+		[KB_118638_Instance_19]
+		[KB_118638_Instance_20]
+		[KB_118638_Instance_21]
+		[KB_118638_Instance_22]
+		[KB_118638_Instance_23]
+		[KB_118638_Instance_24]
+		[KB_118638_Instance_25]
+		[KB_118638_Instance_26]
+		[KB_118638_Instance_27]
+		[KB_118638_Instance_28]))
+
+([KB_118638_Instance_13] of  Widget
+
+	(height 60)
+	(label "Cardinality")
+	(name ":SLOT-MINIMUM-CARDINALITY")
+	(widget_class_name "edu.stanford.smi.protege.widget.MinimumCardinalityWidget")
+	(width 200)
+	(x 200)
+	(y 120))
+
+([KB_118638_Instance_14] of  Widget
+
+	(height 35)
+	(name ":SLOT-MAXIMUM-CARDINALITY")
+	(widget_class_name "edu.stanford.smi.protege.widget.MaximumCardinalityWidget")
+	(width 200)
+	(x 200)
+	(y 180))
+
+([KB_118638_Instance_15] of  Widget
+
+	(name ":SLOT-CONSTRAINTS"))
+
+([KB_118638_Instance_16] of  Widget
+
+	(name ":DIRECT-TYPE"))
+
+([KB_118638_Instance_17] of  Widget
+
+	(height 95)
+	(label "Domain")
+	(name ":DIRECT-DOMAIN")
+	(widget_class_name "edu.stanford.smi.protege.widget.DirectDomainWidget")
+	(width 200)
+	(x 400)
+	(y 180))
+
+([KB_118638_Instance_18] of  Widget
+
+	(height 90)
+	(label "Template Values")
+	(name ":SLOT-VALUES")
+	(widget_class_name "edu.stanford.smi.protege.widget.SlotValuesWidget")
+	(width 200)
+	(x 400)
+	(y 0))
+
+([KB_118638_Instance_19] of  Widget
+
+	(name ":DIRECT-SUPERSLOTS"))
+
+([KB_118638_Instance_2] of  Widget
+
+	(name ":DIRECT-INSTANCES"))
+
+([KB_118638_Instance_20] of  Widget
+
+	(name ":DIRECT-SUBSLOTS"))
+
+([KB_118638_Instance_21] of  Widget
+
+	(height 90)
+	(label "Default")
+	(name ":SLOT-DEFAULTS")
+	(widget_class_name "edu.stanford.smi.protege.widget.DefaultValuesWidget")
+	(width 200)
+	(x 400)
+	(y 90))
+
+([KB_118638_Instance_22] of  Widget
+
+	(height 120)
+	(label "Documentation")
+	(name ":DOCUMENTATION")
+	(widget_class_name "edu.stanford.smi.protege.widget.DocumentationWidget")
+	(width 200)
+	(x 200)
+	(y 0))
+
+([KB_118638_Instance_23] of  Widget
+
+	(height 60)
+	(label "Maximum")
+	(name ":SLOT-NUMERIC-MAXIMUM")
+	(widget_class_name "edu.stanford.smi.protege.widget.NumericMaximumWidget")
+	(width 100)
+	(x 100)
+	(y 215))
+
+([KB_118638_Instance_24] of  Widget
+
+	(height 60)
+	(label "Minimum")
+	(name ":SLOT-NUMERIC-MINIMUM")
+	(widget_class_name "edu.stanford.smi.protege.widget.NumericMinimumWidget")
+	(width 100)
+	(x 0)
+	(y 215))
+
+([KB_118638_Instance_25] of  Widget
+
+	(name ":ASSOCIATED-FACET"))
+
+([KB_118638_Instance_26] of  Widget
+
+	(height 60)
+	(label "Name")
+	(name ":NAME")
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceNameWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([KB_118638_Instance_27] of  Widget
+
+	(height 60)
+	(label "Inverse Slot")
+	(name ":SLOT-INVERSE")
+	(widget_class_name "edu.stanford.smi.protege.widget.InverseSlotWidget")
+	(width 200)
+	(x 200)
+	(y 215))
+
+([KB_118638_Instance_28] of  Widget
+
+	(height 155)
+	(label "Value Type")
+	(name ":SLOT-VALUE-TYPE")
+	(widget_class_name "edu.stanford.smi.protege.widget.ValueTypeWidget")
+	(width 200)
+	(x 0)
+	(y 60))
+
+([KB_118638_Instance_29] of  Property_List
+
+	(name "facet widget properties")
+	(properties
+		[KB_118638_Instance_30]
+		[KB_118638_Instance_31]
+		[KB_118638_Instance_32]))
+
+([KB_118638_Instance_3] of  Widget
+
+	(name ":DIRECT-SUBCLASSES"))
+
+([KB_118638_Instance_30] of  Widget
+
+	(height 60)
+	(label "Name")
+	(name ":NAME")
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceNameWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([KB_118638_Instance_31] of  Widget
+
+	(height 120)
+	(label "Documentation")
+	(name ":DOCUMENTATION")
+	(widget_class_name "edu.stanford.smi.protege.widget.DocumentationWidget")
+	(width 200)
+	(x 200)
+	(y 0))
+
+([KB_118638_Instance_32] of  Widget
+
+	(height 60)
+	(label "Associated Slot")
+	(name ":ASSOCIATED-SLOT")
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
+	(width 200)
+	(x 0)
+	(y 60))
+
+([KB_118638_Instance_33] of  Property_List
+
+	(properties
+		[KB_118638_Instance_34]
+		[KB_118638_Instance_35]
+		[KB_118638_Instance_36]
+		[KB_118638_Instance_37]))
+
+([KB_118638_Instance_34] of  Widget
+
+	(name ":ANNOTATED-INSTANCE"))
+
+([KB_118638_Instance_35] of  Widget
+
+	(name ":CREATOR"))
+
+([KB_118638_Instance_36] of  Widget
+
+	(name ":CREATION-TIMESTAMP"))
+
+([KB_118638_Instance_37] of  Widget
+
+	(height 100)
+	(is_hidden FALSE)
+	(name ":ANNOTATION-TEXT")
+	(widget_class_name "edu.stanford.smi.protege.widget.YellowStickyWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([KB_118638_Instance_38] of  Property_List
+
+	(properties
+		[KB_118638_Instance_39]
+		[KB_118638_Instance_40]
+		[KB_118638_Instance_41]
+		[KB_118638_Instance_42]))
+
+([KB_118638_Instance_39] of  Widget
+
+	(height 60)
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":PAL-NAME")
+	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
+	(width 275)
+	(x 0)
+	(y 0))
+
+([KB_118638_Instance_4] of  Widget
+
+	(name ":DIRECT-SUPERCLASSES"))
+
+([KB_118638_Instance_40] of  Widget
+
+	(height 180)
+	(is_hidden FALSE)
+	(label "Range")
+	(name ":PAL-RANGE")
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.constraint.PalRangeWidget")
+	(width 250)
+	(x 275)
+	(y 180))
+
+([KB_118638_Instance_41] of  Widget
+
+	(height 180)
+	(is_hidden FALSE)
+	(label "Description")
+	(name ":PAL-DESCRIPTION")
+	(widget_class_name "edu.stanford.smi.protege.widget.TextAreaWidget")
+	(width 250)
+	(x 275)
+	(y 0))
+
+([KB_118638_Instance_42] of  Widget
+
+	(height 300)
+	(is_hidden FALSE)
+	(label "Statement")
+	(name ":PAL-STATEMENT")
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.constraint.PalConstraintWidget")
+	(width 275)
+	(x 0)
+	(y 60))
+
+([KB_118638_Instance_5] of  Widget
+
+	(height 120)
+	(label "Documentation")
+	(name ":DOCUMENTATION")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10252])
+	(widget_class_name "edu.stanford.smi.protege.widget.DocumentationWidget")
+	(width 200)
+	(x 200)
+	(y 0))
+
+([KB_118638_Instance_6] of  Widget
+
+	(height 60)
+	(label "Name")
+	(name ":NAME")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10253])
+	(widget_class_name "edu.stanford.smi.protege.widget.InstanceNameWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([KB_118638_Instance_7] of  Widget
+
+	(height 60)
+	(label "Role")
+	(name ":ROLE")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10254])
+	(widget_class_name "edu.stanford.smi.protege.widget.RoleWidget")
+	(width 200)
+	(x 0)
+	(y 60))
+
+([KB_118638_Instance_8] of  Widget
+
+	(name ":DIRECT-TYPE"))
+
+([KB_118638_Instance_9] of  Widget
+
+	(height 150)
+	(label "Template Slots")
+	(name ":DIRECT-TEMPLATE-SLOTS")
+	(property_list [FIPAAgentManagement_ProjectKB_Instance_10249])
+	(widget_class_name "edu.stanford.smi.protege.widget.TemplateSlotsWidget")
+	(width 600)
+	(x 0)
+	(y 120))
+
+([PAL_FORM_WIDGET] of  Widget
+
+	(height 476)
+	(is_hidden FALSE)
+	(name ":PAL-CONSTRAINT")
+	(property_list [KB_118638_Instance_38])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
+	(width 603)
+	(x 0)
+	(y 0))
+
+([PROJECT] of  Project
+
+	(browser_slot_names [BROWSER_SLOT_NAMES])
+	(customized_instance_widgets
+		[Demo_ProjectKB_00002]
+		[Demo_ProjectKB_00007]
+		[FIPAAgentManagement_ProjectKB_00024]
+		[PAL_FORM_WIDGET]
+		[FIPAAgentManagement_ProjectKB_00810]
+		[STANDARD_SLOT_FORM_WIDGET]
+		[STANDARD_CLASS_FORM_WIDGET])
+	(default_cls_metaclass ":STANDARD-CLASS")
+	(default_facet_metaclass ":STANDARD-FACET")
+	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
+	(default_slot_metaclass ":STANDARD-SLOT")
+	(included_projects "SimpleJADEAbstractOntology.pprj")
+	(next_frame_number 0)
+	(options [ProjectKB_4471_00008])
+	(property_map [Demo_ProjectKB_00054])
+	(sources [SOURCES])
+	(tabs
+		[CLSES_TAB]
+		[SLOTS_TAB]
+		[FORMS_TAB]
+		[INSTANCES_TAB]
+		[QUERIES_TAB]
+		[ProjectKB_4471_00001]
+		[ProjectKB_4471_00003]
+		[ProjectKB_4471_00005]))
+
+([ProjectKB_4471_00000] of  String
+
+	(name "factory_class_name")
+	(string_value "edu.stanford.smi.protege.storage.clips.ClipsKnowledgeBaseFactory"))
+
+([ProjectKB_4471_00001] of  Widget
+
+	(is_hidden FALSE)
+	(label "Ontology Bean Generator")
+	(property_list [ProjectKB_4471_00002])
+	(widget_class_name "nl.uva.psy.swi.beangenerator.OntologyBeanGeneratorTab"))
+
+([ProjectKB_4471_00002] of  Property_List
+)
+
+([ProjectKB_4471_00003] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [ProjectKB_4471_00004])
+	(widget_class_name "edu.stanford.smi.protege.widget.KAToolTab"))
+
+([ProjectKB_4471_00004] of  Property_List
+)
+
+([ProjectKB_4471_00005] of  Widget
+
+	(is_hidden TRUE)
+	(label "Classes & Instances")
+	(property_list [ProjectKB_4471_00006])
+	(widget_class_name "edu.stanford.smi.protege.widget.ClsesAndInstancesTab"))
+
+([ProjectKB_4471_00006] of  Property_List
+
+	(properties
+		[FIPAAgentManagement_ProjectKB_00562]
+		[FIPAAgentManagement_ProjectKB_00563]
+		[FIPAAgentManagement_ProjectKB_00564]))
+
+([ProjectKB_4471_00007] of  Property_List
+
+	(properties
+		[Demo_ProjectKB_00044]
+		[Demo_ProjectKB_00045]))
+
+([ProjectKB_4471_00008] of  Options
+
+	(confirm_on_remove FALSE)
+	(display_abstract_class_icon TRUE)
+	(display_hidden_classes TRUE)
+	(display_multi_parent_class_icon TRUE)
+	(is_readonly FALSE)
+	(update_modification_slots FALSE))
+
+([ProjectKB_4471_00025] of  Property_List
+
+	(properties
+		[Demo_ProjectKB_00046]
+		[Demo_ProjectKB_00047]))
+
+([ProjectKB_4471_00037] of  Property_List
+
+	(properties [Demo_ProjectKB_00048]))
+
+([ProjectKB_4471_00040] of  Property_List
+
+	(properties
+		[Demo_ProjectKB_00049]
+		[Demo_ProjectKB_00050]))
+
+([ProjectKB_4471_00041] of  Property_List
+
+	(properties [Demo_ProjectKB_00051]))
+
+([ProjectKB_4471_00042] of  String
+
+	(name "classes_file_name")
+	(string_value "FIPAAgentManagement.pont"))
+
+([ProjectKB_4471_00043] of  String
+
+	(name "instances_file_name")
+	(string_value "FIPAAgentManagement.pins"))
+
+([QUERIES_TAB] of  Widget
+
+	(is_hidden TRUE)
+	(label "Queries")
+	(property_list [ProjectKB_4471_00041])
+	(widget_class_name "edu.stanford.smi.protegex.queries_tab.QueriesTab"))
+
+([SLOTS_TAB] of  Widget
+
+	(is_hidden FALSE)
+	(label "Slots")
+	(property_list [ProjectKB_4471_00025])
+	(widget_class_name "edu.stanford.smi.protege.widget.SlotsTab"))
+
+([SOURCES] of  Property_List
+
+	(properties
+		[ProjectKB_4471_00000]
+		[ProjectKB_4471_00042]
+		[ProjectKB_4471_00043]))
+
+([STANDARD_CLASS_FORM_WIDGET] of  Widget
+
+	(height 578)
+	(name ":STANDARD-CLASS")
+	(property_list [KB_118638_Instance_0])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
+	(width 714)
+	(x 0)
+	(y 0))
+
+([STANDARD_SLOT_FORM_WIDGET] of  Widget
+
+	(height 578)
+	(name ":STANDARD-SLOT")
+	(property_list [KB_118638_Instance_12])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
+	(width 714)
+	(x 0)
+	(y 0))

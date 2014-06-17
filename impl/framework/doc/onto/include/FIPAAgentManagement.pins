@@ -1,0 +1,221 @@
+; Mon Jul 03 14:09:56 PDT 2006
+; 
+;+ (version "3.1.1")
+;+ (build "Build 216")
+
+([agent-name] of  %3AJADE-SLOT
+)
+
+([agentDescription] of  %3AJADE-SLOT
+
+	(%3AJADE-UNNAMED-SLOT TRUE))
+
+([AlreadyRegistered] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "already-registered"))
+
+([AMSAgentDescription] of  %3AJADE-CLASS
+
+	(%3AJADE-NAME "ams-agent-description"))
+
+([APDescription] of  %3AJADE-CLASS
+
+	(%3AJADE-NAME "ap-description"))
+
+([APTransportDescription] of  %3AJADE-CLASS
+
+	(%3AJADE-NAME "transport-profile"))
+
+([argument] of  %3AJADE-SLOT
+)
+
+([argument2] of  %3AJADE-SLOT
+)
+
+([availableMTPs] of  %3AJADE-SLOT
+)
+
+([Demo_00031] of  %3ASTANDARD-FACET
+)
+
+([Demo_00032] of  %3ASTANDARD-FACET
+)
+
+([Deregister] of  %3AJADE-CLASS
+)
+
+([DFAgentDescription] of  %3AJADE-CLASS
+
+	(%3AJADE-NAME "df-agent-description"))
+
+([dynamic] of  %3AJADE-SLOT
+)
+
+([GetDescription] of  %3AJADE-CLASS
+)
+
+([InternalError] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "internal-error"))
+
+([language] of  %3AJADE-SLOT
+)
+
+([max-depth] of  %3AJADE-SLOT
+)
+
+([max-results] of  %3AJADE-SLOT
+)
+
+([MissingArgument] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "missing-argument"))
+
+([MissingParameter] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "missing-parameter"))
+
+([mobility] of  %3AJADE-SLOT
+)
+
+([Modify] of  %3AJADE-CLASS
+)
+
+([MTPAddresses] of  %3AJADE-SLOT
+)
+
+([MTPFIPAName] of  %3AJADE-SLOT
+)
+
+([MTPProfileName] of  %3AJADE-SLOT
+)
+
+([NotRegistered] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "not-registered"))
+
+([NotUnderstoodException] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "not-understood"))
+
+([ontology] of  %3AJADE-SLOT
+)
+
+([ownership] of  %3AJADE-SLOT
+)
+
+([project+annotation] of  %3APROJECT-ANNOTATION
+
+	(%3ALOCATION "C:\\Documents and Settings\\ttania\\src\\beanGenerator\\test")
+	(%3AONTOLOGYNAME "FIPAAgentManagement")
+	(%3APACKAGE "nl.acklin.fipa.onto.agentmanagement")
+	(%3ASUPPORT "j2se"))
+
+([properties] of  %3AJADE-SLOT
+)
+
+([Property] of  %3AJADE-CLASS
+)
+
+([property-name] of  %3AJADE-SLOT
+
+	(%3AJADE-NAME "name"))
+
+([property-value] of  %3AJADE-SLOT
+
+	(%3AJADE-NAME "value"))
+
+([protocol] of  %3AJADE-SLOT
+)
+
+([Register] of  %3AJADE-CLASS
+)
+
+([Search] of  %3AJADE-CLASS
+)
+
+([searchConstraints] of  %3AJADE-SLOT
+
+	(%3AJADE-NAME "search-constraints"))
+
+([SearchConstraints] of  %3AJADE-CLASS
+
+	(%3AJADE-NAME "search-constraints"))
+
+([service-name] of  %3AJADE-SLOT
+
+	(%3AJADE-NAME "name"))
+
+([ServiceDescription] of  %3AJADE-CLASS
+
+	(%3AJADE-NAME "service-description"))
+
+([services] of  %3AJADE-SLOT
+)
+
+([state] of  %3AJADE-SLOT
+)
+
+([transport-profile] of  %3AJADE-SLOT
+)
+
+([TransportProfile] of  %3AJADE-CLASS
+)
+
+([type] of  %3AJADE-SLOT
+)
+
+([Unauthorised] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception"))
+
+([UnexpectedAct] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unexpected-act"))
+
+([UnexpectedArgument] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unexpected-argument"))
+
+([UnexpectedArgumentCount] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unexpected-argument-count"))
+
+([UnexpectedParameter] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unexpected-parameter"))
+
+([UnrecognisedParameterValue] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unrecognised-parameter-value"))
+
+([UnrecognisedValue] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unrecognised-value"))
+
+([UnsupportedAct] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unsupported-act"))
+
+([UnsupportedFunction] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unsupported-function"))
+
+([UnsupportedValue] of  %3AJADE-CLASS
+
+	(%3AJADE-JAVA-BASE-CLASS "java.lang.Exception")
+	(%3AJADE-NAME "unsupported-value"))

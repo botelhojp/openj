@@ -8,7 +8,7 @@ import jade.core.*;
 /**
 * Protege name: MessageAction
 * @author ontology bean generator
-* @version 2013/04/13, 16:00:58
+* @version 2014/06/16, 21:59:42
 */
 public class MessageAction implements AgentAction {
 

@@ -30,4 +30,8 @@ public interface ITrustModel extends Serializable {
 
 	public Reliable isReliable(AID agent);
 
+	public boolean know(AID aid);
+
+	public void addWitness(AID sender);
+
 }

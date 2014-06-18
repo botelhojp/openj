@@ -604,12 +604,13 @@ public abstract class OpenAgent extends Agent {
 	 * @param action Ação
 	 * @param ontolory Ontologia
 	 */
-	public void sendMessage(AID to, int performative, AgentAction action, Ontology ontolory) {
+	public ACLMessage sendMessage(AID to, int performative, AgentAction action, Ontology ontolory) {
 		ACLMessage message = new ACLMessage(performative);
 		message.setSender(this.getAID());
 		message.addReceiver(to);
 		fillContent(message, action, getCodec(), ontolory);
 		sendMessage(message);
+		return message;
 	}
 	
 	public void sendMessage(AID to, int performative, String conversationId, AgentAction action, Ontology ontolory) {

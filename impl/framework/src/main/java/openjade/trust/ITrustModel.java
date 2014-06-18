@@ -3,6 +3,7 @@ package openjade.trust;
 import jade.core.AID;
 
 import java.io.Serializable;
+import java.util.Enumeration;
 import java.util.List;
 
 import openjade.core.OpenAgent;
@@ -12,6 +13,8 @@ import openjade.trust.model.Pair;
 public interface ITrustModel extends Serializable {
 
 	public void addRating(Rating rating);
+	
+	public Enumeration<AID> getAllServer();
 
 	public void currentIteration(int iteration);
 

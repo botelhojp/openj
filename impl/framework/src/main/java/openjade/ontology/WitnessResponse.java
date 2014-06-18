@@ -7,9 +7,9 @@ import jade.core.*;
 /**
 * Protege name: WitnessResponse
 * @author ontology bean generator
-* @version 2014/06/16, 21:59:42
+* @version 2014/06/17, 21:25:06
 */
-public class WitnessResponse extends Witness{ 
+public class WitnessResponse extends WitnessAction{ 
 
    /**
 * Protege name: rating

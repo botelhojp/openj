@@ -7,7 +7,7 @@ import jade.core.*;
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2014/06/16, 21:59:42
+* @version 2014/06/17, 21:25:06
 */
 public class Rating extends ASCLMessage{ 
 
@@ -20,28 +20,6 @@ public class Rating extends ASCLMessage{
    }
    public AID getClient() {
      return this.client;
-   }
-
-   /**
-* Protege name: iteration
-   */
-   private int iteration;
-   public void setIteration(int value) { 
-    this.iteration=value;
-   }
-   public int getIteration() {
-     return this.iteration;
-   }
-
-   /**
-* Protege name: server
-   */
-   private AID server;
-   public void setServer(AID value) { 
-    this.server=value;
-   }
-   public AID getServer() {
-     return this.server;
    }
 
    /**
@@ -65,6 +43,28 @@ public class Rating extends ASCLMessage{
    }
    public float getValue() {
      return this.value;
+   }
+
+   /**
+* Protege name: iteration
+   */
+   private int iteration;
+   public void setIteration(int value) { 
+    this.iteration=value;
+   }
+   public int getIteration() {
+     return this.iteration;
+   }
+
+   /**
+* Protege name: server
+   */
+   private AID server;
+   public void setServer(AID value) { 
+    this.server=value;
+   }
+   public AID getServer() {
+     return this.server;
    }
 
 }

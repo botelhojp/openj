@@ -1,4 +1,4 @@
-; Mon Jun 16 21:58:32 BRT 2014
+; Tue Jun 17 21:58:26 BRT 2014
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -136,30 +136,30 @@
 (defclass Encipher
 	(is-a MessageAction)
 	(role concrete)
+	(single-slot message
+		(type INSTANCE)
+;+		(allowed-classes EncryptedMessage)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot provider
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot algorithm
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot signMode
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot message
-		(type INSTANCE)
-;+		(allowed-classes EncryptedMessage)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot algorithm
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Witness
+(defclass WitnessAction
 	(is-a AgentAction)
 	(role concrete))
 
 (defclass WitnessRequest
-	(is-a Witness)
+	(is-a WitnessAction)
 	(role concrete)
 	(single-slot aid
 		(type INSTANCE)
@@ -168,7 +168,7 @@
 		(create-accessor read-write)))
 
 (defclass WitnessResponse
-	(is-a Witness)
+	(is-a WitnessAction)
 	(role concrete)
 	(multislot rating
 		(type INSTANCE)
@@ -196,29 +196,20 @@
 		(type SYMBOL)
 ;+		(allowed-parents)
 		(create-accessor read-write))
+	(single-slot keyAlgorithm
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot key
 		(type SYMBOL)
 ;+		(allowed-parents)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot keyAlgorithm
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Rating
 	(is-a ASCLMessage)
 	(role concrete)
 	(single-slot client
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot iteration
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot server
 		(type INSTANCE)
 ;+		(allowed-classes AID)
 ;+		(cardinality 0 1)
@@ -230,6 +221,15 @@
 	(single-slot value
 ;+		(comment "valor da iteração")
 		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot iteration
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot server
+		(type INSTANCE)
+;+		(allowed-classes AID)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 

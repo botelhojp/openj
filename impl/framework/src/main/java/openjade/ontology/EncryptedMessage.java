@@ -7,7 +7,7 @@ import jade.core.*;
 /**
 * Protege name: EncryptedMessage
 * @author ontology bean generator
-* @version 2014/06/16, 21:59:42
+* @version 2014/06/17, 21:25:06
 */
 public class EncryptedMessage extends ASCLMessage{ 
 
@@ -33,17 +33,6 @@ public class EncryptedMessage extends ASCLMessage{
    public void setListContent(List l) {listContent = l; }
 
    /**
-* Protege name: key
-   */
-   private Object key;
-   public void setKey(Object value) { 
-    this.key=value;
-   }
-   public Object getKey() {
-     return this.key;
-   }
-
-   /**
 * Protege name: keyAlgorithm
    */
    private String keyAlgorithm;
@@ -52,6 +41,17 @@ public class EncryptedMessage extends ASCLMessage{
    }
    public String getKeyAlgorithm() {
      return this.keyAlgorithm;
+   }
+
+   /**
+* Protege name: key
+   */
+   private Object key;
+   public void setKey(Object value) { 
+    this.key=value;
+   }
+   public Object getKey() {
+     return this.key;
    }
 
 }

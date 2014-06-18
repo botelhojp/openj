@@ -114,11 +114,15 @@ public abstract class OpenAgent extends Agent {
 		super();
 		services = new ArrayList<String>();
 		cacheKey = new CacheKey();
-		codec = new LEAPCodec();
+		setCodec(new LEAPCodec());
 		openJadeOntology = OpenJadeOntology.getInstance();
 		openJadeMT = MessageTemplate.and(MessageTemplate.MatchLanguage(codec.getName()), MessageTemplate.MatchOntology(openJadeOntology.getName()));
 		addBehaviour(new LoaderKeystoreBehaviour(this));
 		addBehaviour(new ReceiveMessageBehaviour(this));
+	}
+	
+	public void setCodec(Codec codec){
+		this.codec = codec;
 	}
 	
 	public void searchWitnesses(AID server){

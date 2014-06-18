@@ -6,10 +6,10 @@ import jade.util.leap.*;
 import jade.core.*;
 
 /**
-* Protege name: Witness
+* Protege name: WitnessAction
 * @author ontology bean generator
-* @version 2014/06/16, 21:59:42
+* @version 2014/06/17, 21:25:06
 */
-public class Witness implements AgentAction {
+public class WitnessAction implements AgentAction {
 
 }

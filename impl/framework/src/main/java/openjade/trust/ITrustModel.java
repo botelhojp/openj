@@ -5,6 +5,7 @@ import jade.core.AID;
 import java.io.Serializable;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Properties;
 
 import openjade.core.OpenAgent;
 import openjade.ontology.Rating;
@@ -15,6 +16,10 @@ public interface ITrustModel extends Serializable {
 	public void addRating(Rating rating);
 	
 	public Enumeration<AID> getAllServer();
+	
+	public Properties getProperties();
+	
+	public void setProperties(Properties properties);
 
 	public void currentIteration(int iteration);
 

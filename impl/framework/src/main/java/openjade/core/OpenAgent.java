@@ -64,6 +64,7 @@ import openjade.ontology.EncryptedMessage;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.PKCS7Message;
 import openjade.ontology.Rating;
+import openjade.ontology.RequestRating;
 import openjade.ontology.SendRating;
 import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
@@ -123,10 +124,6 @@ public abstract class OpenAgent extends Agent {
 	
 	public void setCodec(Codec codec){
 		this.codec = codec;
-	}
-	
-	public void searchWitnesses(AID server){
-		log.debug("searchWitnesses not implemented");
 	}
 	
 	protected void loadTrustModel(Class<ITrustModel> clazz){
@@ -597,6 +594,11 @@ public abstract class OpenAgent extends Agent {
 	public void sendMessage(AID to, int performative, String conversationId, String content) {
 		sendMessage(to, performative, conversationId, null, content);
 	}
+	
+	public void sendMessage(AID aid, int perfomative, AgentAction aa) {
+		sendMessage(aid, perfomative, aa, openJadeOntology);
+	}
+
 
 	/**
 	 * Enviar uma mensagem composto por um Concept do tipo AgentAction
@@ -607,6 +609,7 @@ public abstract class OpenAgent extends Agent {
 	public ACLMessage sendMessage(AID to, int performative, AgentAction action, Ontology ontolory) {
 		ACLMessage message = new ACLMessage(performative);
 		message.setSender(this.getAID());
+		message.setConversationId("");
 		message.addReceiver(to);
 		fillContent(message, action, getCodec(), ontolory);
 		sendMessage(message);
@@ -665,4 +668,11 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException(e.getMessage(), e);
 		}
 	}
+
+	public void findReputation(AID witness, AID server) {
+		RequestRating rr = new RequestRating();
+		rr.setAid(server);
+		sendMessage(witness, ACLMessage.REQUEST, rr);
+	}
+	
 }

@@ -12,7 +12,7 @@ import openjade.ontology.Rating;
 import openjade.trust.model.Pair;
 
 public interface ITrustModel extends Serializable {
-
+	
 	public void addRating(Rating rating);
 	
 	public Enumeration<AID> getAllServer();
@@ -38,5 +38,7 @@ public interface ITrustModel extends Serializable {
 	public boolean know(AID aid);
 
 	public void addWitness(AID sender);
+	
+	public List<AID> getWitnesses();
 
 }

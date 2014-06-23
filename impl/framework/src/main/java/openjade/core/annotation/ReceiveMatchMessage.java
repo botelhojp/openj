@@ -24,5 +24,5 @@ public @interface ReceiveMatchMessage {
 
 	int[] performative() default {-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,29,20,21};
 	
-	String[] conversationId() default {};
+	String[] conversationId() default {""};
 }

@@ -1,4 +1,4 @@
-; Tue Jun 17 21:58:26 BRT 2014
+; Mon Jun 23 00:41:38 BRT 2014
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -84,6 +84,11 @@
 	(single-slot algorithm
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot witnesses
+		(type INSTANCE)
+;+		(allowed-classes AID)
+		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
 (defclass RatingAction
@@ -170,9 +175,9 @@
 (defclass WitnessResponse
 	(is-a WitnessAction)
 	(role concrete)
-	(multislot rating
+	(multislot witnesses
 		(type INSTANCE)
-;+		(allowed-classes Rating)
+;+		(allowed-classes AID)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 

@@ -7,29 +7,29 @@ import jade.core.*;
 /**
 * Protege name: WitnessResponse
 * @author ontology bean generator
-* @version 2014/06/17, 21:25:06
+* @version 2014/06/23, 00:40:32
 */
 public class WitnessResponse extends WitnessAction{ 
 
    /**
-* Protege name: rating
+* Protege name: witnesses
    */
-   private List rating = new ArrayList();
-   public void addRating(Rating elem) { 
-     List oldList = this.rating;
-     rating.add(elem);
+   private List witnesses = new ArrayList();
+   public void addWitnesses(AID elem) { 
+     List oldList = this.witnesses;
+     witnesses.add(elem);
    }
-   public boolean removeRating(Rating elem) {
-     List oldList = this.rating;
-     boolean result = rating.remove(elem);
+   public boolean removeWitnesses(AID elem) {
+     List oldList = this.witnesses;
+     boolean result = witnesses.remove(elem);
      return result;
    }
-   public void clearAllRating() {
-     List oldList = this.rating;
-     rating.clear();
+   public void clearAllWitnesses() {
+     List oldList = this.witnesses;
+     witnesses.clear();
    }
-   public Iterator getAllRating() {return rating.iterator(); }
-   public List getRating() {return rating; }
-   public void setRating(List l) {rating = l; }
+   public Iterator getAllWitnesses() {return witnesses.iterator(); }
+   public List getWitnesses() {return witnesses; }
+   public void setWitnesses(List l) {witnesses = l; }
 
 }

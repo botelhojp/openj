@@ -7,7 +7,7 @@ import jade.core.*;
 /**
 * Protege name: Encipher
 * @author ontology bean generator
-* @version 2014/06/17, 21:25:06
+* @version 2014/06/23, 00:40:32
 */
 public class Encipher extends MessageAction{ 
 

@@ -9,7 +9,7 @@ import jade.core.CaseInsensitiveString;
 
 /** file: OpenJadeOntology.java
  * @author ontology bean generator
- * @version 2014/06/17, 21:25:06
+ * @version 2014/06/23, 00:40:32
  */
 public class OpenJadeOntology extends jade.content.onto.Ontology  {
   //NAME
@@ -34,7 +34,7 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     public static final String REQUESTRATING_AID="aid";
     public static final String REQUESTRATING="RequestRating";
     public static final String RATINGACTION="RatingAction";
-    public static final String WITNESSRESPONSE_RATING="rating";
+    public static final String WITNESSRESPONSE_WITNESSES="witnesses";
     public static final String WITNESSRESPONSE="WitnessResponse";
     public static final String WITNESSREQUEST_AID="aid";
     public static final String WITNESSREQUEST="WitnessRequest";
@@ -124,7 +124,7 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     encipherSchema.add(ENCIPHER_ALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     encipherSchema.add(ENCIPHER_SIGNMODE, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.OPTIONAL);
     witnessRequestSchema.add(WITNESSREQUEST_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
-    witnessResponseSchema.add(WITNESSRESPONSE_RATING, ratingSchema, 1, ObjectSchema.UNLIMITED);
+    witnessResponseSchema.add(WITNESSRESPONSE_WITNESSES, (ConceptSchema)getSchema(BasicOntology.AID), 1, ObjectSchema.UNLIMITED);
     requestRatingSchema.add(REQUESTRATING_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
     sendRatingSchema.add(SENDRATING_RATING, ratingSchema, 1, ObjectSchema.UNLIMITED);
     changeIterationSchema.add(CHANGEITERATION_ITERATION, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.MANDATORY);

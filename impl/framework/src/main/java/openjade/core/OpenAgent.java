@@ -94,7 +94,7 @@ public abstract class OpenAgent extends Agent {
 	public static final String SERVICE_TRUST_MONITOR = "openjade.trust.monitor";
 	public static final String TIMER_LISTENER = "openjade.timer.listener";
 	public static final String TRUSTMODEL_REPUTATION_LISTENER = "openjade.trustmodel.reputation.listener";
-	
+
 	protected KeyStore store;
 	public X509Certificate certificate;
 	protected CertificateBean certificateBean;
@@ -121,12 +121,12 @@ public abstract class OpenAgent extends Agent {
 		addBehaviour(new LoaderKeystoreBehaviour(this));
 		addBehaviour(new ReceiveMessageBehaviour(this));
 	}
-	
-	public void setCodec(Codec codec){
+
+	public void setCodec(Codec codec) {
 		this.codec = codec;
 	}
-	
-	protected void loadTrustModel(Class<ITrustModel> clazz){
+
+	protected void loadTrustModel(Class<ITrustModel> clazz) {
 		try {
 			trustModel = clazz.newInstance();
 			trustModel.setAgent(this);
@@ -134,7 +134,7 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException("not load trust model", e);
 		} catch (IllegalAccessException e) {
 			throw new OpenJadeException("not load trust model", e);
-		}		
+		}
 	}
 
 	public void loadKeystore() {
@@ -181,8 +181,7 @@ public abstract class OpenAgent extends Agent {
 			}
 		}
 	}
-	
-	
+
 	private void callOnChangeInteration() {
 		try {
 			Method[] methods = getClass().getMethods();
@@ -479,20 +478,19 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException("createAgent", e);
 		}
 	}
-	
-	public void addService(String service){
+
+	public void addService(String service) {
 		services.add(service);
 	}
 
 	public void registerService(String... service) {
 		addBehaviour(new RegisterServiceBehaviour(this, service));
 	}
-	
-	public String showRating(Rating rt) {		
-		return rt.getIteration() + ":" + rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getTerm()+ ":" + rt.getValue();
+
+	public String showRating(Rating rt) {
+		return rt.getIteration() + ":" + rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getTerm() + ":" + rt.getValue();
 	}
 
-	
 	public void registerService() {
 		String[] _services = new String[services.size()];
 		for (int i = 0; i < services.size(); i++) {
@@ -500,7 +498,6 @@ public abstract class OpenAgent extends Agent {
 		}
 		registerService(_services);
 	}
-
 
 	public X509Certificate getCertificate() {
 		return certificate;
@@ -594,17 +591,20 @@ public abstract class OpenAgent extends Agent {
 	public void sendMessage(AID to, int performative, String conversationId, String content) {
 		sendMessage(to, performative, conversationId, null, content);
 	}
-	
+
 	public void sendMessage(AID aid, int perfomative, AgentAction aa) {
 		sendMessage(aid, perfomative, aa, openJadeOntology);
 	}
 
-
 	/**
 	 * Enviar uma mensagem composto por um Concept do tipo AgentAction
-	 * @param to Destinatário da mensagem
-	 * @param action Ação
-	 * @param ontolory Ontologia
+	 * 
+	 * @param to
+	 *            Destinatário da mensagem
+	 * @param action
+	 *            Ação
+	 * @param ontolory
+	 *            Ontologia
 	 */
 	public ACLMessage sendMessage(AID to, int performative, AgentAction action, Ontology ontolory) {
 		ACLMessage message = new ACLMessage(performative);
@@ -616,6 +616,10 @@ public abstract class OpenAgent extends Agent {
 		return message;
 	}
 	
+	public ACLMessage sendMessage(AID to, int performative, String conversationId, AgentAction action) {
+		return sendMessage(to, performative, conversationId, action, OpenJadeOntology.getInstance());
+	}
+
 	public ACLMessage sendMessage(AID to, int performative, String conversationId, AgentAction action, Ontology ontolory) {
 		ACLMessage message = new ACLMessage(performative);
 		message.setSender(this.getAID());
@@ -625,12 +629,16 @@ public abstract class OpenAgent extends Agent {
 		sendMessage(message);
 		return message;
 	}
-	
+
 	/**
 	 * Enviar uma mensagem composto por um Concept do tipo AgentAction
-	 * @param to Destinatário da mensagem
-	 * @param action Ação
-	 * @param ontolory Ontologia
+	 * 
+	 * @param to
+	 *            Destinatário da mensagem
+	 * @param action
+	 *            Ação
+	 * @param ontolory
+	 *            Ontologia
 	 */
 	public void sendMessage(String service, int performative, AgentAction action, Ontology ontolory) {
 		java.util.List<AID> aids = getAIDByService(service);
@@ -638,16 +646,15 @@ public abstract class OpenAgent extends Agent {
 			sendMessage(aid, performative, action, ontolory);
 		}
 	}
-	
-	
+
 	public void sendMessage(String service, int performative, String conversationId, AgentAction action, Ontology ontolory) {
 		java.util.List<AID> aids = getAIDByService(service);
 		for (AID aid : aids) {
 			sendMessage(aid, performative, conversationId, action, ontolory);
 		}
 	}
-
-
+	
+	
 	public void sendMessage(AID to, int performative, String conversationId, Serializable object) {
 		sendMessage(to, performative, conversationId, object, null);
 	}
@@ -672,7 +679,11 @@ public abstract class OpenAgent extends Agent {
 	public void findReputation(AID witness, AID server) {
 		RequestRating rr = new RequestRating();
 		rr.setAid(server);
-		sendMessage(witness, ACLMessage.REQUEST, rr);
+		sendMessage(witness, ACLMessage.REQUEST, ACLMessage.REQUEST+"", rr);
 	}
-	
+
+	public void findWitnesses(AID server) {
+
+	}
+
 }

@@ -9,8 +9,9 @@ import jade.core.CaseInsensitiveString;
 
 /** file: OpenJadeOntology.java
  * @author ontology bean generator
- * @version 2014/06/23, 00:40:32
+ * @version 2014/06/24, 21:00:54
  */
+@SuppressWarnings("all")
 public class OpenJadeOntology extends jade.content.onto.Ontology  {
   //NAME
   public static final String ONTOLOGY_NAME = "OpenJade";
@@ -23,8 +24,6 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
 
    // VOCABULARY
-    public static final String SIGN_PKCS7="pkcs7";
-    public static final String SIGN="Sign";
     public static final String MESSAGEACTION="MessageAction";
     public static final String CHANGEITERATION_ITERATION="iteration";
     public static final String CHANGEITERATION="ChangeIteration";
@@ -44,6 +43,8 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     public static final String ENCIPHER_PROVIDER="provider";
     public static final String ENCIPHER_MESSAGE="message";
     public static final String ENCIPHER="Encipher";
+    public static final String SIGN_PKCS7="pkcs7";
+    public static final String SIGN="Sign";
     public static final String ENCRYPTEDMESSAGE_KEY="key";
     public static final String ENCRYPTEDMESSAGE_KEYALGORITHM="keyAlgorithm";
     public static final String ENCRYPTEDMESSAGE_LISTCONTENT="listContent";
@@ -80,6 +81,8 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     add(encryptedMessageSchema, openjade.ontology.EncryptedMessage.class);
 
     // adding AgentAction(s)
+    AgentActionSchema signSchema = new AgentActionSchema(SIGN);
+    add(signSchema, openjade.ontology.Sign.class);
     AgentActionSchema encipherSchema = new AgentActionSchema(ENCIPHER);
     add(encipherSchema, openjade.ontology.Encipher.class);
     AgentActionSchema witnessActionSchema = new AgentActionSchema(WITNESSACTION);
@@ -100,8 +103,6 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     add(changeIterationSchema, openjade.ontology.ChangeIteration.class);
     AgentActionSchema messageActionSchema = new AgentActionSchema(MESSAGEACTION);
     add(messageActionSchema, openjade.ontology.MessageAction.class);
-    AgentActionSchema signSchema = new AgentActionSchema(SIGN);
-    add(signSchema, openjade.ontology.Sign.class);
 
     // adding AID(s)
 
@@ -119,6 +120,7 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.SET), 0, ObjectSchema.UNLIMITED);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEYALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.SET), ObjectSchema.OPTIONAL);
+    signSchema.add(SIGN_PKCS7, pkcS7MessageSchema, ObjectSchema.OPTIONAL);
     encipherSchema.add(ENCIPHER_MESSAGE, encryptedMessageSchema, ObjectSchema.OPTIONAL);
     encipherSchema.add(ENCIPHER_PROVIDER, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     encipherSchema.add(ENCIPHER_ALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
@@ -128,7 +130,6 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     requestRatingSchema.add(REQUESTRATING_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
     sendRatingSchema.add(SENDRATING_RATING, ratingSchema, 1, ObjectSchema.UNLIMITED);
     changeIterationSchema.add(CHANGEITERATION_ITERATION, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.MANDATORY);
-    signSchema.add(SIGN_PKCS7, pkcS7MessageSchema, ObjectSchema.OPTIONAL);
 
     // adding name mappings
 
@@ -136,13 +137,13 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     ratingSchema.addSuperSchema(asclMessageSchema);
     pkcS7MessageSchema.addSuperSchema(asclMessageSchema);
     encryptedMessageSchema.addSuperSchema(asclMessageSchema);
+    signSchema.addSuperSchema(messageActionSchema);
     encipherSchema.addSuperSchema(messageActionSchema);
     witnessRequestSchema.addSuperSchema(witnessActionSchema);
     witnessResponseSchema.addSuperSchema(witnessActionSchema);
     requestRatingSchema.addSuperSchema(ratingActionSchema);
     sendRatingSchema.addSuperSchema(ratingActionSchema);
     changeIterationSchema.addSuperSchema(timerActionSchema);
-    signSchema.addSuperSchema(messageActionSchema);
 
    }catch (java.lang.Exception e) {e.printStackTrace();}
   }

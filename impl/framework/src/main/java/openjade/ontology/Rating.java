@@ -7,8 +7,9 @@ import jade.core.*;
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2014/06/23, 00:40:32
+* @version 2014/06/24, 21:00:54
 */
+@SuppressWarnings("all")
 public class Rating extends ASCLMessage{ 
 
    /**
@@ -34,7 +35,7 @@ public class Rating extends ASCLMessage{
    }
 
    /**
-   * valor da iteração
+   * valor da iteraï¿½ï¿½o
 * Protege name: value
    */
    private float value;

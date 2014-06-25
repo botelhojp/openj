@@ -7,8 +7,9 @@ import jade.core.*;
 /**
 * Protege name: PKCS7Message
 * @author ontology bean generator
-* @version 2014/06/23, 00:40:32
+* @version 2014/06/24, 21:00:54
 */
+@SuppressWarnings("all")
 public class PKCS7Message extends ASCLMessage{ 
 
    /**

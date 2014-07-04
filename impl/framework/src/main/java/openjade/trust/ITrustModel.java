@@ -41,4 +41,8 @@ public interface ITrustModel extends Serializable {
 	
 	public List<AID> getWitnesses();
 
+	public void serialize();
+
+	public void loadSerialize();
+
 }

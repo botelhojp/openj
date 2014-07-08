@@ -1,16 +1,13 @@
 package openjade.ontology;
 
 
-import jade.content.*;
-import jade.util.leap.*;
-import jade.core.*;
+import jade.content.AgentAction;
 
 /**
 * Protege name: MessageAction
 * @author ontology bean generator
-* @version 2014/06/24, 21:00:54
+* @version 2014/07/8, 11:38:13
 */
-@SuppressWarnings("all")
 public class MessageAction implements AgentAction {
-
+	private static final long serialVersionUID = 1L;
 }

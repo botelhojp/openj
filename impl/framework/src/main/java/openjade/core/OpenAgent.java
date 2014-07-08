@@ -488,7 +488,7 @@ public abstract class OpenAgent extends Agent {
 	}
 
 	public String showRating(Rating rt) {
-		return rt.getIteration() + ":" + rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getTerm() + ":" + rt.getValue();
+		return rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getAttributes() + ":" + rt.getValue();
 	}
 
 	public void registerService() {

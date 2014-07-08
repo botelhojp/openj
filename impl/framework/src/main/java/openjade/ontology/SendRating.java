@@ -1,15 +1,14 @@
 package openjade.ontology;
 
-import jade.content.*;
-import jade.util.leap.*;
-import jade.core.*;
+import jade.util.leap.ArrayList;
+import jade.util.leap.Iterator;
+import jade.util.leap.List;
 
 /**
 * Protege name: SendRating
 * @author ontology bean generator
-* @version 2014/06/24, 21:00:54
+* @version 2014/07/8, 11:38:13
 */
-@SuppressWarnings("all")
 public class SendRating extends RatingAction{ 
 
    /**

@@ -1,71 +1,66 @@
 package openjade.ontology;
 
-import jade.content.*;
-import jade.util.leap.*;
-import jade.core.*;
+import jade.core.AID;
 
 /**
-* Protege name: Rating
-* @author ontology bean generator
-* @version 2014/06/24, 21:00:54
-*/
-@SuppressWarnings("all")
-public class Rating extends ASCLMessage{ 
+ * Protege name: Rating
+ * 
+ * @author ontology bean generator
+ * @version 2014/07/8, 11:38:13
+ */
+public class Rating extends ASCLMessage {
 
-   /**
-* Protege name: client
-   */
-   private AID client;
-   public void setClient(AID value) { 
-    this.client=value;
-   }
-   public AID getClient() {
-     return this.client;
-   }
+	private static final long serialVersionUID = 1L;
+	/**
+	 * Protege name: server
+	 */
+	private AID server;
 
-   /**
-* Protege name: term
-   */
-   private String term;
-   public void setTerm(String value) { 
-    this.term=value;
-   }
-   public String getTerm() {
-     return this.term;
-   }
+	public void setServer(AID value) {
+		this.server = value;
+	}
 
-   /**
-   * valor da itera��o
-* Protege name: value
-   */
-   private float value;
-   public void setValue(float value) { 
-    this.value=value;
-   }
-   public float getValue() {
-     return this.value;
-   }
+	public AID getServer() {
+		return this.server;
+	}
 
-   /**
-* Protege name: iteration
-   */
-   private int iteration;
-   public void setIteration(int value) { 
-    this.iteration=value;
-   }
-   public int getIteration() {
-     return this.iteration;
-   }
+	/**
+	 * Protege name: attributes
+	 */
+	private String attributes;
 
-   /**
-* Protege name: server
-   */
-   private AID server;
-   public void setServer(AID value) { 
-    this.server=value;
-   }
-   public AID getServer() {
-     return this.server;
-   }
+	public void setAttributes(String value) {
+		this.attributes = value;
+	}
+
+	public String getAttributes() {
+		return this.attributes;
+	}
+
+	/**
+	 * Protege name: client
+	 */
+	private AID client;
+
+	public void setClient(AID value) {
+		this.client = value;
+	}
+
+	public AID getClient() {
+		return this.client;
+	}
+
+	/**
+	 * valor da iteração Protege name: value
+	 */
+	private String value;
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return this.value;
+	}
 
 }

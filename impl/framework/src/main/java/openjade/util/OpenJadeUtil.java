@@ -8,13 +8,12 @@ import openjade.ontology.Rating;
 
 public class OpenJadeUtil {
 
-	public static Rating makeRating(AID clientAID, AID serverAID, int iteration2, String term, int value) {
+	public static Rating makeRating(AID clientAID, AID serverAID, String attributes, String value) {
 		Rating r = new Rating();
 		r.setClient(clientAID);
 		r.setServer(serverAID);
-		r.setIteration(iteration2);
-		r.setTerm(term);
-		r.setValue(value);
+		r.setAttributes(attributes);
+		r.setValue(value);		
 		return r;
 	}
 

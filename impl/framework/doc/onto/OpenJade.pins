@@ -1,4 +1,4 @@
-; Mon Jun 23 00:41:38 BRT 2014
+; Tue Jul 08 12:36:41 BRT 2014
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -33,7 +33,7 @@
 
 ([project+annotation] of  %3APROJECT-ANNOTATION
 
-	(%3ALOCATION "C:\\Users\\vanderson\\git\\openj\\impl\\framework\\src\\main\\java\\")
+	(%3ALOCATION "/home/03397040477/git/openj/impl/framework/src/main/java/")
 	(%3AONTOLOGYNAME "OpenJade")
 	(%3APACKAGE "openjade.ontology")
 	(%3ASUPPORT "j2se"))

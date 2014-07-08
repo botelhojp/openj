@@ -1,17 +1,13 @@
 package openjade.ontology;
 
-import jade.content.*;
-import jade.util.leap.*;
-import jade.core.*;
 
 /**
 * Protege name: ChangeIteration
 * @author ontology bean generator
-* @version 2014/06/24, 21:00:54
+* @version 2014/07/8, 11:38:13
 */
-@SuppressWarnings("all")
 public class ChangeIteration extends TimerAction{ 
-
+	private static final long serialVersionUID = 1L;
    /**
 * Protege name: iteration
    */

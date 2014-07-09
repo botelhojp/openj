@@ -466,7 +466,6 @@ public class BasicCertificate {
 	 * @throws IOException
 	 */
 	public String getAuthorityKeyIdentifier() throws IOException {
-		// TODO - Precisa validar este metodo com a RFC
 		DERSequence seq = (DERSequence) getExtensionValue(X509Extensions.AuthorityKeyIdentifier.getId());
 		if (seq == null || seq.size() == 0) {
 			return null;
@@ -485,7 +484,6 @@ public class BasicCertificate {
 	 * @return String
 	 */
 	public String getSubjectKeyIdentifier() throws IOException {
-		// TODO - Precisa validar este metodo com a RFC
 		DEROctetString oct = (DEROctetString) getExtensionValue(X509Extensions.SubjectKeyIdentifier.getId());
 		if (oct == null) {
 			return null;

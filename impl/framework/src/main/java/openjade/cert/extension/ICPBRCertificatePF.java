@@ -154,13 +154,5 @@ public class ICPBRCertificatePF {
 	public String getCEI(){
 		return oID_2_16_76_1_3_6.getCEI();
 	}
-	
-	/* TODO - Campo opcional e nao obrigatorio
-	 campos otherName, não obrigatórios, contendo:
-	OID = 2.16.76.1.4.n e conteúdo = de tamanho variavel correspondente ao número de 
-	habilitação ou identificação profissional emitido por conselho de classe ou órgão competente. 
-	A AC Raiz, por meio do documento ATRIBUICAO DE OID NA ICPBRASIL [2] regulamentara a correspondência de
-	cada conselho de classe ou órgão competente ao conjunto de OID acima definido.	 
-	 */
 
 }

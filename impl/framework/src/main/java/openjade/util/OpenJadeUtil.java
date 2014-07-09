@@ -9,10 +9,11 @@ import openjade.ontology.Rating;
 
 public class OpenJadeUtil {
 
-	public static Rating makeRating(AID clientAID, AID serverAID, jade.util.leap.List ra, String value) {
+	public static Rating makeRating(AID clientAID, AID serverAID, int round, jade.util.leap.List ra, String value) {
 		Rating r = new Rating();
 		r.setClient(clientAID);
 		r.setServer(serverAID);
+		r.setRound(round);
 		r.setAttributes(ra);
 		r.setValue(value);		
 		return r;

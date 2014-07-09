@@ -31,7 +31,6 @@ import jade.wrapper.StaleProxyException;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Method;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyStore;
@@ -50,22 +49,16 @@ import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
-import openjade.core.annotation.OnChangeIteration;
-import openjade.core.annotation.OnGetUtility;
-import openjade.core.annotation.ReceiveMatchMessage;
-import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
 import openjade.core.behaviours.ReceiveMessageBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
 import openjade.keystore.loader.implementation.KeyStoreLoaderImpl;
-import openjade.ontology.ChangeIteration;
 import openjade.ontology.Encipher;
 import openjade.ontology.EncryptedMessage;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.PKCS7Message;
 import openjade.ontology.Rating;
 import openjade.ontology.RequestRating;
-import openjade.ontology.SendRating;
 import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
 import openjade.signer.PKCS7Signer;
@@ -156,64 +149,64 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	@ReceiveMatchMessage(action = ChangeIteration.class, ontology = OpenJadeOntology.class)
-	public final void changeIteration(ACLMessage message, ContentElement ce) {
-		iteration = ((ChangeIteration) ce).getRound();
-		callOnChangeInteration();
-		if (trustModel != null) {
-			trustModel.currentIteration(iteration);
-			java.util.List<AID> aids = getAIDByService(OpenAgent.SERVICE_TRUST_MONITOR);
-			if (!aids.isEmpty()) {
-				SendRating sendRating = new SendRating();
-				Float utility = callOnGetUtility(iteration);
-				if (utility != null) {
-					Rating rating = trustModel.addRating(getAID(), getAID(), iteration, trustModel.getClass().getName(), utility);
-					jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
-					ratingList.add(rating);
-					sendRating.setRating(ratingList);
+//	@ReceiveMatchMessage(action = ChangeIteration.class, ontology = OpenJadeOntology.class)
+//	public final void changeIteration(ACLMessage message, ContentElement ce) {
+//		iteration = ((ChangeIteration) ce).getRound();
+//		callOnChangeInteration();
+//		if (trustModel != null) {
+//			trustModel.currentIteration(iteration);
+//			java.util.List<AID> aids = getAIDByService(OpenAgent.SERVICE_TRUST_MONITOR);
+//			if (!aids.isEmpty()) {
+//				SendRating sendRating = new SendRating();
+//				Float utility = callOnGetUtility(iteration);
+//				if (utility != null) {
+//					Rating rating = trustModel.addRating(getAID(), getAID(), iteration, trustModel.getClass().getName(), utility);
+//					jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
+//					ratingList.add(rating);
+//					sendRating.setRating(ratingList);
+//
+//					ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
+//					msg.setSender(getAID());
+//					msg.addReceiver(aids.get(0));
+//					fillContent(msg, sendRating, getCodec(), OpenJadeOntology.getInstance());
+//					sendMessage(msg);
+//				}
+//			}
+//		}
+//	}
 
-					ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-					msg.setSender(getAID());
-					msg.addReceiver(aids.get(0));
-					fillContent(msg, sendRating, getCodec(), OpenJadeOntology.getInstance());
-					sendMessage(msg);
-				}
-			}
-		}
-	}
+//	private void callOnChangeInteration() {
+//		try {
+//			Method[] methods = getClass().getMethods();
+//			for (Method method : methods) {
+//				method.setAccessible(true);
+//				if (method.isAnnotationPresent(OnChangeIteration.class)) {
+//					OnChangeIteration onChangeIteration = method.getAnnotation(OnChangeIteration.class);
+//					if (onChangeIteration.delay() > 0) {
+//						Thread.sleep(onChangeIteration.delay());
+//					}
+//					method.invoke(this);
+//				}
+//			}
+//		} catch (Exception e) {
+//			throw new BehaviourException(e.getMessage(), e);
+//		}
+//	}
 
-	private void callOnChangeInteration() {
-		try {
-			Method[] methods = getClass().getMethods();
-			for (Method method : methods) {
-				method.setAccessible(true);
-				if (method.isAnnotationPresent(OnChangeIteration.class)) {
-					OnChangeIteration onChangeIteration = method.getAnnotation(OnChangeIteration.class);
-					if (onChangeIteration.delay() > 0) {
-						Thread.sleep(onChangeIteration.delay());
-					}
-					method.invoke(this);
-				}
-			}
-		} catch (Exception e) {
-			throw new BehaviourException(e.getMessage(), e);
-		}
-	}
-
-	private Float callOnGetUtility(long iteration) {
-		try {
-			Method[] methods = getClass().getMethods();
-			for (Method method : methods) {
-				method.setAccessible(true);
-				if (method.isAnnotationPresent(OnGetUtility.class)) {
-					return (Float) method.invoke(this, iteration);
-				}
-			}
-			return null;
-		} catch (Exception e) {
-			throw new BehaviourException(e.getMessage(), e);
-		}
-	}
+//	private Float callOnGetUtility(long iteration) {
+//		try {
+//			Method[] methods = getClass().getMethods();
+//			for (Method method : methods) {
+//				method.setAccessible(true);
+//				if (method.isAnnotationPresent(OnGetUtility.class)) {
+//					return (Float) method.invoke(this, iteration);
+//				}
+//			}
+//			return null;
+//		} catch (Exception e) {
+//			throw new BehaviourException(e.getMessage(), e);
+//		}
+//	}
 
 	@Override
 	public void addBehaviour(Behaviour b) {

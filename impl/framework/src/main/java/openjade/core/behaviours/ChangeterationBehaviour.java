@@ -21,7 +21,7 @@ public class ChangeterationBehaviour extends CyclicTimerBehaviour {
 
 	private TimerAgent myAgent;
 	
-	private int iteration = 0;
+	private int round = 0;
 
 	public ChangeterationBehaviour(Agent _agent, long sleep) {
 		super(_agent, sleep, 0);
@@ -29,8 +29,8 @@ public class ChangeterationBehaviour extends CyclicTimerBehaviour {
 	}
 
 	public void run() {
-		iteration++;
-		log.debug(".............. ITERATION [" + iteration + "] ..............");
+		round++;
+		log.debug(".............. ITERATION [" + round + "] ..............");
 		ACLMessage message = new ACLMessage(ACLMessage.INFORM);
 		String[] services = { OpenAgent.SERVICE_TRUST_MONITOR, OpenAgent.TIMER_LISTENER };
 		try {
@@ -49,7 +49,7 @@ public class ChangeterationBehaviour extends CyclicTimerBehaviour {
 		}
 		message.setSender(myAgent.getAID());
 		ChangeIteration action = new ChangeIteration();
-		action.setIteration(iteration);
+		action.setRound(round);
 		myAgent.fillContent(message, action, myAgent.getCodec(), OpenJadeOntology.getInstance());
 		myAgent.sendMessage(message);
 	}

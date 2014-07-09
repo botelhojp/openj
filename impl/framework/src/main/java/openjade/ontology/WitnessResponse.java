@@ -1,15 +1,15 @@
 package openjade.ontology;
 
-import jade.core.AID;
-import jade.util.leap.ArrayList;
-import jade.util.leap.Iterator;
-import jade.util.leap.List;
+import jade.content.*;
+import jade.util.leap.*;
+import jade.core.*;
 
 /**
 * Protege name: WitnessResponse
 * @author ontology bean generator
-* @version 2014/07/8, 11:38:13
+* @version 2014/07/8, 21:13:29
 */
+@SuppressWarnings("all")
 public class WitnessResponse extends WitnessAction{ 
 
    /**

@@ -1,18 +1,19 @@
 package openjade.util;
 
+import jade.core.AID;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import jade.core.AID;
 import openjade.ontology.Rating;
 
 public class OpenJadeUtil {
 
-	public static Rating makeRating(AID clientAID, AID serverAID, String attributes, String value) {
+	public static Rating makeRating(AID clientAID, AID serverAID, jade.util.leap.List ra, String value) {
 		Rating r = new Rating();
 		r.setClient(clientAID);
 		r.setServer(serverAID);
-		r.setAttributes(attributes);
+		r.setAttributes(ra);
 		r.setValue(value);		
 		return r;
 	}

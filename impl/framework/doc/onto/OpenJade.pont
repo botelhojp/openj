@@ -1,4 +1,4 @@
-; Tue Jul 08 12:36:41 BRT 2014
+; Tue Jul 08 21:12:10 BRT 2014
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -22,7 +22,7 @@
 ;+		(allowed-classes AID)
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write))
-	(single-slot iteration
+	(single-slot round
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -43,11 +43,11 @@
 	(single-slot value
 ;+		(comment "valor da iteração")
 		(type STRING)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot attributes
-		(type STRING)
-;+		(cardinality 0 1)
+	(multislot attributes
+		(type SYMBOL)
+;+		(allowed-parents RatingAttribute)
 		(create-accessor read-write))
 	(multislot listContent
 		(type SYMBOL)
@@ -124,7 +124,7 @@
 (defclass ChangeIteration
 	(is-a TimerAction)
 	(role concrete)
-	(single-slot iteration
+	(single-slot round
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
@@ -150,6 +150,10 @@
 ;+		(allowed-classes EncryptedMessage)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot algorithm
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot provider
 		(type STRING)
 ;+		(cardinality 1 1)
@@ -157,10 +161,6 @@
 	(single-slot signMode
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot algorithm
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass WitnessAction
@@ -201,14 +201,14 @@
 (defclass EncryptedMessage
 	(is-a ASCLMessage)
 	(role concrete)
+	(single-slot keyAlgorithm
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot key
 		(type SYMBOL)
 ;+		(allowed-parents)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot keyAlgorithm
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot listContent
 		(type SYMBOL)
@@ -218,24 +218,28 @@
 (defclass Rating
 	(is-a ASCLMessage)
 	(role concrete)
-	(single-slot server
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot attributes
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot client
 		(type INSTANCE)
 ;+		(allowed-classes AID)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot server
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot round
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot value
 ;+		(comment "valor da iteração")
 		(type STRING)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot attributes
+		(type SYMBOL)
+;+		(allowed-parents RatingAttribute)
 		(create-accessor read-write)))
 
 (defclass Feedback
@@ -245,4 +249,17 @@
 		(type INSTANCE)
 ;+		(allowed-classes Rating)
 		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
+(defclass RatingAttribute
+	(is-a Concept)
+	(role concrete)
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot value
+;+		(comment "valor da iteração")
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))

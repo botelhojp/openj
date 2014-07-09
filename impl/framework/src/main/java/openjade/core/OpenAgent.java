@@ -158,7 +158,7 @@ public abstract class OpenAgent extends Agent {
 
 	@ReceiveMatchMessage(action = ChangeIteration.class, ontology = OpenJadeOntology.class)
 	public final void changeIteration(ACLMessage message, ContentElement ce) {
-		iteration = ((ChangeIteration) ce).getIteration();
+		iteration = ((ChangeIteration) ce).getRound();
 		callOnChangeInteration();
 		if (trustModel != null) {
 			trustModel.currentIteration(iteration);

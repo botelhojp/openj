@@ -1,4 +1,4 @@
-; Tue Jul 08 12:36:41 BRT 2014
+; Tue Jul 08 21:12:10 BRT 2014
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -43,6 +43,10 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([RatingAction] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([RatingAttribute] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 

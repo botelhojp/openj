@@ -1,22 +1,26 @@
 package openjade.ontology;
 
+import jade.content.*;
+import jade.util.leap.*;
+import jade.core.*;
 
 /**
 * Protege name: ChangeIteration
 * @author ontology bean generator
-* @version 2014/07/8, 11:38:13
+* @version 2014/07/8, 21:13:29
 */
+@SuppressWarnings("all")
 public class ChangeIteration extends TimerAction{ 
-	private static final long serialVersionUID = 1L;
+
    /**
-* Protege name: iteration
+* Protege name: round
    */
-   private int iteration;
-   public void setIteration(int value) { 
-    this.iteration=value;
+   private int round;
+   public void setRound(int value) { 
+    this.round=value;
    }
-   public int getIteration() {
-     return this.iteration;
+   public int getRound() {
+     return this.round;
    }
 
 }

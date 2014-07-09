@@ -1,11 +1,11 @@
-; Tue Jul 08 12:36:41 BRT 2014
+; Tue Jul 08 21:12:10 BRT 2014
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
 
 ([BROWSER_SLOT_NAMES] of  Property_List
 
-	(properties [OpenJade_ProjectKB_Instance_149]))
+	(properties [OpenJade_ProjectKB_Instance_148]))
 
 ([CLSES_TAB] of  Widget
 
@@ -793,7 +793,7 @@
 ([OpenJade_ProjectKB_Instance_147] of  Property_List
 )
 
-([OpenJade_ProjectKB_Instance_149] of  String
+([OpenJade_ProjectKB_Instance_148] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
@@ -895,11 +895,11 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
-		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
-		[STANDARD_FACET_FORM_WIDGET]
+		[PAL_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[PAL_FORM_WIDGET])
+		[STANDARD_FACET_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")

@@ -1,12 +1,15 @@
 package openjade.ontology;
 
-import jade.core.AID;
+import jade.content.*;
+import jade.util.leap.*;
+import jade.core.*;
 
 /**
 * Protege name: RequestRating
 * @author ontology bean generator
-* @version 2014/07/8, 11:38:13
+* @version 2014/07/8, 21:13:29
 */
+@SuppressWarnings("all")
 public class RequestRating extends RatingAction{ 
 
    /**

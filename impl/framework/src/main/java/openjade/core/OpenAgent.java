@@ -49,6 +49,7 @@ import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
+import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
 import openjade.core.behaviours.ReceiveMessageBehaviour;
 import openjade.core.behaviours.RegisterServiceBehaviour;
@@ -148,65 +149,6 @@ public abstract class OpenAgent extends Agent {
 			signer = new PKCS7Signer(null, null);
 		}
 	}
-
-//	@ReceiveMatchMessage(action = ChangeIteration.class, ontology = OpenJadeOntology.class)
-//	public final void changeIteration(ACLMessage message, ContentElement ce) {
-//		iteration = ((ChangeIteration) ce).getRound();
-//		callOnChangeInteration();
-//		if (trustModel != null) {
-//			trustModel.currentIteration(iteration);
-//			java.util.List<AID> aids = getAIDByService(OpenAgent.SERVICE_TRUST_MONITOR);
-//			if (!aids.isEmpty()) {
-//				SendRating sendRating = new SendRating();
-//				Float utility = callOnGetUtility(iteration);
-//				if (utility != null) {
-//					Rating rating = trustModel.addRating(getAID(), getAID(), iteration, trustModel.getClass().getName(), utility);
-//					jade.util.leap.List ratingList = new jade.util.leap.ArrayList();
-//					ratingList.add(rating);
-//					sendRating.setRating(ratingList);
-//
-//					ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
-//					msg.setSender(getAID());
-//					msg.addReceiver(aids.get(0));
-//					fillContent(msg, sendRating, getCodec(), OpenJadeOntology.getInstance());
-//					sendMessage(msg);
-//				}
-//			}
-//		}
-//	}
-
-//	private void callOnChangeInteration() {
-//		try {
-//			Method[] methods = getClass().getMethods();
-//			for (Method method : methods) {
-//				method.setAccessible(true);
-//				if (method.isAnnotationPresent(OnChangeIteration.class)) {
-//					OnChangeIteration onChangeIteration = method.getAnnotation(OnChangeIteration.class);
-//					if (onChangeIteration.delay() > 0) {
-//						Thread.sleep(onChangeIteration.delay());
-//					}
-//					method.invoke(this);
-//				}
-//			}
-//		} catch (Exception e) {
-//			throw new BehaviourException(e.getMessage(), e);
-//		}
-//	}
-
-//	private Float callOnGetUtility(long iteration) {
-//		try {
-//			Method[] methods = getClass().getMethods();
-//			for (Method method : methods) {
-//				method.setAccessible(true);
-//				if (method.isAnnotationPresent(OnGetUtility.class)) {
-//					return (Float) method.invoke(this, iteration);
-//				}
-//			}
-//			return null;
-//		} catch (Exception e) {
-//			throw new BehaviourException(e.getMessage(), e);
-//		}
-//	}
 
 	@Override
 	public void addBehaviour(Behaviour b) {
@@ -476,6 +418,10 @@ public abstract class OpenAgent extends Agent {
 		services.add(service);
 	}
 
+	/**
+	 * Registra-se em uma lista de servicos
+	 * @param service
+	 */
 	public void registerService(String... service) {
 		addBehaviour(new RegisterServiceBehaviour(this, service));
 	}
@@ -490,6 +436,24 @@ public abstract class OpenAgent extends Agent {
 			_services[i] = services.get(i);
 		}
 		registerService(_services);
+	}
+	
+	/**
+	 * Remove-se de um servico no DF
+	 * @param service
+	 */
+	public void deregister(String service) {
+		DFAgentDescription dfd = new DFAgentDescription();
+		dfd.setName(getAID());
+		ServiceDescription sd = new ServiceDescription();
+		sd.setType(service);
+		sd.setName(getLocalName());
+		dfd.addServices(sd);
+		try {
+			DFService.deregister(this, dfd);
+		} catch (FIPAException e) {
+			throw new BehaviourException(e.getMessage(), e);
+		}
 	}
 
 	public X509Certificate getCertificate() {
@@ -646,8 +610,7 @@ public abstract class OpenAgent extends Agent {
 			sendMessage(aid, performative, conversationId, action, ontolory);
 		}
 	}
-	
-	
+
 	public void sendMessage(AID to, int performative, String conversationId, Serializable object) {
 		sendMessage(to, performative, conversationId, object, null);
 	}
@@ -672,7 +635,7 @@ public abstract class OpenAgent extends Agent {
 	public void findReputation(AID witness, AID server) {
 		RequestRating rr = new RequestRating();
 		rr.setAid(server);
-		sendMessage(witness, ACLMessage.REQUEST, ACLMessage.REQUEST+"", rr);
+		sendMessage(witness, ACLMessage.REQUEST, ACLMessage.REQUEST + "", rr);
 	}
 
 	public void findWitnesses(AID server) {

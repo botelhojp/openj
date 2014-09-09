@@ -23,6 +23,8 @@ public interface ITrustModel extends Serializable {
 	
 	public Boolean test(Rating rating);
 	
+	public void reset();
+	
 	/** Witness */
 
 	public void addWitness(AID sender);
@@ -38,4 +40,8 @@ public interface ITrustModel extends Serializable {
 	public Properties getProperties();
 
 	public void setProperties(Properties properties);
+
+	public void findReputation(AID server);
+
+	public List<Rating> getRatings();
 }

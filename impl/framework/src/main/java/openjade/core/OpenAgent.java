@@ -104,9 +104,11 @@ public abstract class OpenAgent extends Agent {
 	protected int iteration;
 	protected ITrustModel trustModel;
 	protected ArrayList<String> services;
+	protected java.util.List<Rating> listPendingRating;
 
 	public OpenAgent() {
 		super();
+		listPendingRating = new ArrayList<Rating>();
 		services = new ArrayList<String>();
 		cacheKey = new CacheKey();
 		setCodec(new LEAPCodec());
@@ -636,6 +638,10 @@ public abstract class OpenAgent extends Agent {
 		RequestRating rr = new RequestRating();
 		rr.setAid(server);
 		sendMessage(witness, ACLMessage.REQUEST, ACLMessage.REQUEST + "", rr);
+	}
+	
+	public java.util.List<Rating> getListPendingRating() {
+		return listPendingRating;
 	}
 
 	public void findWitnesses(AID server) {

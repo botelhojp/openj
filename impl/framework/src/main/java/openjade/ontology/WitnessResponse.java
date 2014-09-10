@@ -7,10 +7,20 @@ import jade.core.*;
 /**
 * Protege name: WitnessResponse
 * @author ontology bean generator
-* @version 2014/07/8, 21:13:29
+* @version 2014/09/10, 00:14:33
 */
-@SuppressWarnings("all")
 public class WitnessResponse extends WitnessAction{ 
+
+   /**
+* Protege name: server
+   */
+   private AID server;
+   public void setServer(AID value) { 
+    this.server=value;
+   }
+   public AID getServer() {
+     return this.server;
+   }
 
    /**
 * Protege name: witnesses

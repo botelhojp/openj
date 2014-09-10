@@ -1,22 +1,23 @@
 package openjade.trust;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import jade.core.AID;
 
 public class WitnessUtil {
 
-	private static List<AID> witnesses = new ArrayList<AID>();
+	private static HashMap<AID, List<AID>>  witnesses = new HashMap<AID, List<AID>>();
 
-	public static void addWitness(AID clientAID) {
-		if (!witnesses.contains(clientAID)) {
-			witnesses.add(clientAID);
+	public static void addWitness(AID server, AID client) {
+		if (!witnesses.containsKey(server)) {
+			witnesses.put(server, new ArrayList<AID>());
 		}
+		witnesses.get(server).add(client);
 	}
 
-	public static List<AID> getWitness(double range) {
-		range = (range >= 1.0) ? 1.0 : range;
-		return witnesses.subList(0, ((int) (witnesses.size() * range)) - 1);
+	public static List<AID> getWitness(AID server) {
+		return witnesses.get(server);
 	}
 }

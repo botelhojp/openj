@@ -1,28 +1,15 @@
 package openjade.ontology;
 
-import jade.core.AID;
-import jade.util.leap.ArrayList;
-import jade.util.leap.Iterator;
-import jade.util.leap.List;
+import jade.content.*;
+import jade.util.leap.*;
+import jade.core.*;
 
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2014/07/8, 21:13:29
+* @version 2014/09/10, 00:14:33
 */
-@SuppressWarnings("all")
 public class Rating extends ASCLMessage{ 
-
-   /**
-* Protege name: client
-   */
-   private AID client;
-   public void setClient(AID value) { 
-    this.client=value;
-   }
-   public AID getClient() {
-     return this.client;
-   }
 
    /**
 * Protege name: server
@@ -33,6 +20,17 @@ public class Rating extends ASCLMessage{
    }
    public AID getServer() {
      return this.server;
+   }
+
+   /**
+* Protege name: client
+   */
+   private AID client;
+   public void setClient(AID value) { 
+    this.client=value;
+   }
+   public AID getClient() {
+     return this.client;
    }
 
    /**
@@ -47,7 +45,7 @@ public class Rating extends ASCLMessage{
    }
 
    /**
-   * valor da iteraï¿½ï¿½o
+   * valor da iteração
 * Protege name: value
    */
    private String value;

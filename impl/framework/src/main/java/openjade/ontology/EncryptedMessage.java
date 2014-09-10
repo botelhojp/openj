@@ -7,10 +7,30 @@ import jade.core.*;
 /**
 * Protege name: EncryptedMessage
 * @author ontology bean generator
-* @version 2014/07/8, 21:13:29
+* @version 2014/09/10, 00:14:33
 */
-@SuppressWarnings("all")
 public class EncryptedMessage extends ASCLMessage{ 
+
+   /**
+* Protege name: listContent
+   */
+   private List listContent = new ArrayList();
+   public void addListContent(Object elem) { 
+     List oldList = this.listContent;
+     listContent.add(elem);
+   }
+   public boolean removeListContent(Object elem) {
+     List oldList = this.listContent;
+     boolean result = listContent.remove(elem);
+     return result;
+   }
+   public void clearAllListContent() {
+     List oldList = this.listContent;
+     listContent.clear();
+   }
+   public Iterator getAllListContent() {return listContent.iterator(); }
+   public List getListContent() {return listContent; }
+   public void setListContent(List l) {listContent = l; }
 
    /**
 * Protege name: keyAlgorithm
@@ -33,26 +53,5 @@ public class EncryptedMessage extends ASCLMessage{
    public Object getKey() {
      return this.key;
    }
-
-   /**
-* Protege name: listContent
-   */
-   private List listContent = new ArrayList();
-   public void addListContent(Object elem) { 
-     List oldList = this.listContent;
-     listContent.add(elem);
-   }
-   public boolean removeListContent(Object elem) {
-     List oldList = this.listContent;
-     boolean result = listContent.remove(elem);
-     return result;
-   }
-   public void clearAllListContent() {
-     List oldList = this.listContent;
-     listContent.clear();
-   }
-   public Iterator getAllListContent() {return listContent.iterator(); }
-   public List getListContent() {return listContent; }
-   public void setListContent(List l) {listContent = l; }
 
 }

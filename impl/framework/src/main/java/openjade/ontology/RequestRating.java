@@ -7,9 +7,8 @@ import jade.core.*;
 /**
 * Protege name: RequestRating
 * @author ontology bean generator
-* @version 2014/07/8, 21:13:29
+* @version 2014/09/10, 00:14:33
 */
-@SuppressWarnings("all")
 public class RequestRating extends RatingAction{ 
 
    /**

@@ -14,7 +14,9 @@ public class WitnessUtil {
 		if (!witnesses.containsKey(server)) {
 			witnesses.put(server, new ArrayList<AID>());
 		}
-		witnesses.get(server).add(client);
+		if (!witnesses.get(server).contains(client)){
+			witnesses.get(server).add(client);
+		}
 	}
 
 	public static List<AID> getWitness(AID server) {

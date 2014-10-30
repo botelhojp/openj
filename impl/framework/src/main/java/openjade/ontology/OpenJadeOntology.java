@@ -123,10 +123,10 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     feedbackSchema.add(FEEDBACK_RATING, ratingSchema, 1, ObjectSchema.UNLIMITED);
     ratingAttributeSchema.add(RATINGATTRIBUTE_NAME, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     ratingAttributeSchema.add(RATINGATTRIBUTE_VALUE, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.SET), 0, ObjectSchema.UNLIMITED);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), 0, ObjectSchema.UNLIMITED);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEYALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.SET), ObjectSchema.OPTIONAL);
-    pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.SET), ObjectSchema.MANDATORY);
+    encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.OPTIONAL);
+    pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
     changeIterationSchema.add(CHANGEITERATION_ROUND, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.MANDATORY);
     signSchema.add(SIGN_PKCS7, pkcS7MessageSchema, ObjectSchema.OPTIONAL);
     encipherSchema.add(ENCIPHER_MESSAGE, encryptedMessageSchema, ObjectSchema.OPTIONAL);

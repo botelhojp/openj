@@ -24,7 +24,7 @@ public class RatingAttribute implements Concept {
    }
 
    /**
-   * valor da iteração
+   * valor da iteracao
 * Protege name: value
    */
    private String value;

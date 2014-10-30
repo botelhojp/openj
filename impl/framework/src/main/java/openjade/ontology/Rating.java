@@ -45,7 +45,7 @@ public class Rating extends ASCLMessage{
    }
 
    /**
-   * valor da iteração
+   * valor da iteracao
 * Protege name: value
    */
    private String value;

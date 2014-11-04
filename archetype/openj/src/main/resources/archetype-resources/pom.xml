@@ -19,7 +19,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>openj</groupId>
-			<artifactId>openj</artifactId>
+			<artifactId>openj-framework</artifactId>
 		</dependency>
 	</dependencies>
 	<build>

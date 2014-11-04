@@ -9,6 +9,6 @@
 	<resources>
 		<resource>src/main/resources/META-INF/MANIFEST.MF</resource>
 		<resource>src/main/resources/log4j.xml</resource>
-		<resource>src/main/resources/openj-boot.xml</resource>
+		<resource>src/main/resources/open-jade-boot.xml</resource>
 	</resources>
 </archetype>

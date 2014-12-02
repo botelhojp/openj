@@ -17,13 +17,11 @@ public interface ITrustModel extends Serializable {
 
 	/** Rating */
 
-	public void addRating(Rating rating);
+	public void addRating(Rating rating, boolean direct);
 
-	public List<Rating> getRatings(AID aid);
+	public Boolean test(AID aid);
 	
-	public Boolean test(Rating rating);
-	
-	public void reset();
+//	public void reset();
 	
 	/** Witness */
 
@@ -43,5 +41,6 @@ public interface ITrustModel extends Serializable {
 
 	public void findReputation(AID server);
 
-	public List<Rating> getRatings();
+	public List<Rating> getDossie();
+	
 }

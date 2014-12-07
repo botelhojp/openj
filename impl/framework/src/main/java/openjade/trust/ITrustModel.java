@@ -42,5 +42,7 @@ public interface ITrustModel extends Serializable {
 	public void findReputation(AID server);
 
 	public List<Rating> getDossie();
+
+	public void clean();
 	
 }

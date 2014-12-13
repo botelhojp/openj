@@ -23,10 +23,6 @@ public interface ITrustModel extends Serializable {
 	
 //	public void reset();
 	
-	/** Witness */
-
-	public void addWitness(AID sender);
-
 	/** Serializar */
 
 	public void serialize();

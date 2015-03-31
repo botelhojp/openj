@@ -19,7 +19,7 @@ public interface ITrustModel extends Serializable {
 
 	public void addRating(Rating rating, boolean direct);
 
-	public Boolean test(AID aid);
+	public String test(AID aid);
 	
 //	public void reset();
 	
@@ -34,11 +34,13 @@ public interface ITrustModel extends Serializable {
 	public Properties getProperties();
 
 	public void setProperties(Properties properties);
+	
+	public void setTest(Rating rating);
 
 	public void findReputation(AID server);
 
 	public List<Rating> getDossie();
 
-	public void clean();
+//	public void clean();
 	
 }

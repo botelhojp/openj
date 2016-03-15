@@ -5,14 +5,13 @@
 
 	<groupId>openj.parent</groupId>
 	<artifactId>parent-agregator</artifactId>
+	<version>1.2.0-FINAL</version>
 	<packaging>pom</packaging>
 
 	<name>Open Jade - Parent Agregator</name>
 
 	<modules>
-		<module>base</module>
 		<module>openj</module>
-		<module>sample</module>
 	</modules>
 
 </project>

@@ -23,12 +23,6 @@ public interface ITrustModel extends Serializable {
 
 	public String test(AID aid);
 	
-	/** Serializar */
-
-	public void serialize();
-
-	public void loadSerialize();
-
 	/** Propriedades */
 	
 	public Properties getProperties();

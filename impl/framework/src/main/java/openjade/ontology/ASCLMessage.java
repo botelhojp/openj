@@ -2,14 +2,14 @@ package openjade.ontology;
 
 
 import jade.content.*;
+import jade.util.leap.*;
+import jade.core.*;
 
 /**
 * Protege name: ASCLMessage
 * @author ontology bean generator
-* @version 2014/09/10, 00:14:33
+* @version 2016/09/27, 00:08:13
 */
 public class ASCLMessage implements Concept {
-
-	private static final long serialVersionUID = 1L;
 
 }

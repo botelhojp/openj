@@ -1,4 +1,4 @@
-; Wed Sep 10 00:14:30 BRT 2014
+; Tue Sep 27 00:28:20 BRT 2016
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -8,6 +8,10 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([ChangeIteration] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([Dossier] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 
@@ -23,7 +27,15 @@
 
 	(%3AJADE-IGNORE FALSE))
 
+([MerkleTree] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
 ([MessageAction] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([Node] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 
@@ -33,7 +45,7 @@
 
 ([project+annotation] of  %3APROJECT-ANNOTATION
 
-	(%3ALOCATION "/home/03397040477/git/openj/impl/framework/src/main/java/")
+	(%3ALOCATION "/Users/vander/dev/openj/impl/framework/src/main/java/")
 	(%3AONTOLOGYNAME "OpenJade")
 	(%3APACKAGE "openjade.ontology")
 	(%3ASUPPORT "j2se"))
@@ -51,6 +63,10 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([RequestRating] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([SendDossier] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 

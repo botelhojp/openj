@@ -157,6 +157,7 @@ public abstract class OpenAgent extends Agent {
 
 	private void loadKeyStore(InputStream keystore, String password) {
 		try {
+			log.debug("loadKeyStore;start");
 			store = (new KeyStoreLoaderImpl(keystore)).getKeyStore(password);
 			alias = (String) store.aliases().nextElement();
 			certificate = (X509Certificate) store.getCertificate(alias);
@@ -164,7 +165,7 @@ public abstract class OpenAgent extends Agent {
 			certificateBean = new CertificateBean();
 			certManager.load(certificateBean);
 			validAID();
-			log.debug("certificate loader por agent [" + certificateBean.getAgentID() + "]");
+			log.debug("loadKeyStore;stop");
 		} catch (KeyStoreException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -174,7 +175,9 @@ public abstract class OpenAgent extends Agent {
 	public void sendMessage(ACLMessage msg) {
 		if (this instanceof SignerAgent) {
 			signerAndSend(msg);
+			log.debug("send;" + msg.toString().length()  + ";bytes");
 		} else {
+			log.debug("send;" + msg.toString().length()  + ";bytes");
 			this.send(msg);
 		}
 	}
@@ -189,12 +192,13 @@ public abstract class OpenAgent extends Agent {
 	}
 
 	private void signerAndSend(ACLMessage _message) {
-		log.debug("signing message: " + _message.toString());
+		log.debug("signer;start");
 		PKCS7Message pkcs7Message = new PKCS7Message();
 		pkcs7Message.setContent(this.signer.signPkcs7(_message.toString().getBytes()));
 		Sign signMessage = new Sign();
 		signMessage.setPkcs7(pkcs7Message);
 		fillContent(_message, signMessage, codec, openJadeOntology);
+		log.debug("signer;end");
 		send(_message);
 	}
 

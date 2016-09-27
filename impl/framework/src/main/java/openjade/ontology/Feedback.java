@@ -8,29 +8,29 @@ import jade.core.*;
 /**
 * Protege name: Feedback
 * @author ontology bean generator
-* @version 2014/09/10, 00:14:33
+* @version 2016/09/27, 00:08:13
 */
 public class Feedback implements Concept {
 
    /**
-* Protege name: rating
+* Protege name: ratings
    */
-   private List rating = new ArrayList();
-   public void addRating(Rating elem) { 
-     List oldList = this.rating;
-     rating.add(elem);
+   private List ratings = new ArrayList();
+   public void addRatings(Rating elem) { 
+     List oldList = this.ratings;
+     ratings.add(elem);
    }
-   public boolean removeRating(Rating elem) {
-     List oldList = this.rating;
-     boolean result = rating.remove(elem);
+   public boolean removeRatings(Rating elem) {
+     List oldList = this.ratings;
+     boolean result = ratings.remove(elem);
      return result;
    }
-   public void clearAllRating() {
-     List oldList = this.rating;
-     rating.clear();
+   public void clearAllRatings() {
+     List oldList = this.ratings;
+     ratings.clear();
    }
-   public Iterator getAllRating() {return rating.iterator(); }
-   public List getRating() {return rating; }
-   public void setRating(List l) {rating = l; }
+   public Iterator getAllRatings() {return ratings.iterator(); }
+   public List getRatings() {return ratings; }
+   public void setRatings(List l) {ratings = l; }
 
 }

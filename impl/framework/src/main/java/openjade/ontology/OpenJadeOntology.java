@@ -9,7 +9,7 @@ import jade.core.CaseInsensitiveString;
 
 /** file: OpenJadeOntology.java
  * @author ontology bean generator
- * @version 2014/09/10, 00:14:33
+ * @version 2016/09/27, 00:08:13
  */
 public class OpenJadeOntology extends jade.content.onto.Ontology  {
   //NAME
@@ -23,12 +23,8 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
 
    // VOCABULARY
-    public static final String TIMERACTION="TimerAction";
-    public static final String SENDRATING_RATING="rating";
-    public static final String SENDRATING="SendRating";
-    public static final String REQUESTRATING_AID="aid";
-    public static final String REQUESTRATING="RequestRating";
-    public static final String RATINGACTION="RatingAction";
+    public static final String SENDDOSSIER_DOSSIER="dossier";
+    public static final String SENDDOSSIER="SendDossier";
     public static final String WITNESSRESPONSE_WITNESSES="witnesses";
     public static final String WITNESSRESPONSE_SERVER="server";
     public static final String WITNESSRESPONSE="WitnessResponse";
@@ -45,6 +41,18 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     public static final String MESSAGEACTION="MessageAction";
     public static final String CHANGEITERATION_ROUND="round";
     public static final String CHANGEITERATION="ChangeIteration";
+    public static final String TIMERACTION="TimerAction";
+    public static final String SENDRATING_RATINGS="ratings";
+    public static final String SENDRATING="SendRating";
+    public static final String REQUESTRATING_AID="aid";
+    public static final String REQUESTRATING="RequestRating";
+    public static final String RATINGACTION="RatingAction";
+    public static final String NODE_NODEL="nodeL";
+    public static final String NODE_NODER="nodeR";
+    public static final String NODE="Node";
+    public static final String DOSSIER_RATINGS="ratings";
+    public static final String DOSSIER_TREE="tree";
+    public static final String DOSSIER="Dossier";
     public static final String PKCS7MESSAGE_CONTENT="content";
     public static final String PKCS7MESSAGE="PKCS7Message";
     public static final String ENCRYPTEDMESSAGE_KEY="key";
@@ -54,15 +62,17 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     public static final String RATINGATTRIBUTE_VALUE="value";
     public static final String RATINGATTRIBUTE_NAME="name";
     public static final String RATINGATTRIBUTE="RatingAttribute";
-    public static final String FEEDBACK_RATING="rating";
+    public static final String FEEDBACK_RATINGS="ratings";
     public static final String FEEDBACK="Feedback";
-    public static final String RATING_ATTRIBUTES="attributes";
+    public static final String ASCLMESSAGE="ASCLMessage";
     public static final String RATING_VALUE="value";
     public static final String RATING_ROUND="round";
     public static final String RATING_CLIENT="client";
     public static final String RATING_SERVER="server";
+    public static final String RATING_ATTRIBUTES="attributes";
     public static final String RATING="Rating";
-    public static final String ASCLMESSAGE="ASCLMessage";
+    public static final String MERKLETREE_NODE="node";
+    public static final String MERKLETREE="MerkleTree";
 
   /**
    * Constructor
@@ -72,10 +82,12 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     try { 
 
     // adding Concept(s)
-    ConceptSchema asclMessageSchema = new ConceptSchema(ASCLMESSAGE);
-    add(asclMessageSchema, openjade.ontology.ASCLMessage.class);
+    ConceptSchema merkleTreeSchema = new ConceptSchema(MERKLETREE);
+    add(merkleTreeSchema, openjade.ontology.MerkleTree.class);
     ConceptSchema ratingSchema = new ConceptSchema(RATING);
     add(ratingSchema, openjade.ontology.Rating.class);
+    ConceptSchema asclMessageSchema = new ConceptSchema(ASCLMESSAGE);
+    add(asclMessageSchema, openjade.ontology.ASCLMessage.class);
     ConceptSchema feedbackSchema = new ConceptSchema(FEEDBACK);
     add(feedbackSchema, openjade.ontology.Feedback.class);
     ConceptSchema ratingAttributeSchema = new ConceptSchema(RATINGATTRIBUTE);
@@ -84,8 +96,20 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     add(encryptedMessageSchema, openjade.ontology.EncryptedMessage.class);
     ConceptSchema pkcS7MessageSchema = new ConceptSchema(PKCS7MESSAGE);
     add(pkcS7MessageSchema, openjade.ontology.PKCS7Message.class);
+    ConceptSchema dossierSchema = new ConceptSchema(DOSSIER);
+    add(dossierSchema, openjade.ontology.Dossier.class);
+    ConceptSchema nodeSchema = new ConceptSchema(NODE);
+    add(nodeSchema, openjade.ontology.Node.class);
 
     // adding AgentAction(s)
+    AgentActionSchema ratingActionSchema = new AgentActionSchema(RATINGACTION);
+    add(ratingActionSchema, openjade.ontology.RatingAction.class);
+    AgentActionSchema requestRatingSchema = new AgentActionSchema(REQUESTRATING);
+    add(requestRatingSchema, openjade.ontology.RequestRating.class);
+    AgentActionSchema sendRatingSchema = new AgentActionSchema(SENDRATING);
+    add(sendRatingSchema, openjade.ontology.SendRating.class);
+    AgentActionSchema timerActionSchema = new AgentActionSchema(TIMERACTION);
+    add(timerActionSchema, openjade.ontology.TimerAction.class);
     AgentActionSchema changeIterationSchema = new AgentActionSchema(CHANGEITERATION);
     add(changeIterationSchema, openjade.ontology.ChangeIteration.class);
     AgentActionSchema messageActionSchema = new AgentActionSchema(MESSAGEACTION);
@@ -100,14 +124,8 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     add(witnessRequestSchema, openjade.ontology.WitnessRequest.class);
     AgentActionSchema witnessResponseSchema = new AgentActionSchema(WITNESSRESPONSE);
     add(witnessResponseSchema, openjade.ontology.WitnessResponse.class);
-    AgentActionSchema ratingActionSchema = new AgentActionSchema(RATINGACTION);
-    add(ratingActionSchema, openjade.ontology.RatingAction.class);
-    AgentActionSchema requestRatingSchema = new AgentActionSchema(REQUESTRATING);
-    add(requestRatingSchema, openjade.ontology.RequestRating.class);
-    AgentActionSchema sendRatingSchema = new AgentActionSchema(SENDRATING);
-    add(sendRatingSchema, openjade.ontology.SendRating.class);
-    AgentActionSchema timerActionSchema = new AgentActionSchema(TIMERACTION);
-    add(timerActionSchema, openjade.ontology.TimerAction.class);
+    AgentActionSchema sendDossierSchema = new AgentActionSchema(SENDDOSSIER);
+    add(sendDossierSchema, openjade.ontology.SendDossier.class);
 
     // adding AID(s)
 
@@ -115,18 +133,25 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
 
 
     // adding fields
+    merkleTreeSchema.add(MERKLETREE_NODE, nodeSchema, 0, ObjectSchema.UNLIMITED);
+    ratingSchema.add(RATING_ATTRIBUTES, ratingAttributeSchema, 0, ObjectSchema.UNLIMITED);
     ratingSchema.add(RATING_SERVER, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.OPTIONAL);
     ratingSchema.add(RATING_CLIENT, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.OPTIONAL);
     ratingSchema.add(RATING_ROUND, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.MANDATORY);
     ratingSchema.add(RATING_VALUE, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
-    ratingSchema.add(RATING_ATTRIBUTES, ratingAttributeSchema, 0, ObjectSchema.UNLIMITED);
-    feedbackSchema.add(FEEDBACK_RATING, ratingSchema, 1, ObjectSchema.UNLIMITED);
+    feedbackSchema.add(FEEDBACK_RATINGS, ratingSchema, 0, ObjectSchema.UNLIMITED);
     ratingAttributeSchema.add(RATINGATTRIBUTE_NAME, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     ratingAttributeSchema.add(RATINGATTRIBUTE_VALUE, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_LISTCONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), 0, ObjectSchema.UNLIMITED);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEYALGORITHM, (TermSchema)getSchema(BasicOntology.STRING), ObjectSchema.MANDATORY);
     encryptedMessageSchema.add(ENCRYPTEDMESSAGE_KEY, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.OPTIONAL);
     pkcS7MessageSchema.add(PKCS7MESSAGE_CONTENT, (TermSchema)getSchema(BasicOntology.BYTE_SEQUENCE), ObjectSchema.MANDATORY);
+    dossierSchema.add(DOSSIER_TREE, merkleTreeSchema, ObjectSchema.OPTIONAL);
+    dossierSchema.add(DOSSIER_RATINGS, ratingSchema, 0, ObjectSchema.UNLIMITED);
+    nodeSchema.add(NODE_NODER, nodeSchema, 0, ObjectSchema.UNLIMITED);
+    nodeSchema.add(NODE_NODEL, nodeSchema, 0, ObjectSchema.UNLIMITED);
+    requestRatingSchema.add(REQUESTRATING_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
+    sendRatingSchema.add(SENDRATING_RATINGS, ratingSchema, 0, ObjectSchema.UNLIMITED);
     changeIterationSchema.add(CHANGEITERATION_ROUND, (TermSchema)getSchema(BasicOntology.INTEGER), ObjectSchema.MANDATORY);
     signSchema.add(SIGN_PKCS7, pkcS7MessageSchema, ObjectSchema.OPTIONAL);
     encipherSchema.add(ENCIPHER_MESSAGE, encryptedMessageSchema, ObjectSchema.OPTIONAL);
@@ -136,8 +161,7 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     witnessRequestSchema.add(WITNESSREQUEST_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
     witnessResponseSchema.add(WITNESSRESPONSE_SERVER, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.OPTIONAL);
     witnessResponseSchema.add(WITNESSRESPONSE_WITNESSES, (ConceptSchema)getSchema(BasicOntology.AID), 1, ObjectSchema.UNLIMITED);
-    requestRatingSchema.add(REQUESTRATING_AID, (ConceptSchema)getSchema(BasicOntology.AID), ObjectSchema.MANDATORY);
-    sendRatingSchema.add(SENDRATING_RATING, ratingSchema, 1, ObjectSchema.UNLIMITED);
+    sendDossierSchema.add(SENDDOSSIER_DOSSIER, dossierSchema, ObjectSchema.OPTIONAL);
 
     // adding name mappings
 
@@ -145,13 +169,13 @@ public class OpenJadeOntology extends jade.content.onto.Ontology  {
     ratingSchema.addSuperSchema(asclMessageSchema);
     encryptedMessageSchema.addSuperSchema(asclMessageSchema);
     pkcS7MessageSchema.addSuperSchema(asclMessageSchema);
+    requestRatingSchema.addSuperSchema(ratingActionSchema);
+    sendRatingSchema.addSuperSchema(ratingActionSchema);
     changeIterationSchema.addSuperSchema(timerActionSchema);
     signSchema.addSuperSchema(messageActionSchema);
     encipherSchema.addSuperSchema(messageActionSchema);
     witnessRequestSchema.addSuperSchema(witnessActionSchema);
     witnessResponseSchema.addSuperSchema(witnessActionSchema);
-    requestRatingSchema.addSuperSchema(ratingActionSchema);
-    sendRatingSchema.addSuperSchema(ratingActionSchema);
 
    }catch (java.lang.Exception e) {e.printStackTrace();}
   }

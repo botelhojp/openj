@@ -1,15 +1,27 @@
 package openjade.ontology;
 
+
 import jade.content.*;
 import jade.util.leap.*;
 import jade.core.*;
 
 /**
-* Protege name: SendRating
+* Protege name: Dossier
 * @author ontology bean generator
 * @version 2016/09/27, 00:08:13
 */
-public class SendRating extends RatingAction{ 
+public class Dossier implements Concept {
+
+   /**
+* Protege name: tree
+   */
+   private MerkleTree tree;
+   public void setTree(MerkleTree value) { 
+    this.tree=value;
+   }
+   public MerkleTree getTree() {
+     return this.tree;
+   }
 
    /**
 * Protege name: ratings

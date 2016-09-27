@@ -7,9 +7,30 @@ import jade.core.*;
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2014/09/10, 00:14:33
+* @version 2016/09/27, 00:08:13
 */
 public class Rating extends ASCLMessage{ 
+
+   /**
+* Protege name: attributes
+   */
+   private List attributes = new ArrayList();
+   public void addAttributes(RatingAttribute elem) { 
+     List oldList = this.attributes;
+     attributes.add(elem);
+   }
+   public boolean removeAttributes(RatingAttribute elem) {
+     List oldList = this.attributes;
+     boolean result = attributes.remove(elem);
+     return result;
+   }
+   public void clearAllAttributes() {
+     List oldList = this.attributes;
+     attributes.clear();
+   }
+   public Iterator getAllAttributes() {return attributes.iterator(); }
+   public List getAttributes() {return attributes; }
+   public void setAttributes(List l) {attributes = l; }
 
    /**
 * Protege name: server
@@ -45,7 +66,7 @@ public class Rating extends ASCLMessage{
    }
 
    /**
-   * valor da iteracao
+   * valor da iteração
 * Protege name: value
    */
    private String value;
@@ -55,26 +76,5 @@ public class Rating extends ASCLMessage{
    public String getValue() {
      return this.value;
    }
-
-   /**
-* Protege name: attributes
-   */
-   private List attributes = new ArrayList();
-   public void addAttributes(RatingAttribute elem) { 
-     List oldList = this.attributes;
-     attributes.add(elem);
-   }
-   public boolean removeAttributes(RatingAttribute elem) {
-     List oldList = this.attributes;
-     boolean result = attributes.remove(elem);
-     return result;
-   }
-   public void clearAllAttributes() {
-     List oldList = this.attributes;
-     attributes.clear();
-   }
-   public Iterator getAllAttributes() {return attributes.iterator(); }
-   public List getAttributes() {return attributes; }
-   public void setAttributes(List l) {attributes = l; }
 
 }

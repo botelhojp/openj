@@ -8,7 +8,7 @@ import jade.core.*;
 /**
 * Protege name: SendDossier
 * @author ontology bean generator
-* @version 2016/09/27, 00:08:13
+* @version 2016/09/28, 00:27:58
 */
 public class SendDossier implements AgentAction {
 

@@ -8,20 +8,9 @@ import jade.core.*;
 /**
 * Protege name: RatingAttribute
 * @author ontology bean generator
-* @version 2016/09/27, 00:08:13
+* @version 2016/09/28, 00:27:58
 */
 public class RatingAttribute implements Concept {
-
-   /**
-* Protege name: name
-   */
-   private String name;
-   public void setName(String value) { 
-    this.name=value;
-   }
-   public String getName() {
-     return this.name;
-   }
 
    /**
    * valor da iteração
@@ -33,6 +22,17 @@ public class RatingAttribute implements Concept {
    }
    public String getValue() {
      return this.value;
+   }
+
+   /**
+* Protege name: name
+   */
+   private String name;
+   public void setName(String value) { 
+    this.name=value;
+   }
+   public String getName() {
+     return this.name;
    }
 
 }

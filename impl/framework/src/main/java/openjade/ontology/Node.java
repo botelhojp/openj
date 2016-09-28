@@ -8,50 +8,42 @@ import jade.core.*;
 /**
 * Protege name: Node
 * @author ontology bean generator
-* @version 2016/09/27, 00:08:13
+* @version 2016/09/28, 00:27:58
 */
 public class Node implements Concept {
 
    /**
+   * valor da iteração
+* Protege name: value
+   */
+   private String value;
+   public void setValue(String value) { 
+    this.value=value;
+   }
+   public String getValue() {
+     return this.value;
+   }
+
+   /**
 * Protege name: nodeR
    */
-   private List nodeR = new ArrayList();
-   public void addNodeR(Node elem) { 
-     List oldList = this.nodeR;
-     nodeR.add(elem);
+   private Node nodeR;
+   public void setNodeR(Node value) { 
+    this.nodeR=value;
    }
-   public boolean removeNodeR(Node elem) {
-     List oldList = this.nodeR;
-     boolean result = nodeR.remove(elem);
-     return result;
+   public Node getNodeR() {
+     return this.nodeR;
    }
-   public void clearAllNodeR() {
-     List oldList = this.nodeR;
-     nodeR.clear();
-   }
-   public Iterator getAllNodeR() {return nodeR.iterator(); }
-   public List getNodeR() {return nodeR; }
-   public void setNodeR(List l) {nodeR = l; }
 
    /**
 * Protege name: nodeL
    */
-   private List nodeL = new ArrayList();
-   public void addNodeL(Node elem) { 
-     List oldList = this.nodeL;
-     nodeL.add(elem);
+   private Node nodeL;
+   public void setNodeL(Node value) { 
+    this.nodeL=value;
    }
-   public boolean removeNodeL(Node elem) {
-     List oldList = this.nodeL;
-     boolean result = nodeL.remove(elem);
-     return result;
+   public Node getNodeL() {
+     return this.nodeL;
    }
-   public void clearAllNodeL() {
-     List oldList = this.nodeL;
-     nodeL.clear();
-   }
-   public Iterator getAllNodeL() {return nodeL.iterator(); }
-   public List getNodeL() {return nodeL; }
-   public void setNodeL(List l) {nodeL = l; }
 
 }

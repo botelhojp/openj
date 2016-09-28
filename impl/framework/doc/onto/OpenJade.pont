@@ -1,4 +1,4 @@
-; Tue Sep 27 00:28:20 BRT 2016
+; Wed Sep 28 00:29:03 BRT 2016
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -7,51 +7,6 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(multislot node
-		(type INSTANCE)
-;+		(allowed-classes Node)
-		(create-accessor read-write))
-	(multislot nodeR
-		(type INSTANCE)
-;+		(allowed-classes Node)
-		(create-accessor read-write))
-	(multislot nodeL
-		(type INSTANCE)
-;+		(allowed-classes Node)
-		(create-accessor read-write))
-	(single-slot tree
-		(type INSTANCE)
-;+		(allowed-classes MerkleTree)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot server
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot ratings
-		(type INSTANCE)
-;+		(allowed-classes Rating)
-		(create-accessor read-write))
-	(multislot witnesses
-		(type INSTANCE)
-;+		(allowed-classes AID)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write))
-	(single-slot round
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot aid
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot key
-		(type SYMBOL)
-;+		(allowed-parents)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot signMode
 		(type INTEGER)
 ;+		(cardinality 0 1)
@@ -119,6 +74,63 @@
 		(type INSTANCE)
 ;+		(allowed-classes Rating)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot feedback
+		(type SYMBOL)
+;+		(allowed-parents)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot hash
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot node
+		(type INSTANCE)
+;+		(allowed-classes Node)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nodeR
+		(type INSTANCE)
+;+		(allowed-classes Node)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nodeL
+		(type INSTANCE)
+;+		(allowed-classes Node)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tree
+		(type INSTANCE)
+;+		(allowed-classes MerkleTree)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot server
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot ratings
+		(type INSTANCE)
+;+		(allowed-classes Rating)
+		(create-accessor read-write))
+	(multislot witnesses
+		(type INSTANCE)
+;+		(allowed-classes AID)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot round
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot aid
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot key
+		(type SYMBOL)
+;+		(allowed-parents)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass RatingAction
@@ -170,6 +182,10 @@
 (defclass Encipher
 	(is-a MessageAction)
 	(role concrete)
+	(single-slot signMode
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot message
 		(type INSTANCE)
 ;+		(allowed-classes EncryptedMessage)
@@ -182,10 +198,6 @@
 	(single-slot provider
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot signMode
-		(type INTEGER)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass WitnessAction
@@ -224,12 +236,21 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass ASCLMessage
+(defclass SendFeedback
+	(is-a AgentAction)
+	(role concrete)
+	(multislot feedback
+		(type SYMBOL)
+;+		(allowed-parents)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
+(defclass ACLMessage
 	(is-a Concept)
 	(role abstract))
 
 (defclass PKCS7Message
-	(is-a ASCLMessage)
+	(is-a ACLMessage)
 	(role concrete)
 	(single-slot content
 		(type SYMBOL)
@@ -238,7 +259,7 @@
 		(create-accessor read-write)))
 
 (defclass EncryptedMessage
-	(is-a ASCLMessage)
+	(is-a ACLMessage)
 	(role concrete)
 	(multislot listContent
 		(type SYMBOL)
@@ -255,8 +276,13 @@
 		(create-accessor read-write)))
 
 (defclass Rating
-	(is-a ASCLMessage)
+	(is-a ACLMessage)
 	(role concrete)
+	(single-slot value
+;+		(comment "valor da iteração")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot attributes
 		(type SYMBOL)
 ;+		(allowed-parents RatingAttribute)
@@ -274,30 +300,17 @@
 	(single-slot round
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot value
-;+		(comment "valor da iteração")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass Feedback
-	(is-a Concept)
-	(role concrete)
-	(multislot ratings
-		(type INSTANCE)
-;+		(allowed-classes Rating)
 		(create-accessor read-write)))
 
 (defclass RatingAttribute
 	(is-a Concept)
 	(role concrete)
-	(single-slot name_
+	(single-slot value
+;+		(comment "valor da iteração")
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot value
-;+		(comment "valor da iteração")
+	(single-slot name_
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
@@ -318,19 +331,27 @@
 (defclass MerkleTree
 	(is-a Concept)
 	(role concrete)
-	(multislot node
+	(single-slot node
 		(type INSTANCE)
 ;+		(allowed-classes Node)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Node
 	(is-a Concept)
 	(role concrete)
-	(multislot nodeR
-		(type INSTANCE)
-;+		(allowed-classes Node)
+	(single-slot value
+;+		(comment "valor da iteração")
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot nodeL
+	(single-slot nodeR
 		(type INSTANCE)
 ;+		(allowed-classes Node)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nodeL
+		(type INSTANCE)
+;+		(allowed-classes Node)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))

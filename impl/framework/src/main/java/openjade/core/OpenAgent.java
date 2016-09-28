@@ -1,5 +1,26 @@
 package openjade.core;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigInteger;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.Provider;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.X509Certificate;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.ArrayList;
+import java.util.Base64;
+
+import javax.crypto.Cipher;
+
+import org.apache.log4j.Logger;
+
 import jade.content.AgentAction;
 import jade.content.ContentElement;
 import jade.content.lang.Codec;
@@ -28,23 +49,6 @@ import jade.util.leap.Serializable;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.Provider;
-import java.security.UnrecoverableKeyException;
-import java.security.cert.X509Certificate;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.ArrayList;
-
-import javax.crypto.Cipher;
-
 import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
@@ -64,8 +68,6 @@ import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
 import openjade.signer.PKCS7Signer;
 import openjade.trust.ITrustModel;
-
-import org.apache.log4j.Logger;
 
 /**
  * Representation of agents that have the ability to communicate through a
@@ -111,7 +113,8 @@ public abstract class OpenAgent extends Agent {
 		cacheKey = new CacheKey();
 		setCodec(new LEAPCodec());
 		openJadeOntology = OpenJadeOntology.getInstance();
-		openJadeMT = MessageTemplate.and(MessageTemplate.MatchLanguage(codec.getName()), MessageTemplate.MatchOntology(openJadeOntology.getName()));
+		openJadeMT = MessageTemplate.and(MessageTemplate.MatchLanguage(codec.getName()),
+				MessageTemplate.MatchOntology(openJadeOntology.getName()));
 		addBehaviour(new LoaderKeystoreBehaviour(this));
 		addBehaviour(new ReceiveMessageBehaviour(this));
 	}
@@ -175,11 +178,23 @@ public abstract class OpenAgent extends Agent {
 	public void sendMessage(ACLMessage msg) {
 		if (this instanceof SignerAgent) {
 			signerAndSend(msg);
-			log.debug("send;" + msg.toString().length()  + ";bytes");
+			log.debug("send;" + msg.toString().length() + ";bytes");
+			// log.debug("message;" + base64(msg));
 		} else {
-			log.debug("send;" + msg.toString().length()  + ";bytes");
+			log.debug("send;" + msg.toString().length() + ";bytes");
+			// log.debug("message;" + msg);
 			this.send(msg);
 		}
+	}
+
+	public ACLMessage base64(ACLMessage msg) {
+		String content = msg.getContent();
+		// byte[] bytes = "Hello, World!".getBytes("UTF-8");
+		// String encoded = Base64.getEncoder().encodeToString(bytes);
+		byte[] decoded = Base64.getDecoder().decode(content);
+		content = new String(decoded);
+		msg.setContent(content);
+		return msg;
 	}
 
 	private void validAID() {
@@ -187,7 +202,8 @@ public abstract class OpenAgent extends Agent {
 			throw new OpenJadeException("Agent ID is Null. Agent ID is requerired");
 		}
 		if (!certificateBean.getAgentID().equals(getAID().getLocalName())) {
-			throw new OpenJadeException("AID incompatible. Expected AID for the certificate: [" + certificateBean.getAgentID() + "]");
+			throw new OpenJadeException(
+					"AID incompatible. Expected AID for the certificate: [" + certificateBean.getAgentID() + "]");
 		}
 	}
 
@@ -424,6 +440,7 @@ public abstract class OpenAgent extends Agent {
 
 	/**
 	 * Registra-se em uma lista de servicos
+	 * 
 	 * @param service
 	 */
 	public void registerService(String... service) {
@@ -431,7 +448,8 @@ public abstract class OpenAgent extends Agent {
 	}
 
 	public String showRating(Rating rt) {
-		return rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getAttributes() + ":" + rt.getValue();
+		return rt.getClient().getLocalName() + ">" + rt.getServer().getLocalName() + ":" + rt.getAttributes() + ":"
+				+ rt.getValue();
 	}
 
 	public void registerService() {
@@ -441,9 +459,10 @@ public abstract class OpenAgent extends Agent {
 		}
 		registerService(_services);
 	}
-	
+
 	/**
 	 * Remove-se de um servico no DF
+	 * 
 	 * @param service
 	 */
 	public void deregister(String service) {
@@ -504,7 +523,8 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	private void sendMessage(String[] listService, int performative, String conversationId, Serializable object, String content) {
+	private void sendMessage(String[] listService, int performative, String conversationId, Serializable object,
+			String content) {
 		for (String service : listService) {
 			java.util.List<AID> aids = getAIDByService(service);
 			for (AID aid : aids) {
@@ -513,7 +533,8 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	public void sendMessage(java.util.List<AID> agentList, int performative, String conversationId, Serializable object, String content) {
+	public void sendMessage(java.util.List<AID> agentList, int performative, String conversationId, Serializable object,
+			String content) {
 		for (AID aid : agentList) {
 			sendMessage(aid, performative, conversationId, object, content);
 		}
@@ -540,7 +561,8 @@ public abstract class OpenAgent extends Agent {
 		sendMessage(_service, performative, conversationId, null, content);
 	}
 
-	private void sendMessage(String _service, int performative, String conversationId, Serializable object, String content) {
+	private void sendMessage(String _service, int performative, String conversationId, Serializable object,
+			String content) {
 		String[] service = { _service };
 		sendMessage(service, performative, conversationId, object, content);
 	}
@@ -576,12 +598,13 @@ public abstract class OpenAgent extends Agent {
 		sendMessage(message);
 		return message;
 	}
-	
+
 	public ACLMessage sendMessage(AID to, int performative, String conversationId, AgentAction action) {
 		return sendMessage(to, performative, conversationId, action, OpenJadeOntology.getInstance());
 	}
 
-	public ACLMessage sendMessage(AID to, int performative, String conversationId, AgentAction action, Ontology ontolory) {
+	public ACLMessage sendMessage(AID to, int performative, String conversationId, AgentAction action,
+			Ontology ontolory) {
 		ACLMessage message = new ACLMessage(performative);
 		message.setSender(this.getAID());
 		message.addReceiver(to);
@@ -608,7 +631,8 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	public void sendMessage(String service, int performative, String conversationId, AgentAction action, Ontology ontolory) {
+	public void sendMessage(String service, int performative, String conversationId, AgentAction action,
+			Ontology ontolory) {
 		java.util.List<AID> aids = getAIDByService(service);
 		for (AID aid : aids) {
 			sendMessage(aid, performative, conversationId, action, ontolory);
@@ -641,10 +665,23 @@ public abstract class OpenAgent extends Agent {
 		rr.setAid(server);
 		sendMessage(witness, ACLMessage.REQUEST, ACLMessage.REQUEST + "", rr);
 	}
-	
 
 	public void findWitnesses(AID server) {
 
+	}
+
+	public String md5(String input) {
+		String md5 = null;
+		if (null == input)
+			return null;
+		try {
+			MessageDigest digest = MessageDigest.getInstance("MD5");
+			digest.update(input.getBytes(), 0, input.length());
+			md5 = new BigInteger(1, digest.digest()).toString(16);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return md5;
 	}
 
 }

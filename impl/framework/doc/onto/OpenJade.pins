@@ -1,9 +1,9 @@
-; Tue Sep 27 00:28:20 BRT 2016
+; Wed Sep 28 00:29:03 BRT 2016
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
 
-([ASCLMessage] of  %3AJADE-CLASS
+([ACLMessage] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 
@@ -20,10 +20,6 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([EncryptedMessage] of  %3AJADE-CLASS
-
-	(%3AJADE-IGNORE FALSE))
-
-([Feedback] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 
@@ -67,6 +63,10 @@
 	(%3AJADE-IGNORE FALSE))
 
 ([SendDossier] of  %3AJADE-CLASS
+
+	(%3AJADE-IGNORE FALSE))
+
+([SendFeedback] of  %3AJADE-CLASS
 
 	(%3AJADE-IGNORE FALSE))
 

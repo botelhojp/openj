@@ -7,9 +7,21 @@ import jade.core.*;
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2016/09/27, 00:08:13
+* @version 2016/09/28, 00:27:58
 */
-public class Rating extends ASCLMessage{ 
+public class Rating extends ACLMessage{ 
+
+   /**
+   * valor da iteração
+* Protege name: value
+   */
+   private String value;
+   public void setValue(String value) { 
+    this.value=value;
+   }
+   public String getValue() {
+     return this.value;
+   }
 
    /**
 * Protege name: attributes
@@ -63,18 +75,6 @@ public class Rating extends ASCLMessage{
    }
    public int getRound() {
      return this.round;
-   }
-
-   /**
-   * valor da iteração
-* Protege name: value
-   */
-   private String value;
-   public void setValue(String value) { 
-    this.value=value;
-   }
-   public String getValue() {
-     return this.value;
    }
 
 }

@@ -8,29 +8,19 @@ import jade.core.*;
 /**
 * Protege name: MerkleTree
 * @author ontology bean generator
-* @version 2016/09/27, 00:08:13
+* @version 2016/09/28, 00:27:58
 */
 public class MerkleTree implements Concept {
 
    /**
 * Protege name: node
    */
-   private List node = new ArrayList();
-   public void addNode(Node elem) { 
-     List oldList = this.node;
-     node.add(elem);
+   private Node node;
+   public void setNode(Node value) { 
+    this.node=value;
    }
-   public boolean removeNode(Node elem) {
-     List oldList = this.node;
-     boolean result = node.remove(elem);
-     return result;
+   public Node getNode() {
+     return this.node;
    }
-   public void clearAllNode() {
-     List oldList = this.node;
-     node.clear();
-   }
-   public Iterator getAllNode() {return node.iterator(); }
-   public List getNode() {return node; }
-   public void setNode(List l) {node = l; }
 
 }

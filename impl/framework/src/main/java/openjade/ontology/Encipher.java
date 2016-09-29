@@ -7,9 +7,20 @@ import jade.core.*;
 /**
 * Protege name: Encipher
 * @author ontology bean generator
-* @version 2016/09/28, 00:27:58
+* @version 2016/09/29, 00:21:55
 */
 public class Encipher extends MessageAction{ 
+
+   /**
+* Protege name: provider
+   */
+   private String provider;
+   public void setProvider(String value) { 
+    this.provider=value;
+   }
+   public String getProvider() {
+     return this.provider;
+   }
 
    /**
 * Protege name: signMode
@@ -42,17 +53,6 @@ public class Encipher extends MessageAction{
    }
    public String getAlgorithm() {
      return this.algorithm;
-   }
-
-   /**
-* Protege name: provider
-   */
-   private String provider;
-   public void setProvider(String value) { 
-    this.provider=value;
-   }
-   public String getProvider() {
-     return this.provider;
    }
 
 }

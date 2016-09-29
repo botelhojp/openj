@@ -7,9 +7,31 @@ import jade.core.*;
 /**
 * Protege name: Rating
 * @author ontology bean generator
-* @version 2016/09/28, 00:27:58
+* @version 2016/09/29, 00:21:55
 */
 public class Rating extends ACLMessage{ 
+
+   /**
+* Protege name: server
+   */
+   private AID server;
+   public void setServer(AID value) { 
+    this.server=value;
+   }
+   public AID getServer() {
+     return this.server;
+   }
+
+   /**
+* Protege name: round
+   */
+   private int round;
+   public void setRound(int value) { 
+    this.round=value;
+   }
+   public int getRound() {
+     return this.round;
+   }
 
    /**
    * valor da iteração
@@ -21,6 +43,17 @@ public class Rating extends ACLMessage{
    }
    public String getValue() {
      return this.value;
+   }
+
+   /**
+* Protege name: index
+   */
+   private int index;
+   public void setIndex(int value) { 
+    this.index=value;
+   }
+   public int getIndex() {
+     return this.index;
    }
 
    /**
@@ -45,17 +78,6 @@ public class Rating extends ACLMessage{
    public void setAttributes(List l) {attributes = l; }
 
    /**
-* Protege name: server
-   */
-   private AID server;
-   public void setServer(AID value) { 
-    this.server=value;
-   }
-   public AID getServer() {
-     return this.server;
-   }
-
-   /**
 * Protege name: client
    */
    private AID client;
@@ -64,17 +86,6 @@ public class Rating extends ACLMessage{
    }
    public AID getClient() {
      return this.client;
-   }
-
-   /**
-* Protege name: round
-   */
-   private int round;
-   public void setRound(int value) { 
-    this.round=value;
-   }
-   public int getRound() {
-     return this.round;
    }
 
 }

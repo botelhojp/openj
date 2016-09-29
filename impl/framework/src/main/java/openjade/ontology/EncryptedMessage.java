@@ -7,30 +7,9 @@ import jade.core.*;
 /**
 * Protege name: EncryptedMessage
 * @author ontology bean generator
-* @version 2016/09/28, 00:27:58
+* @version 2016/09/29, 00:21:55
 */
 public class EncryptedMessage extends ACLMessage{ 
-
-   /**
-* Protege name: listContent
-   */
-   private List listContent = new ArrayList();
-   public void addListContent(Object elem) { 
-     List oldList = this.listContent;
-     listContent.add(elem);
-   }
-   public boolean removeListContent(Object elem) {
-     List oldList = this.listContent;
-     boolean result = listContent.remove(elem);
-     return result;
-   }
-   public void clearAllListContent() {
-     List oldList = this.listContent;
-     listContent.clear();
-   }
-   public Iterator getAllListContent() {return listContent.iterator(); }
-   public List getListContent() {return listContent; }
-   public void setListContent(List l) {listContent = l; }
 
    /**
 * Protege name: keyAlgorithm
@@ -53,5 +32,26 @@ public class EncryptedMessage extends ACLMessage{
    public Object getKey() {
      return this.key;
    }
+
+   /**
+* Protege name: listContent
+   */
+   private List listContent = new ArrayList();
+   public void addListContent(Object elem) { 
+     List oldList = this.listContent;
+     listContent.add(elem);
+   }
+   public boolean removeListContent(Object elem) {
+     List oldList = this.listContent;
+     boolean result = listContent.remove(elem);
+     return result;
+   }
+   public void clearAllListContent() {
+     List oldList = this.listContent;
+     listContent.clear();
+   }
+   public Iterator getAllListContent() {return listContent.iterator(); }
+   public List getListContent() {return listContent; }
+   public void setListContent(List l) {listContent = l; }
 
 }

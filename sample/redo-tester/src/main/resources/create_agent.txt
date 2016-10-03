@@ -1,0 +1,7 @@
+
+java -jar gerar.jar -c agentID="agent_00001" certPassword="123456" personName="Agente 01" personID="001.001.001-01" personEmail="agente01@openjade.org" url="http://openjade.org/lcr/openjade.crl"
+
+java -jar gerar.jar -c agentID="agent_00002" certPassword="123456" personName="Agente 02" personID="002.002.002-02" personEmail="agente02@openjade.org" url="http://openjade.org/lcr/openjade.crl"
+
+
+java -jar gerar.jar -c agentID="agent_00003" certPassword="123456" personName="Agente 03" personID="003.003.003-03" personEmail="agente03@openjade.org" url="http://openjade.org/lcr/openjade.crl"

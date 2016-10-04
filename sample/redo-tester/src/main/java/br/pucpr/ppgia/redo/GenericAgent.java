@@ -1,8 +1,10 @@
 package br.pucpr.ppgia.redo;
 
 import java.io.InputStream;
+import java.util.Base64;
 
 import jade.content.lang.Codec;
+import jade.content.lang.sl.SimpleSLCodec;
 import openjade.core.OpenAgent;
 import openjade.core.SignerAgent;
 
@@ -17,7 +19,6 @@ public class GenericAgent extends OpenAgent implements SignerAgent {
 		log.debug("setup: " + getAID().getLocalName());
 		registerService(getAID().getLocalName());
 		//this.moveContainer("Hi-Container");
-		log.debug("setup: end");
 	}
 
 	public InputStream getKeystore() {
@@ -30,8 +31,12 @@ public class GenericAgent extends OpenAgent implements SignerAgent {
 
 	@Override
 	public void setCodec(Codec codec) {
-		super.setCodec(codec);
-		//super.setCodec(new SimpleSLCodec());
+		//super.setCodec(codec);
+		super.setCodec(new SimpleSLCodec());
+	}
+
+	public String arrayToString(byte[] bytes) {
+		return Base64.getEncoder().encodeToString(bytes);
 	}
 
 }

@@ -8,9 +8,20 @@ import jade.core.*;
 /**
 * Protege name: Dossier
 * @author ontology bean generator
-* @version 2016/09/29, 00:21:55
+* @version 2016/10/3, 23:54:47
 */
 public class Dossier implements Concept {
+
+   /**
+* Protege name: tree
+   */
+   private MerkleTree tree;
+   public void setTree(MerkleTree value) { 
+    this.tree=value;
+   }
+   public MerkleTree getTree() {
+     return this.tree;
+   }
 
    /**
 * Protege name: ratings
@@ -32,16 +43,5 @@ public class Dossier implements Concept {
    public Iterator getAllRatings() {return ratings.iterator(); }
    public List getRatings() {return ratings; }
    public void setRatings(List l) {ratings = l; }
-
-   /**
-* Protege name: tree
-   */
-   private MerkleTree tree;
-   public void setTree(MerkleTree value) { 
-    this.tree=value;
-   }
-   public MerkleTree getTree() {
-     return this.tree;
-   }
 
 }

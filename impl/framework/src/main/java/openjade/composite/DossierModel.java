@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import openjade.ontology.Dossier;
 import openjade.ontology.MerkleTree;
 import openjade.ontology.Node;
@@ -92,4 +94,9 @@ public class DossierModel {
 		dossier.setTree(tree);
 	}
 
+	@Override
+	public String toString() {
+		Gson g = new Gson();
+		return g.toJson(this);
+	}
 }

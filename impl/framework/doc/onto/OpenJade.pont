@@ -1,4 +1,4 @@
-; Thu Sep 29 00:27:18 BRT 2016
+; Mon Oct 03 23:54:45 BRT 2016
 ; 
 ;+ (version "3.2.1")
 ;+ (build "Build 365")
@@ -52,8 +52,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot content
-		(type SYMBOL)
-;+		(allowed-parents)
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot term
@@ -139,6 +138,11 @@
 		(type SYMBOL)
 ;+		(allowed-parents)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot signature
+		(type SYMBOL)
+;+		(allowed-parents PKCS7Message)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass RatingAction
@@ -187,9 +191,36 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
+(defclass SendDossier
+	(is-a MessageAction)
+	(role concrete)
+	(single-slot dossier
+		(type INSTANCE)
+;+		(allowed-classes Dossier)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot signature
+		(type SYMBOL)
+;+		(allowed-parents PKCS7Message)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass SendFeedback
+	(is-a MessageAction)
+	(role concrete)
+	(multislot feedback
+		(type SYMBOL)
+;+		(allowed-parents)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
 (defclass Encipher
 	(is-a MessageAction)
 	(role concrete)
+	(single-slot algorithm
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot provider
 		(type STRING)
 ;+		(cardinality 1 1)
@@ -202,10 +233,6 @@
 		(type INSTANCE)
 ;+		(allowed-classes EncryptedMessage)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot algorithm
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass WitnessAction
@@ -235,24 +262,6 @@
 		(cardinality 1 ?VARIABLE)
 		(create-accessor read-write)))
 
-(defclass SendDossier
-	(is-a AgentAction)
-	(role concrete)
-	(single-slot dossier
-		(type INSTANCE)
-;+		(allowed-classes Dossier)
-;+		(cardinality 0 1)
-		(create-accessor read-write)))
-
-(defclass SendFeedback
-	(is-a AgentAction)
-	(role concrete)
-	(multislot feedback
-		(type SYMBOL)
-;+		(allowed-parents)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write)))
-
 (defclass ACLMessage
 	(is-a Concept)
 	(role abstract))
@@ -261,8 +270,7 @@
 	(is-a ACLMessage)
 	(role concrete)
 	(single-slot content
-		(type SYMBOL)
-;+		(allowed-parents)
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -286,6 +294,11 @@
 (defclass Rating
 	(is-a ACLMessage)
 	(role concrete)
+	(single-slot client
+		(type INSTANCE)
+;+		(allowed-classes AID)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot server
 		(type INSTANCE)
 ;+		(allowed-classes AID)
@@ -295,23 +308,18 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot index
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot value
 ;+		(comment "valor da iteração")
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot index
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot attributes
 		(type SYMBOL)
 ;+		(allowed-parents RatingAttribute)
-		(create-accessor read-write))
-	(single-slot client
-		(type INSTANCE)
-;+		(allowed-classes AID)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass RatingAttribute
@@ -330,14 +338,14 @@
 (defclass Dossier
 	(is-a Concept)
 	(role concrete)
-	(multislot ratings
-		(type INSTANCE)
-;+		(allowed-classes Rating)
-		(create-accessor read-write))
 	(single-slot tree
 		(type INSTANCE)
 ;+		(allowed-classes MerkleTree)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot ratings
+		(type INSTANCE)
+;+		(allowed-classes Rating)
 		(create-accessor read-write)))
 
 (defclass MerkleTree
@@ -352,11 +360,6 @@
 (defclass Node
 	(is-a Concept)
 	(role concrete)
-	(single-slot value
-;+		(comment "valor da iteração")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot nodeR
 		(type INSTANCE)
 ;+		(allowed-classes Node)
@@ -366,4 +369,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Node)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot value
+;+		(comment "valor da iteração")
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))

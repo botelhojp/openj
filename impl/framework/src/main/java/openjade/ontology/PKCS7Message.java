@@ -7,18 +7,18 @@ import jade.core.*;
 /**
 * Protege name: PKCS7Message
 * @author ontology bean generator
-* @version 2016/09/29, 00:21:55
+* @version 2016/10/3, 23:54:47
 */
 public class PKCS7Message extends ACLMessage{ 
 
    /**
 * Protege name: content
    */
-   private Object content;
-   public void setContent(Object value) { 
+   private String content;
+   public void setContent(String value) { 
     this.content=value;
    }
-   public Object getContent() {
+   public String getContent() {
      return this.content;
    }
 

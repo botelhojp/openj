@@ -2,12 +2,10 @@ package openjade.core;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigInteger;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Provider;
@@ -61,7 +59,6 @@ import openjade.keystore.loader.implementation.KeyStoreLoaderImpl;
 import openjade.ontology.Encipher;
 import openjade.ontology.EncryptedMessage;
 import openjade.ontology.OpenJadeOntology;
-import openjade.ontology.PKCS7Message;
 import openjade.ontology.Rating;
 import openjade.ontology.RequestRating;
 import openjade.ontology.Sign;
@@ -176,15 +173,14 @@ public abstract class OpenAgent extends Agent {
 	}
 
 	public void sendMessage(ACLMessage msg) {
-		if (this instanceof SignerAgent) {
-			signerAndSend(msg);
-			log.debug("send;" + msg.toString().length() + ";bytes");
-			// log.debug("message;" + base64(msg));
-		} else {
-			log.debug("send;" + msg.toString().length() + ";bytes");
-			// log.debug("message;" + msg);
+//		if (this instanceof SignerAgent) {
+//			signerAndSend(msg);
+//			log.debug("send;" + msg.toString().length() + ";bytes");
+//			log.debug("message;" + base64(msg));
+//		} else {
+			log.debug("send;" + msg.toString().length() + ";bytes;content;" + msg);
 			this.send(msg);
-		}
+//		}
 	}
 
 	public ACLMessage base64(ACLMessage msg) {
@@ -207,16 +203,16 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-	private void signerAndSend(ACLMessage _message) {
-		log.debug("signer;start");
-		PKCS7Message pkcs7Message = new PKCS7Message();
-		pkcs7Message.setContent(this.signer.signPkcs7(_message.toString().getBytes()));
-		Sign signMessage = new Sign();
-		signMessage.setPkcs7(pkcs7Message);
-		fillContent(_message, signMessage, codec, openJadeOntology);
-		log.debug("signer;end");
-		send(_message);
-	}
+//	private void signerAndSend(ACLMessage _message) {
+//		log.debug("signer;start");
+//		PKCS7Message pkcs7Message = new PKCS7Message();
+//		pkcs7Message.setContent(this.signer.signPkcs7(_message.toString().getBytes()));
+//		Sign signMessage = new Sign();
+//		signMessage.setPkcs7(pkcs7Message);
+//		fillContent(_message, signMessage, codec, openJadeOntology);
+//		log.debug("signer;end");
+//		send(_message);
+//	}
 
 	private void cipherKeyAndSend(ACLMessage _message, int keyMode) {
 		log.debug("cipher message: " + _message.toString());
@@ -355,7 +351,7 @@ public abstract class OpenAgent extends Agent {
 	public ACLMessage decodeSignerMessage(ACLMessage message, Sign sign) {
 		try {
 			if (sign.getPkcs7().getContent() != null) {
-				byte[] pkcs7 = (byte[]) sign.getPkcs7().getContent();
+				byte[] pkcs7 = (byte[]) sign.getPkcs7().getContent().getBytes();
 				if (signer.verify(pkcs7)) {
 					PKCS7Reader reader = new PKCS7Reader(pkcs7);
 					cacheKey.put(message.getSender(), reader.getX509Certificate().getPublicKey());

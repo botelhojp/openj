@@ -10,9 +10,11 @@ import openjade.composite.DossierModel;
 import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.annotation.ReceiveSimpleMessage;
 import openjade.ontology.MerkleTree;
+import openjade.ontology.PKCS7Message;
 import openjade.ontology.Rating;
 import openjade.ontology.SendDossier;
 import openjade.ontology.SendRating;
+import openjade.ontology.Sign;
 
 /**
  * Server
@@ -41,6 +43,12 @@ public class Agent_00001 extends GenericAgent {
 		log.debug("------------ response dossier ------------");
 		SendDossier sendDossier = new SendDossier();
 		sendDossier.setDossier(dossier.getModel());
+		PKCS7Message pkcs7Message = new PKCS7Message();
+		String signature = super.arrayToString(this.signer.signPkcs7(dossier.toString().getBytes()));
+		pkcs7Message.setContent(signature);
+		Sign signMessage = new Sign();
+		signMessage.setPkcs7(pkcs7Message);
+		sendDossier.setSignature(pkcs7Message);
 		sendMessage(new AID("Agent_00002", false), ACLMessage.INFORM, Conversation.DOSSIER, sendDossier);
 	}
 

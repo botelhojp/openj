@@ -51,6 +51,7 @@ import openjade.cert.CacheKey;
 import openjade.cert.CertificateManager;
 import openjade.cert.bean.CertificateBean;
 import openjade.cert.criptography.Criptography;
+import openjade.composite.DossierModel;
 import openjade.core.behaviours.BehaviourException;
 import openjade.core.behaviours.LoaderKeystoreBehaviour;
 import openjade.core.behaviours.ReceiveMessageBehaviour;
@@ -61,6 +62,7 @@ import openjade.ontology.EncryptedMessage;
 import openjade.ontology.OpenJadeOntology;
 import openjade.ontology.Rating;
 import openjade.ontology.RequestRating;
+import openjade.ontology.SendDossier;
 import openjade.ontology.Sign;
 import openjade.signer.PKCS7Reader;
 import openjade.signer.PKCS7Signer;
@@ -665,6 +667,24 @@ public abstract class OpenAgent extends Agent {
 	public void findWitnesses(AID server) {
 
 	}
+	
+	public String arrayToString(byte[] bytes) {
+		return Base64.getEncoder().encodeToString(bytes);
+	}
+	
+	public byte[] stringToArray(String content) {
+		return Base64.getDecoder().decode(content.getBytes());
+	}
 
+	public boolean verifySign(SendDossier sr) {
+		DossierModel dm = new DossierModel(sr.getDossier());
+		byte[] sig = stringToArray(sr.getSignature().getContent());
+		try {
+			signer.verifySign(sig, dm.toString().getBytes());
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 
 }

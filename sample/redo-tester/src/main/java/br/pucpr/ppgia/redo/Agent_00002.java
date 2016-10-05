@@ -4,9 +4,11 @@ import org.apache.log4j.Logger;
 
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
+import openjade.composite.DossierModel;
 import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.annotation.ReceiveSimpleMessage;
 import openjade.core.behaviours.SenderByServiceBehaviour;
+import openjade.ontology.Dossier;
 import openjade.ontology.Rating;
 import openjade.ontology.SendDossier;
 import openjade.ontology.SendRating;
@@ -45,7 +47,11 @@ public class Agent_00002 extends GenericAgent {
 	@ReceiveMatchMessage(conversationId = { Conversation.DOSSIER }, action = SendDossier.class, performative = {ACLMessage.INFORM })
 	public void receiveByelMessage(ACLMessage _message, SendDossier sr) {
 		log.debug("------------ request service ------------");
-		sendMessage(new AID("agent_00001", false), ACLMessage.REQUEST, Conversation.SERVICE, "get me your service");
+		if (super.verifySign(sr)){
+			sendMessage(new AID("agent_00001", false), ACLMessage.REQUEST, Conversation.SERVICE, "get me your service");
+		}else{
+			log.error("assinatura nao validada");
+		}
 	}
 	
 	//Recebe servico e envia feedback

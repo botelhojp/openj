@@ -22,11 +22,14 @@ public class DossierModel {
 		dossier = new Dossier();
 	}
 
+	public DossierModel(Dossier dossier) {
+		this.dossier = dossier;
+	}
+
 	public void insert(Rating rt) {
 		dossier.addRatings(rt);
 		rt.setIndex(dossier.getRatings().size()-1);
 		dossier.setTree(makeTree(dossier.getRatings()));
-		
 	}
 	
 	private MerkleTree makeTree(jade.util.leap.List ratings) {
@@ -97,6 +100,6 @@ public class DossierModel {
 	@Override
 	public String toString() {
 		Gson g = new Gson();
-		return g.toJson(this);
+		return g.toJson(dossier);
 	}
 }

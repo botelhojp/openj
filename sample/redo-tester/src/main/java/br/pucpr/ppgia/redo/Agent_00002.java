@@ -47,7 +47,7 @@ public class Agent_00002 extends GenericAgent {
 	@ReceiveMatchMessage(conversationId = { Conversation.DOSSIER }, action = SendDossier.class, performative = {ACLMessage.INFORM })
 	public void receiveByelMessage(ACLMessage _message, SendDossier sr) {
 		log.debug("------------ request service ------------");
-		if (super.verifySign(sr)){
+		if (super.verifySign(_message.getSender().getLocalName(), sr)){
 			sendMessage(new AID("agent_00001", false), ACLMessage.REQUEST, Conversation.SERVICE, "get me your service");
 		}else{
 			log.error("assinatura nao validada");

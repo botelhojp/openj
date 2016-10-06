@@ -4,12 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyStore;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.Security;
-import java.security.cert.CertStore;
-import java.security.cert.CertStoreException;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
@@ -17,9 +13,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.security.cert.CertificateExpiredException;
-import javax.security.cert.CertificateNotYetValidException;
-
+import org.apache.log4j.Logger;
 import org.bouncycastle.cert.X509CertificateHolder;
 import org.bouncycastle.cert.jcajce.JcaCertStore;
 import org.bouncycastle.cms.CMSException;
@@ -46,6 +40,8 @@ public class PKCS7Signer {
 	private KeyStore keystore;
 	private String alias;
 	protected String password;
+
+	protected static Logger log = Logger.getLogger(PKCS7Signer.class);
 
 	public PKCS7Signer(KeyStore keystore, String password) {
 		this.keystore = keystore;
@@ -87,12 +83,8 @@ public class PKCS7Signer {
 		return signPkcs7(content.getBytes("UTF-8"));
 	}
 
-	public boolean verify(byte[] signedBytes) {
-		return verify(signedBytes, null);
-	}
-
 	@SuppressWarnings("all")
-	public boolean verify(byte[] signedBytes, String agentID) {
+	public boolean verify(byte[] signedBytes) {
 		boolean verify = true;
 		try {
 			CMSSignedDataParser sp = new CMSSignedDataParser(
@@ -110,9 +102,6 @@ public class PKCS7Signer {
 				if (!signer2.verify(new JcaSimpleSignerInfoVerifierBuilder().setProvider("BC").build(cert))) {
 					verify = false;
 				}
-				if (agentID != null && !cert.getSubject().toString().contains(":" + agentID)) {
-					verify = false;
-				}
 			}
 		} catch (OperatorCreationException e) {
 			throw new SignerException(e);
@@ -126,34 +115,34 @@ public class PKCS7Signer {
 		return verify;
 	}
 
-	public void verifySign(byte[] signedData, byte[] bPlainText) throws Exception {
-		InputStream is = new ByteArrayInputStream(bPlainText);
-		CMSSignedDataParser sp = new CMSSignedDataParser(new CMSTypedStream(is), signedData);
-		CMSTypedStream signedContent = sp.getSignedContent();
-
-		signedContent.drain();
-
-		// CMSSignedData s = new CMSSignedData(signedData);
-		Store certStore = sp.getCertificates();
-
-		SignerInformationStore signers = sp.getSignerInfos();
-		Collection c = signers.getSigners();
-		Iterator it = c.iterator();
-		while (it.hasNext()) {
-			SignerInformation signer = (SignerInformation) it.next();
-			Collection certCollection = certStore.getMatches(signer.getSID());
-
-			Iterator certIt = certCollection.iterator();
-
-			X509CertificateHolder certHolder = (X509CertificateHolder) certIt.next();
-
-			if (!signer.verify(new JcaSimpleSignerInfoVerifierBuilder().setProvider("BC").build(certHolder))) {
-				throw new RuntimeException("Verification FAILED! ");
-
-			} else {
+	@SuppressWarnings("all")
+	public boolean verifySign(String agentID, byte[] signedData, byte[] bPlainText) {
+		try {
+			InputStream is = new ByteArrayInputStream(bPlainText);
+			CMSSignedDataParser sp = new CMSSignedDataParser(new CMSTypedStream(is), signedData);
+			CMSTypedStream signedContent = sp.getSignedContent();
+			signedContent.drain();
+			Store certStore = sp.getCertificates();
+			SignerInformationStore signers = sp.getSignerInfos();
+			Collection c = signers.getSigners();
+			Iterator it = c.iterator();
+			while (it.hasNext()) {
+				SignerInformation signer = (SignerInformation) it.next();
+				Collection certCollection = certStore.getMatches(signer.getSID());
+				Iterator certIt = certCollection.iterator();
+				X509CertificateHolder certHolder = (X509CertificateHolder) certIt.next();
+				if (!signer.verify(new JcaSimpleSignerInfoVerifierBuilder().setProvider("BC").build(certHolder))) {
+					return false;
+				}
+				if (agentID != null && !certHolder.getSubject().toString().contains(":" + agentID)) {
+					return false;
+				}
 			}
-
+		} catch (Exception e) {
+			log.error(e);
+			return false;
 		}
+		return true;
 	}
 
 }

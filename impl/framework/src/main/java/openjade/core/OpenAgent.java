@@ -175,14 +175,14 @@ public abstract class OpenAgent extends Agent {
 	}
 
 	public void sendMessage(ACLMessage msg) {
-//		if (this instanceof SignerAgent) {
-//			signerAndSend(msg);
-//			log.debug("send;" + msg.toString().length() + ";bytes");
-//			log.debug("message;" + base64(msg));
-//		} else {
-			log.debug("send;" + msg.toString().length() + ";bytes;content;" + msg);
-			this.send(msg);
-//		}
+		// if (this instanceof SignerAgent) {
+		// signerAndSend(msg);
+		// log.debug("send;" + msg.toString().length() + ";bytes");
+		// log.debug("message;" + base64(msg));
+		// } else {
+		log.debug("send;" + msg.toString().length() + ";bytes;content;" + msg);
+		this.send(msg);
+		// }
 	}
 
 	public ACLMessage base64(ACLMessage msg) {
@@ -205,16 +205,16 @@ public abstract class OpenAgent extends Agent {
 		}
 	}
 
-//	private void signerAndSend(ACLMessage _message) {
-//		log.debug("signer;start");
-//		PKCS7Message pkcs7Message = new PKCS7Message();
-//		pkcs7Message.setContent(this.signer.signPkcs7(_message.toString().getBytes()));
-//		Sign signMessage = new Sign();
-//		signMessage.setPkcs7(pkcs7Message);
-//		fillContent(_message, signMessage, codec, openJadeOntology);
-//		log.debug("signer;end");
-//		send(_message);
-//	}
+	// private void signerAndSend(ACLMessage _message) {
+	// log.debug("signer;start");
+	// PKCS7Message pkcs7Message = new PKCS7Message();
+	// pkcs7Message.setContent(this.signer.signPkcs7(_message.toString().getBytes()));
+	// Sign signMessage = new Sign();
+	// signMessage.setPkcs7(pkcs7Message);
+	// fillContent(_message, signMessage, codec, openJadeOntology);
+	// log.debug("signer;end");
+	// send(_message);
+	// }
 
 	private void cipherKeyAndSend(ACLMessage _message, int keyMode) {
 		log.debug("cipher message: " + _message.toString());
@@ -667,24 +667,19 @@ public abstract class OpenAgent extends Agent {
 	public void findWitnesses(AID server) {
 
 	}
-	
+
 	public String arrayToString(byte[] bytes) {
 		return Base64.getEncoder().encodeToString(bytes);
 	}
-	
+
 	public byte[] stringToArray(String content) {
 		return Base64.getDecoder().decode(content.getBytes());
 	}
 
-	public boolean verifySign(SendDossier sr) {
+	public boolean verifySign(String agentID, SendDossier sr) {
 		DossierModel dm = new DossierModel(sr.getDossier());
 		byte[] sig = stringToArray(sr.getSignature().getContent());
-		try {
-			signer.verifySign(sig, dm.toString().getBytes());
-		} catch (Exception e) {
-			return false;
-		}
-		return true;
+		return signer.verifySign(agentID, sig, dm.toString().getBytes());
 	}
 
 }

@@ -77,6 +77,8 @@ public class CertBuilder {
 		}		
 	}
 
+	
+	@SuppressWarnings("resource")
 	private static void showHelp() {
 		InputStream is = CertBuilder.class.getResourceAsStream("/help.txt");
 		java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");

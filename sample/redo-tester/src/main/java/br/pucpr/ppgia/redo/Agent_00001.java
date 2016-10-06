@@ -44,7 +44,7 @@ public class Agent_00001 extends GenericAgent {
 		SendDossier sendDossier = new SendDossier();
 		sendDossier.setDossier(dossier.getModel());
 		PKCS7Message pkcs7Message = new PKCS7Message();
-		String signature = super.arrayToString(this.signer.signPkcs7(dossier.toString().getBytes()));
+		String signature = super.arrayToString(this.signer.signPkcs7(super.md5(dossier.toString()).getBytes()));
 		pkcs7Message.setContent(signature);
 		Sign signMessage = new Sign();
 		signMessage.setPkcs7(pkcs7Message);

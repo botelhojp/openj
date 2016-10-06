@@ -2,10 +2,12 @@ package openjade.core;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Provider;
@@ -679,7 +681,19 @@ public abstract class OpenAgent extends Agent {
 	public boolean verifySign(String agentID, SendDossier sr) {
 		DossierModel dm = new DossierModel(sr.getDossier());
 		byte[] sig = stringToArray(sr.getSignature().getContent());
-		return signer.verifySign(agentID, sig, dm.toString().getBytes());
+		return signer.verifySign(agentID, sig, md5(dm.toString()).getBytes());
+	}
+
+	public String md5(String content) {
+		try {
+			String s = content;
+			MessageDigest m = MessageDigest.getInstance("MD5");
+			m.update(s.getBytes(), 0, s.length());
+			return "" + new BigInteger(1, m.digest()).toString(16);
+		} catch (Exception e) {
+			log.error(e);
+		}
+		return null;
 	}
 
 }

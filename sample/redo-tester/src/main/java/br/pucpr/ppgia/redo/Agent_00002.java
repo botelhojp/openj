@@ -4,11 +4,9 @@ import org.apache.log4j.Logger;
 
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
-import openjade.composite.DossierModel;
 import openjade.core.annotation.ReceiveMatchMessage;
 import openjade.core.annotation.ReceiveSimpleMessage;
 import openjade.core.behaviours.SenderByServiceBehaviour;
-import openjade.ontology.Dossier;
 import openjade.ontology.Rating;
 import openjade.ontology.SendDossier;
 import openjade.ontology.SendRating;

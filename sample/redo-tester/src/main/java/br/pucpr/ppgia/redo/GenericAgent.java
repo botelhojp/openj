@@ -1,16 +1,11 @@
 package br.pucpr.ppgia.redo;
 
 import java.io.InputStream;
-import java.util.Base64;
 
 import jade.content.lang.Codec;
 import jade.content.lang.sl.SimpleSLCodec;
-import openjade.composite.DossierModel;
 import openjade.core.OpenAgent;
 import openjade.core.SignerAgent;
-import openjade.ontology.Dossier;
-import openjade.ontology.Rating;
-import openjade.ontology.SendDossier;
 
 //public class GenericAgent extends OpenAgent {
 public class GenericAgent extends OpenAgent implements SignerAgent {

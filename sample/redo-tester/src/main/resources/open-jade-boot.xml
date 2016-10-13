@@ -2,7 +2,7 @@
 <openj>
 	<containers>
 		<!-- <container>-gui -local-host 127.0.0.1</container> -->
-		<container> -local-host 127.0.0.1</container>
+		<container>-gui -local-host 127.0.0.1</container>
 		<container>-local-host 127.0.0.1 -container -container-name Hi-Container agent_00001:br.pucpr.ppgia.redo.Agent_00001</container>
 		<container>-local-host 127.0.0.1 -container -container-name Hi-Container agent_00002:br.pucpr.ppgia.redo.Agent_00002</container>
 		<!-- <container>-local-host 127.0.0.1 -container -container-name Hi-Container agent_00003:br.pucpr.ppgia.redo.Agent_00003</container> -->
